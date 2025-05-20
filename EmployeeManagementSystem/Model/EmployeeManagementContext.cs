@@ -20,8 +20,14 @@ namespace EmployeeManagementSystem.Model
         public string DbPath { get; }
 
         public EmployeeManagementContext()        
-        {           
-            DbPath = @"S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\database.db";
+        {
+            var folder = Path.Combine(AppContext.BaseDirectory, "Data");
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            DbPath = Path.Combine(folder, "database.db");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
