@@ -1,4 +1,4 @@
-using EmployeeManagementSystem.Controller;
+﻿using EmployeeManagementSystem.Controller;
 using EmployeeManagementSystem.Model;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -34,11 +34,12 @@ namespace EmployeeManagementSystem
         private void btnShowPassWord_Click(object sender, EventArgs e)
         {
             isPasswordShown = !isPasswordShown;
-
+            //tắt show
             if (isPasswordShown)
             {
                 txtPassword.UseSystemPasswordChar = false;
             }
+            //show
             else
             {
                 txtPassword.UseSystemPasswordChar = true;
