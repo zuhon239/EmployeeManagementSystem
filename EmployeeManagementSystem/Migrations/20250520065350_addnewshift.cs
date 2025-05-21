@@ -15,7 +15,7 @@ namespace EmployeeManagementSystem.Migrations
                 table: "LeaveRequests",
                 type: "TEXT",
                 maxLength: 50,
-                nullable: false,
+                nullable: true,
                 defaultValue: "");
 
             migrationBuilder.AddColumn<string>(
@@ -23,7 +23,7 @@ namespace EmployeeManagementSystem.Migrations
                 table: "Attendances",
                 type: "TEXT",
                 maxLength: 50,
-                nullable: false,
+                nullable: true,
                 defaultValue: "");
         }
 

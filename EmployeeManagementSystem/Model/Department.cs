@@ -15,7 +15,7 @@ namespace EmployeeManagementSystem.Model
 
         [Required]
         [StringLength(100)]
-        public string Name { get; private set; } // Tên phòng ban
+        public string Name { get; set; } // Tên phòng ban
 
         [ForeignKey("Manager")]
         public int? ManagerId { get; set; } // Khóa ngoại liên kết với Users(UserId)

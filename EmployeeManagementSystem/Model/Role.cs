@@ -14,7 +14,7 @@ namespace EmployeeManagementSystem.Model
 
         [Required]
         [StringLength(50)]
-        public string RoleName { get; private set; } // Tên vai trò
+        public string RoleName { get; set; } // Tên vai trò
 
         // Thuộc tính điều hướng
         public virtual ICollection<User> Users { get; set; }

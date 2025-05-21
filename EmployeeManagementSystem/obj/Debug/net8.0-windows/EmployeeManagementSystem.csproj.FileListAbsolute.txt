@@ -147,3 +147,4 @@ S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagemen
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.ManagerForm.resources
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.Properties.Resources.resources
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.sourcelink.json
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.LeaveRequestForm.resources

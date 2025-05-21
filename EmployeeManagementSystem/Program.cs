@@ -17,8 +17,15 @@ namespace EmployeeManagementSystem
             // see https://aka.ms/applicationconfiguration.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            ApplicationConfiguration.Initialize();                  
-            Application.Run(new LoginForm());
+            var serviceProvider = new ServiceCollection()
+           .AddDbContext<EmployeeManagementContext>()
+           .AddScoped<LeaveRequestController>()
+           .AddScoped<LoginController>()
+           .AddScoped<LoginForm>()
+           .BuildServiceProvider();
+
+            var loginForm = serviceProvider.GetService<LoginForm>();
+            Application.Run(loginForm);
         }
     }
 }

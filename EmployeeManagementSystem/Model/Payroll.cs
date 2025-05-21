@@ -22,17 +22,17 @@ namespace EmployeeManagementSystem.Model
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal BaseSalary { get; private set; } // Lương cơ bản
+        public decimal BaseSalary { get; set; } // Lương cơ bản
 
         [Required]
         public int DaysWorked { get; set; } // Số ngày làm việc
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Bonus { get; private set; } // Tiền thưởng
+        public decimal Bonus { get; set; } // Tiền thưởng
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal TotalSalary { get; private set; } // Tổng lương
+        public decimal TotalSalary { get; set; } // Tổng lương
 
         // Thuộc tính điều hướng
         public virtual Employee Employee { get; set; }

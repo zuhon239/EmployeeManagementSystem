@@ -17,11 +17,11 @@ namespace EmployeeManagementSystem.Model
 
         [Required]
         [StringLength(50)] 
-        public string Username { get; private set; } // Tên đăng nhập
+        public string Username { get; set; } // Tên đăng nhập
 
         [Required]
         [StringLength(256)] // Lưu mật khẩu đã mã hóa (bcrypt)
-        public string Password { get; private set; } // Mật khẩu
+        public string Password { get; set; } // Mật khẩu
 
         [Required]
         [ForeignKey("Role")]

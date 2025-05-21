@@ -8,10 +8,10 @@ namespace EmployeeManagementSystem
     {
         private readonly LoginController _loginController;
 
-        public LoginForm()
+        public LoginForm(LoginController loginController)
         {
             InitializeComponent();
-            _loginController = new LoginController(new EmployeeManagementContext());
+            _loginController = loginController ?? throw new ArgumentNullException(nameof(loginController));
             txtPassword.UseSystemPasswordChar = true;
         }
         private void btnLogin_Click(object sender, EventArgs e)
@@ -27,10 +27,10 @@ namespace EmployeeManagementSystem
             }
             else
             {
-                lblMessage.Text = errorMessage;
+                lblLoginError.Text = errorMessage;
             }
         }
-        bool isPasswordShown = false;       
+        bool isPasswordShown = false;
         private void btnShowPassWord_Click(object sender, EventArgs e)
         {
             isPasswordShown = !isPasswordShown;
@@ -44,6 +44,11 @@ namespace EmployeeManagementSystem
             {
                 txtPassword.UseSystemPasswordChar = true;
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

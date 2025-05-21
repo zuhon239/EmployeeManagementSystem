@@ -13,17 +13,17 @@ namespace EmployeeManagementSystem.Model
     {
         [Required]
         [StringLength(100)]
-        public string Name { get; private set; } // Họ tên
+        public string Name { get;  set; } // Họ tên
 
         [Required]
         [StringLength(10)]
-        public string Gender { get; private set; } // Giới tính
+        public string Gender { get;  set; } // Giới tính
 
         [Required]
-        public DateTime DateOfBirth { get; private set; } // Ngày sinh
+        public DateTime DateOfBirth { get;  set; } // Ngày sinh
 
         [StringLength(15)]
-        public string Phone { get; private set; } // Số điện thoại
+        public string Phone { get;  set; } // Số điện thoại
 
         [Required]
         [ForeignKey("Department")]

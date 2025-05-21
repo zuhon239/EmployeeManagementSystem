@@ -10,10 +10,12 @@ namespace EmployeeManagementSystem.Controller
     public class LoginController
     {
         private readonly EmployeeManagementContext _context;
+        private readonly LeaveRequestController _leaveRequestController;
 
-        public LoginController(EmployeeManagementContext context)
+        public LoginController(EmployeeManagementContext context, LeaveRequestController leaveRequestController)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _leaveRequestController = leaveRequestController ?? throw new ArgumentNullException(nameof(leaveRequestController));
         }
 
         public bool Login(string username, string password, out string errorMessage, out Form nextForm)
@@ -44,13 +46,12 @@ namespace EmployeeManagementSystem.Controller
                     nextForm = new ManagerForm();
                     break;
                 case "Employee":
-                    nextForm = new EmployeeForm();
+                    nextForm = new EmployeeForm(user.UserId, _leaveRequestController, _context);
                     break;
                 default:
                     errorMessage = "Unknown role.";
                     return false;
             }
-
             return true;
         }
     }

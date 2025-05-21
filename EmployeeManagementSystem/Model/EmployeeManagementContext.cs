@@ -91,7 +91,7 @@ namespace EmployeeManagementSystem.Model
                 new Role("Employee") { RoleId = 1 },
                 new Role("Manager") { RoleId = 2 },
                 new Role("Admin") { RoleId = 3 }
-            );
+            );        
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options.UseSqlite($"Data Source={DbPath}");

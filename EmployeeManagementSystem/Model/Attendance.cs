@@ -31,12 +31,12 @@ namespace EmployeeManagementSystem.Model
 
         [Required]
         [StringLength(50)]
-        public string Shift { get; private set; } // Ca làm
+        public string Shift { get; set; } // Ca làm
 
 
         [Required]
         [StringLength(50)]
-        public string Status { get; private set; } // Trạng thái
+        public string Status { get; set; } // Trạng thái
 
         // Thuộc tính điều hướng
         public virtual Employee Employee { get; set; }

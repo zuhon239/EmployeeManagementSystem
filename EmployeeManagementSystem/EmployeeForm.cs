@@ -1,4 +1,7 @@
-﻿using EmployeeManagementSystem.Model;
+﻿using EmployeeManagementSystem.Controller;
+using EmployeeManagementSystem.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +16,49 @@ namespace EmployeeManagementSystem
 {
     public partial class EmployeeForm : Form
     {
-
-        public EmployeeForm()
+        private readonly int _userId;
+        private readonly LeaveRequestController _leaveRequestController;
+        private readonly EmployeeManagementContext _context;
+        public EmployeeForm(int userId, LeaveRequestController leaveRequestController, EmployeeManagementContext context)
         {
             InitializeComponent();
+            _userId = userId;
+            _leaveRequestController = leaveRequestController ?? throw new ArgumentNullException(nameof(leaveRequestController));
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            LoadUserName();
+        }
+        private void LoadUserName()
+        {
+            try
+            {
+                var employee = _context.Users
+               .OfType<Employee>()
+               .AsNoTracking()
+               .Select(e => new { e.UserId, e.Name })
+               .FirstOrDefault(e => e.UserId == _userId);
+
+                if (employee != null && !string.IsNullOrEmpty(employee.Name))
+                {
+                    lblWelcome.Text = $"Chào mừng {employee.Name} đến với hệ thống quản lý nhân sự!";
+                }
+                else
+                {
+                    lblWelcome.Text = $"Chào mừng UserId {_userId} đến với hệ thống quản lý nhân sự!";
+                    MessageBox.Show($"Không tìm thấy nhân viên hoặc tên trống cho UserId: {_userId}");
+                }
+            }
+            catch (Exception ex)
+            {
+                lblWelcome.Text = "Chào mừng đến với hệ thống quản lý nhân sự!";
+                // Ghi log lỗi chi tiết
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi tải tên người dùng cho UserId {_userId}: {ex.Message}");
+                MessageBox.Show($"Không thể tải thông tin người dùng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void BtnRequestLeave_Click(object sender, EventArgs e)
+        {
+            var leaveRequestForm = new LeaveRequestForm(_userId, _leaveRequestController);
+            leaveRequestForm.ShowDialog();
         }
     }
 }

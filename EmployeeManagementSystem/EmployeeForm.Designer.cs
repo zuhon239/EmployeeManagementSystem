@@ -20,20 +20,31 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+        private Label lblWelcome;
+        private Button btnRequestLeave;
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "EmployeeForm";
-        }
+            lblWelcome = new Label
+            {
+                Text = "Chào mừng đến với hệ thống quản lý nhân sự!", // Sẽ được cập nhật trong LoadUserName
+                Location = new System.Drawing.Point(20, 20),
+                Size = new System.Drawing.Size(300, 20)
+            };
+            btnRequestLeave = new Button
+            {
+                Text = "Xin nghỉ phép",
+                Location = new System.Drawing.Point(20, 50),
+                Size = new System.Drawing.Size(150, 30)
+            };
 
-        #endregion
+            btnRequestLeave.Click += BtnRequestLeave_Click;
+
+            Controls.AddRange(new Control[] { lblWelcome, btnRequestLeave });
+
+            Text = "Trang Chính Nhân Viên";
+            Size = new System.Drawing.Size(400, 200);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+        }
     }
 }

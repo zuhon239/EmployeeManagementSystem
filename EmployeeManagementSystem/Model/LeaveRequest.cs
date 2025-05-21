@@ -27,15 +27,15 @@ namespace EmployeeManagementSystem.Model
 
         [Required]
         [StringLength(500)]
-        public string Reason { get; private set; } // Lý do nghỉ phép
+        public string Reason { get; set; } // Lý do nghỉ phép
 
         [Required]
         [StringLength(50)]
-        public string Status { get; private set; } // Trạng thái
+        public string Status { get; set; } // Trạng thái
                                                    
-        [Required]
+
         [StringLength(50)]
-        public string Shift { get; private set; } //  Ca nghỉ
+        public string Shift { get; set; } //  Ca nghỉ
 
         [ForeignKey("Approver")]
         public int? ApproverId { get; set; } // Khóa ngoại liên kết với Users(UserId)
