@@ -1,6 +1,6 @@
-﻿namespace EmployeeManagementSystem
+﻿namespace EmployeeManagementSystem.FormManager
 {
-    partial class ManagerForm
+    partial class DepartmentManagerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ManagerForm";
+            this.Text = "DepartmentManagerForm";
         }
 
         #endregion

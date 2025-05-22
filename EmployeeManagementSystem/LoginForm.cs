@@ -21,6 +21,7 @@ namespace EmployeeManagementSystem
 
             if (_loginController.Login(txtUsername.Text, txtPassword.Text, out errorMessage, out nextForm))
             {
+                MessageBox.Show("Đăng nhập thành công!" , "Thông báo");
                 this.Hide();
                 nextForm.ShowDialog();
                 this.Close();

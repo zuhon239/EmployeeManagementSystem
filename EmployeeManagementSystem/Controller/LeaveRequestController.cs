@@ -42,6 +42,18 @@ namespace EmployeeManagementSystem.Controller
                 bool isSingleDay = startDate.Date == endDate.Date;
                 if (isSingleDay && string.IsNullOrEmpty(shift))
                     throw new ArgumentException("Ca nghỉ là bắt buộc khi nghỉ trong một ngày.");
+                // Kiểm tra ca nghỉ cho ngày hôm nay
+                if (isSingleDay && startDate.Date == DateTime.Today)
+                {
+                    DateTime now = DateTime.Now;
+                    bool isMorningShift = now.Hour >= 5 && now.Hour < 12; // Ca sáng: 5:00 - 12:00
+                    bool isAfternoonShift = now.Hour >= 12 && now.Hour < 19; // Ca chiều: 12:00 - 19:00
+
+                    if (isMorningShift && shift == "Morning")
+                        throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đang trong ca sáng.");
+                    if (isAfternoonShift && (shift == "Afternoon" || shift == "FullDay"))
+                        throw new ArgumentException("Không thể xin nghỉ ca chiều hoặc cả ngày trong khi đang trong ca chiều.");
+                }
                 if (!isSingleDay)
                     shift = null;
 

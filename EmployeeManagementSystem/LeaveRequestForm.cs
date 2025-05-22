@@ -28,9 +28,14 @@ namespace EmployeeManagementSystem
         private void UpdateShiftVisibility()
         {
             bool isSingleDay = dtpStartDate.Value.Date == dtpEndDate.Value.Date;
-            pnlShift.Visible = isSingleDay;
+            // Giữ pnlShift luôn hiển thị, chỉ vô hiệu hóa cmbShift
+            cmbShift.Enabled = isSingleDay;
             if (!isSingleDay)
                 cmbShift.SelectedIndex = -1;
+
+
+            pnlShift.Refresh();
+            System.Diagnostics.Debug.WriteLine($"UpdateShiftVisibility: isSingleDay={isSingleDay}, cmbShift.Enabled={cmbShift.Enabled}");
         }
         private async void BtnSubmit_Click(object sender, EventArgs e)
         {

@@ -1,5 +1,4 @@
-﻿using EmployeeManagementSystem.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,12 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EmployeeManagementSystem
+namespace EmployeeManagementSystem.FormManager
 {
-    public partial class ManagerForm : Form
+    public partial class DepartmentManagerForm : Form
     {
-
-        public ManagerForm()
+        public DepartmentManagerForm()
         {
             InitializeComponent();
         }

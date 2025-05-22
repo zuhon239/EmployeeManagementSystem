@@ -43,7 +43,7 @@ namespace EmployeeManagementSystem.Controller
                     nextForm = new AdminForm();
                     break;
                 case "Manager":
-                    nextForm = new ManagerForm();
+                    nextForm = new ManagerForm(user.UserId, _leaveRequestController, _context);
                     break;
                 case "Employee":
                     nextForm = new EmployeeForm(user.UserId, _leaveRequestController, _context);
