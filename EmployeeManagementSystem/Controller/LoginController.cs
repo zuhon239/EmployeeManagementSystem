@@ -32,7 +32,7 @@ namespace EmployeeManagementSystem.Controller
             var user = User.Authenticate(_context, username, password);
             if (user == null)
             {
-                errorMessage = "Invalid username or password, or account is inactive.";
+                errorMessage = "Invalid username or password.";
                 return false;
             }
 

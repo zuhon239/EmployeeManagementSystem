@@ -129,17 +129,33 @@
             btnManageEmployees.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 128, 64);
             btnManageEmployees.Click += BtnManageEmployees_Click;
 
+            // Button: Log Out
+            btnLogout = new Button
+            {
+                Size = new Size(250, 50),
+                Name = "btnLogout",
+                Text = "Đăng xuất",
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(204, 0, 0), // Red to distinguish from other buttons
+                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
+                FlatStyle = FlatStyle.Flat,
+                Margin = new Padding(0, 10, 0, 10)
+            };
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.FlatAppearance.MouseOverBackColor = Color.FromArgb(179, 0, 0); // Darker red on hover
+            btnLogout.Click += BtnLogout_Click;
+            
             // Add tooltips
             toolTip = new ToolTip();
             toolTip.SetToolTip(btnAttendance, "Ghi lại thời gian làm việc của nhân viên");
             toolTip.SetToolTip(btnLeaveRequest, "Gửi yêu cầu nghỉ phép");
             toolTip.SetToolTip(btnManageEmployees, "Quản lý thông tin nhân viên");
-
+            toolTip.SetToolTip(btnLogout, "Đăng xuất khỏi hệ thống");
             // Add controls to button panel
             buttonPanel.Controls.Add(btnAttendance);
             buttonPanel.Controls.Add(btnLeaveRequest);
             buttonPanel.Controls.Add(btnManageEmployees);
-
+            buttonPanel.Controls.Add(btnLogout);
             // Center the FlowLayoutPanel within the TableLayoutPanel cell
             buttonPanel.Location = new Point((tableLayoutPanel.Width - buttonPanel.PreferredSize.Width) / 2, 20);
 
@@ -179,9 +195,11 @@
         private Button btnAttendance;
         private Button btnLeaveRequest;
         private Button btnManageEmployees;
+        private Button btnLogout;
         private Label lblWelcome;
         private Label lblWelcomeManager;
         private FlowLayoutPanel buttonPanel;
         private ToolTip toolTip;
+
     }
 }

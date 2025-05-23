@@ -88,5 +88,58 @@ namespace EmployeeManagementSystem.Controller
                 throw;
             }
         }
+        public async Task ApproveOrRejectLeaveRequestAsync(int leaveId, int approverId, bool isApproved)
+        {
+            try
+            {
+                // Kiểm tra yêu cầu nghỉ phép tồn tại
+                var leaveRequest = await _context.LeaveRequests
+                    .Include(lr => lr.Employee)
+                    .FirstOrDefaultAsync(lr => lr.LeaveId == leaveId);
+                if (leaveRequest == null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Không tìm thấy LeaveRequest với LeaveId: {leaveId}");
+                    throw new ArgumentException("Yêu cầu nghỉ phép không tồn tại.");
+                }
+
+                // Kiểm tra trạng thái hiện tại
+                if (leaveRequest.Status != "Pending")
+                {
+                    System.Diagnostics.Debug.WriteLine($"Yêu cầu nghỉ phép LeaveId: {leaveId} không ở trạng thái Pending.");
+                    throw new InvalidOperationException("Chỉ có thể duyệt/từ chối yêu cầu đang ở trạng thái Pending.");
+                }
+
+                // Kiểm tra quyền của người duyệt (Manager hoặc Admin)
+                var approver = await _context.Users
+                    .Include(u => u.Role)
+                    .FirstOrDefaultAsync(u => u.UserId == approverId);
+                if (approver == null || (approver.Role.RoleName != "Manager" && approver.Role.RoleName != "Admin"))
+                {
+                    System.Diagnostics.Debug.WriteLine($"Người dùng UserId: {approverId} không có quyền duyệt.");
+                    throw new InvalidOperationException("Chỉ Manager hoặc Admin mới có quyền duyệt yêu cầu nghỉ phép.");
+                }
+
+                // Cập nhật trạng thái và thông tin người duyệt
+                leaveRequest.Status = isApproved ? "Approved" : "Rejected";
+                leaveRequest.ApproverId = approverId;
+
+                // Lưu thay đổi
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    System.Diagnostics.Debug.WriteLine($"Cập nhật trạng thái LeaveRequest thành công: LeaveId={leaveId}, Status={leaveRequest.Status}");
+                }
+                catch (DbUpdateException ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Lỗi khi lưu trạng thái LeaveRequest: {ex.InnerException?.Message ?? ex.Message}");
+                    throw new InvalidOperationException("Không thể cập nhật trạng thái yêu cầu nghỉ phép.", ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Lỗi trong ApproveOrRejectLeaveRequestAsync: {ex.Message}");
+                throw;
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EmployeeManagementSystem.Controller;
 using EmployeeManagementSystem.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
@@ -55,10 +56,53 @@ namespace EmployeeManagementSystem
                 MessageBox.Show($"Không thể tải thông tin người dùng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void BtnAttendance_Click(object sender, EventArgs e)
+        {
+            // Placeholder for attendance functionality
+        }
         private void BtnRequestLeave_Click(object sender, EventArgs e)
         {
             var leaveRequestForm = new LeaveRequestForm(_userId, _leaveRequestController);
             leaveRequestForm.ShowDialog();
+        }
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Xác nhận đăng xuất
+                var result = MessageBox.Show(
+                    "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?",
+                    "Xác nhận đăng xuất",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    // Ẩn form hiện tại
+                    this.Hide();
+
+                    // Tạo và hiển thị form đăng nhập mới
+                    using (var serviceProvider = new ServiceCollection()
+                        .AddDbContext<EmployeeManagementContext>()
+                        .AddScoped<LeaveRequestController>()
+                        .AddScoped<LoginController>()
+                        .AddScoped<LoginForm>()
+                        .BuildServiceProvider())
+                    {
+                        var loginForm = serviceProvider.GetService<LoginForm>();
+                        loginForm.ShowDialog();
+                    }
+
+                    // Đóng form hiện tại sau khi đăng xuất
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi đăng xuất: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi đăng xuất: {ex.Message}");
+            }
         }
     }
 }

@@ -16,12 +16,13 @@ namespace EmployeeManagementSystem
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
+
             string errorMessage;
             Form nextForm;
 
             if (_loginController.Login(txtUsername.Text, txtPassword.Text, out errorMessage, out nextForm))
             {
-                MessageBox.Show("Đăng nhập thành công!" , "Thông báo");
+                MessageBox.Show("Đăng nhập thành công!", "Thông báo");
                 this.Hide();
                 nextForm.ShowDialog();
                 this.Close();
@@ -35,21 +36,35 @@ namespace EmployeeManagementSystem
         private void btnShowPassWord_Click(object sender, EventArgs e)
         {
             isPasswordShown = !isPasswordShown;
-            //tắt show
-            if (isPasswordShown)
-            {
-                txtPassword.UseSystemPasswordChar = false;
-            }
-            //show
-            else
-            {
-                txtPassword.UseSystemPasswordChar = true;
-            }
+            txtPassword.UseSystemPasswordChar = !isPasswordShown;
+
+            // (Tùy chọn) Thay đổi icon/text nút để phản hồi người dùng
+            btnShowPassWord.Text = isPasswordShown ? "Hide" : "Show";
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

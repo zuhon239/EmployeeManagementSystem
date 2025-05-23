@@ -1,6 +1,8 @@
 ﻿using EmployeeManagementSystem.Controller;
+using EmployeeManagementSystem.FormManager;
 using EmployeeManagementSystem.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +22,7 @@ namespace EmployeeManagementSystem
         private readonly LeaveRequestController _leaveRequestController; 
         private string _managerName;
         private string _departmentName;
+        private readonly LoginController _loginController;
         public ManagerForm(int userId, LeaveRequestController leaveRequestController, EmployeeManagementContext context)
         {
             _userId = userId;
@@ -62,29 +65,32 @@ namespace EmployeeManagementSystem
             try
             {
                 var department = _context.Users
-               .OfType<Employee>()
-               .AsNoTracking().Include(e => e.Department)
-               .Select(e => new { e.UserId, 
-                                  e.DepartmentId, 
-                                  e.Department.Name })
-                                  .FirstOrDefault(e => e.UserId == _userId); 
-              
-                if (department != null && !string.IsNullOrEmpty(department.Name))
+                   .OfType<Employee>()
+                   .AsNoTracking()
+                   .Include(e => e.Department)
+                   .Select(e => new {
+                       e.UserId,
+                       e.DepartmentId,
+                       DepartmentName = e.Department.Name
+                   })
+                   .FirstOrDefault(e => e.UserId == _userId);
+
+                if (department != null && !string.IsNullOrEmpty(department.DepartmentName))
                 {
-                    lblWelcome.Text = $"{department.Name}";
+                    _departmentName = department.DepartmentName;
+                    lblWelcome.Text = $"{department.DepartmentName.ToUpper()}";
                 }
                 else
                 {
-                   
-                    MessageBox.Show($"Không tìm thấy nhân viên hoặc tên trống cho UserId: {Name}");
+                    lblWelcome.Text = "PHÒNG QUẢN LÝ";
+                    System.Diagnostics.Debug.WriteLine($"Không tìm thấy thông tin phòng ban cho UserId: {_userId}");
                 }
             }
             catch (Exception ex)
             {
-                lblWelcomeManager.Text = "Chào mừng đến với hệ thống quản lý nhân sự!";
-                // Ghi log lỗi chi tiết
-                System.Diagnostics.Debug.WriteLine($"Lỗi khi tải tên người dùng cho UserId {_userId}: {ex.Message}");
-                MessageBox.Show($"Không thể tải thông tin người dùng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblWelcome.Text = "PHÒNG QUẢN LÝ";
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi tải thông tin phòng ban cho UserId {_userId}: {ex.Message}");
+                MessageBox.Show($"Không thể tải thông tin phòng ban: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void BtnAttendance_Click(object sender, EventArgs e)
@@ -101,7 +107,46 @@ namespace EmployeeManagementSystem
 
         private void BtnManageEmployees_Click(object sender, EventArgs e)
         {
+            var managerform = new DepartmentManagerForm(_userId, _context);
+            managerform.ShowDialog();
+        }
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Xác nhận đăng xuất
+                var result = MessageBox.Show(
+                    "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?",
+                    "Xác nhận đăng xuất",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
+                if (result == DialogResult.Yes)
+                {
+                    // Ẩn form hiện tại
+                    this.Hide();
+
+                    // Tạo và hiển thị form đăng nhập mới
+                    using (var serviceProvider = new ServiceCollection()
+                        .AddDbContext<EmployeeManagementContext>()
+                        .AddScoped<LeaveRequestController>()
+                        .AddScoped<LoginController>()
+                        .AddScoped<LoginForm>()
+                        .BuildServiceProvider())
+                    {
+                        var loginForm = serviceProvider.GetService<LoginForm>();
+                        loginForm.ShowDialog();
+                    }
+
+                    // Đóng form hiện tại sau khi đăng xuất
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi đăng xuất: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

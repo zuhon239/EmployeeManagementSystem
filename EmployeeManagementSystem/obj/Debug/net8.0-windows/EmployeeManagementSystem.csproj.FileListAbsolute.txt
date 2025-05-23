@@ -149,3 +149,4 @@ S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagemen
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.genruntimeconfig.cache
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\ref\EmployeeManagementSystem.dll
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormManager.DepartmentManagerForm.resources
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormManager.LeaveRequestManager.resources

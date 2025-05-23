@@ -35,7 +35,7 @@ namespace EmployeeManagementSystem.Model
                                                    
 
         [StringLength(50)]
-        public string Shift { get; set; } //  Ca nghỉ
+        public string? Shift { get; set; } //  Ca nghỉ
 
         [ForeignKey("Approver")]
         public int? ApproverId { get; set; } // Khóa ngoại liên kết với Users(UserId)
@@ -61,6 +61,7 @@ namespace EmployeeManagementSystem.Model
             Reason = reason ?? throw new ArgumentNullException(nameof(reason));
             Status = status ?? throw new ArgumentNullException(nameof(status));
             Shift = shift ?? throw new ArgumentNullException(nameof(shift));
+            Shift = shift ?? string.Empty;
             ApproverId = approverId;
         }
 

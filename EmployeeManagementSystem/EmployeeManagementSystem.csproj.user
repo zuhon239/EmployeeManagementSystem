@@ -10,6 +10,9 @@
     <Compile Update="FormManager\DepartmentManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormManager\LeaveRequestManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LeaveRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
