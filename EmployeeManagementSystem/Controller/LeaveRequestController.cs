@@ -49,14 +49,43 @@ namespace EmployeeManagementSystem.Controller
                     bool isMorningShift = now.Hour >= 5 && now.Hour < 12; // Ca sáng: 5:00 - 12:00
                     bool isAfternoonShift = now.Hour >= 12 && now.Hour < 19; // Ca chiều: 12:00 - 19:00
 
-                    if (isMorningShift && shift == "Morning")
+                    if (isMorningShift && (shift == "Morning"||shift == "FullDay"))
                         throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đang trong ca sáng.");
+                    if (isAfternoonShift && (shift == "Morning" || shift == "FullDay"))
+                        throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đang trong buổi chiều.");
                     if (isAfternoonShift && (shift == "Afternoon" || shift == "FullDay"))
                         throw new ArgumentException("Không thể xin nghỉ ca chiều hoặc cả ngày trong khi đang trong ca chiều.");
                 }
                 if (!isSingleDay)
                     shift = null;
+                // Kiểm tra trùng lặp yêu cầu nghỉ phép
+                var existingRequests = await _context.LeaveRequests
+                    .Where(lr => lr.UserId == userId && lr.Status != "Rejected")
+                    .ToListAsync();
 
+                foreach (var request in existingRequests)
+                {
+                    // Kiểm tra trùng lặp ngày
+                    if (startDate.Date <= request.EndDate.Date && endDate.Date >= request.StartDate.Date)
+                    {
+                        if (isSingleDay && request.StartDate.Date == request.EndDate.Date && startDate.Date == request.StartDate.Date)
+                        {
+                            // Trường hợp nghỉ theo ca trong cùng một ngày
+                            if (request.Shift != null && shift != null)
+                            {
+                                if (request.Shift == shift)
+                                    throw new ArgumentException($"Đã có yêu cầu nghỉ ca {shift} trong ngày {startDate:dd/MM/yyyy}.");
+                                if (request.Shift == "FullDay" || shift == "FullDay")
+                                    throw new ArgumentException($"Đã có yêu cầu nghỉ cả ngày hoặc ca {request.Shift} trong ngày {startDate:dd/MM/yyyy}.");
+                            }
+                        }
+                        else
+                        {
+                            // Trường hợp nghỉ nhiều ngày hoặc không phải ca
+                            throw new ArgumentException($"Đã có yêu cầu nghỉ phép trùng lặp trong khoảng từ {request.StartDate:dd/MM/yyyy} đến {request.EndDate:dd/MM/yyyy}.");
+                        }
+                    }
+                }
                 // Tạo LeaveRequest
                 var leaveRequest = new LeaveRequest
                 {

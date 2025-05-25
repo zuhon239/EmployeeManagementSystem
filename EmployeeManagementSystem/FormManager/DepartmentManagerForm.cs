@@ -110,17 +110,25 @@ namespace EmployeeManagementSystem.FormManager
         }
         private void ActivateButton(object btnSender)
         {
-            if (btnSender != null)
+            try
             {
-                if (currentButton != (Button)btnSender)
+                if (btnSender != null)
                 {
-                    DisableButton();
-                    currentButton = (Button)btnSender;
-                    currentButton.BackColor = Color.FromArgb(45, 45, 76);
-                    currentButton.ForeColor = Color.White;
-                    currentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    if (currentButton != (Button)btnSender)
+                    {
+                        DisableButton();
+                        currentButton = (Button)btnSender;
+                        currentButton.BackColor = Color.FromArgb(45, 45, 76);
+                        currentButton.ForeColor = Color.White;
+                        currentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    }
                 }
             }
+            catch (Exception ex) 
+            {
+                System.Diagnostics.Debug.WriteLine($"{ex.Message}");
+            }
+            
         }
         private void DisableButton()
         {
@@ -151,22 +159,22 @@ namespace EmployeeManagementSystem.FormManager
 
         private void lblManagerName_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormManager.LeaveRequestManager(_userId, _context), sender);
+            
         }
 
         private void btnAttendance_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormManager.LeaveRequestManager(_userId, _context), sender);
+            
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormManager.LeaveRequestManager(_userId, _context), sender);
+            
         }
 
         private void btnManager_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormManager.LeaveRequestManager(_userId, _context), sender);
+          
         }
 
         private void btnLeaveRequest_Click(object sender, EventArgs e)
@@ -176,7 +184,7 @@ namespace EmployeeManagementSystem.FormManager
 
         private void btnSalary_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormManager.LeaveRequestManager(_userId, _context), sender);
+           
         }
     }
 }
