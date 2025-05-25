@@ -40,7 +40,7 @@ namespace EmployeeManagementSystem.Controller
             switch (user.Role.RoleName)
             {
                 case "Admin":
-                    nextForm = new AdminForm();
+                    nextForm = new AdminForm(user.UserId, _context);
                     break;
                 case "Manager":
                     nextForm = new ManagerForm(user.UserId, _leaveRequestController, _context);

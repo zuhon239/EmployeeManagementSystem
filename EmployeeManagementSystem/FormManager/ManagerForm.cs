@@ -101,7 +101,7 @@ namespace EmployeeManagementSystem
         private void BtnLeaveRequest_Click(object sender, EventArgs e)
         {
             // Mở form xin nghỉ phép
-            var leaveRequestForm = new LeaveRequestForm(_userId, _leaveRequestController);
+            var leaveRequestForm = new LeaveRequestForm(_userId, _leaveRequestController, _context);
             leaveRequestForm.ShowDialog();
         }
 

@@ -1,4 +1,5 @@
 ﻿using EmployeeManagementSystem.Controller;
+using EmployeeManagementSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,13 @@ namespace EmployeeManagementSystem
     {
         private readonly int _userId; 
         private readonly LeaveRequestController _leaveRequestController;
-        public LeaveRequestForm(int userId, LeaveRequestController leaveRequestController)
+        private readonly EmployeeManagementContext _context;
+        public LeaveRequestForm(int userId, LeaveRequestController leaveRequestController, EmployeeManagementContext context)
         {
             InitializeComponent();
             _userId = userId;
             _leaveRequestController = leaveRequestController ?? throw new ArgumentNullException(nameof(leaveRequestController));
-
+            _context = context ?? throw new ArgumentNullException(nameof(context));
             // Thiết lập ComboBox cho Shift
             cmbShift.Items.AddRange(new[] { "Morning", "Afternoon", "FullDay" });
             UpdateShiftVisibility();
@@ -70,6 +72,18 @@ namespace EmployeeManagementSystem
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void BtnViewHistory_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               var historyForm = new LeaveHistoryForm(_userId, _context);
+               historyForm.ShowDialog(); // Show as a modal dialog
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi mở lịch sử nghỉ phép: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

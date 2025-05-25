@@ -35,6 +35,7 @@
         private Button btnCancel;
         private Panel headerPanel;
         private Label lblHeader;
+        private Button btnViewHistory; // New button
 
         private void InitializeComponent()
         {
@@ -52,6 +53,7 @@
             pnlShift = new Panel();
             btnSubmit = new Button();
             btnCancel = new Button();
+            btnViewHistory = new Button(); // Initialize new button
             SuspendLayout();
 
             // 
@@ -198,6 +200,19 @@
             btnCancel.TabIndex = 9;
             btnCancel.Text = "Hủy";
             btnCancel.UseVisualStyleBackColor = false;
+            // 
+            // btnViewHistory
+            // 
+            btnViewHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            btnViewHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnViewHistory.Font = new System.Drawing.Font("Segoe UI", 10F);
+            btnViewHistory.ForeColor = System.Drawing.Color.White;
+            btnViewHistory.Location = new System.Drawing.Point(410, 67);
+            btnViewHistory.Name = "btnViewHistory";
+            btnViewHistory.Size = new System.Drawing.Size(60, 30);
+            btnViewHistory.TabIndex = 10;
+            btnViewHistory.Text = "📜"; // Placeholder for icon (use an actual image in production)
+            btnViewHistory.UseVisualStyleBackColor = false;
 
             // 
             // LeaveRequestForm
@@ -215,6 +230,7 @@
             Controls.Add(pnlShift);
             Controls.Add(btnSubmit);
             Controls.Add(btnCancel);
+            Controls.Add(btnViewHistory);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "LeaveRequestForm";
@@ -225,6 +241,7 @@
             btnCancel.Click += (s, e) => Close();
             dtpStartDate.ValueChanged += (s, e) => UpdateShiftVisibility();
             dtpEndDate.ValueChanged += (s, e) => UpdateShiftVisibility();
+            btnViewHistory.Click += BtnViewHistory_Click; // Attach event handler
             ResumeLayout(false);
             PerformLayout();
         }

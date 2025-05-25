@@ -62,7 +62,7 @@ namespace EmployeeManagementSystem
         }
         private void BtnRequestLeave_Click(object sender, EventArgs e)
         {
-            var leaveRequestForm = new LeaveRequestForm(_userId, _leaveRequestController);
+            var leaveRequestForm = new LeaveRequestForm(_userId, _leaveRequestController, _context);
             leaveRequestForm.ShowDialog();
         }
         private void BtnLogout_Click(object sender, EventArgs e)

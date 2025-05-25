@@ -1,13 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="AdminForm.cs">
+    <Compile Update="FormAdmin\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="AttendanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAdmin\AttendanceAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAdmin\DashboardAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAdmin\EmployeeAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAdmin\LeaveRequestAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAdmin\SalaryAdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormManager\AttendanceManagerForm.cs">
@@ -26,6 +41,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormManager\SalaryManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LeaveHistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="LeaveRequestForm.cs">
