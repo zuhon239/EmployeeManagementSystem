@@ -206,7 +206,6 @@
             lblManagerName.Size = new Size(164, 39);
             lblManagerName.TabIndex = 0;
             lblManagerName.Text = "ManagerNamegsdgdsgdsgdsdg";
-            lblManagerName.Click += lblManagerName_Click;
             // 
             // panel1
             // 
@@ -242,6 +241,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(225, 18);
             pictureBox1.Name = "pictureBox1";

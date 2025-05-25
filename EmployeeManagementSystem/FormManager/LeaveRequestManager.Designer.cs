@@ -56,9 +56,10 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -71,10 +72,12 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { clLeaveId, clUserid, clName, clStartdate, clEnddate, clShift, clStatus, clDetail });
             dataGridView1.GridColor = Color.White;
-            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Location = new Point(12, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(930, 280);
+            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Size = new Size(906, 280);
             dataGridView1.TabIndex = 0;
             // 
             // clLeaveId
@@ -86,7 +89,7 @@
             clLeaveId.HeaderText = "Leave_id";
             clLeaveId.Name = "clLeaveId";
             clLeaveId.ReadOnly = true;
-            clLeaveId.Width = 95;
+            clLeaveId.Width = 110;
             // 
             // clUserid
             // 
@@ -96,7 +99,7 @@
             clUserid.HeaderText = "User_id";
             clUserid.Name = "clUserid";
             clUserid.ReadOnly = true;
-            clUserid.Width = 95;
+            clUserid.Width = 110;
             // 
             // clName
             // 
@@ -112,7 +115,7 @@
             clStartdate.HeaderText = "Start Date";
             clStartdate.Name = "clStartdate";
             clStartdate.ReadOnly = true;
-            clStartdate.Width = 90;
+            clStartdate.Width = 95;
             // 
             // clEnddate
             // 
@@ -120,7 +123,7 @@
             clEnddate.HeaderText = "End Date";
             clEnddate.Name = "clEnddate";
             clEnddate.ReadOnly = true;
-            clEnddate.Width = 90;
+            clEnddate.Width = 95;
             // 
             // clShift
             // 
@@ -149,26 +152,29 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(lblReason);
             panel1.Controls.Add(lblHoTen);
-            panel1.Location = new Point(12, 286);
+            panel1.Location = new Point(41, 286);
             panel1.Name = "panel1";
-            panel1.Size = new Size(570, 171);
+            panel1.Size = new Size(541, 171);
             panel1.TabIndex = 1;
             // 
             // lblReason
             // 
+            lblReason.Anchor = AnchorStyles.None;
             lblReason.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblReason.Location = new Point(24, 70);
+            lblReason.Location = new Point(9, 70);
             lblReason.Name = "lblReason";
             lblReason.Size = new Size(525, 89);
             lblReason.TabIndex = 1;
             // 
             // lblHoTen
             // 
+            lblHoTen.Anchor = AnchorStyles.None;
             lblHoTen.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblHoTen.Location = new Point(24, 32);
+            lblHoTen.Location = new Point(9, 32);
             lblHoTen.Name = "lblHoTen";
             lblHoTen.RightToLeft = RightToLeft.No;
             lblHoTen.Size = new Size(338, 23);
@@ -176,11 +182,12 @@
             // 
             // btnAccept
             // 
+            btnAccept.Anchor = AnchorStyles.None;
             btnAccept.FlatAppearance.BorderSize = 0;
             btnAccept.FlatStyle = FlatStyle.Flat;
             btnAccept.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAccept.ForeColor = Color.FromArgb(0, 192, 0);
-            btnAccept.Location = new Point(604, 303);
+            btnAccept.Location = new Point(604, 305);
             btnAccept.Name = "btnAccept";
             btnAccept.Size = new Size(68, 61);
             btnAccept.TabIndex = 2;
@@ -190,6 +197,7 @@
             // 
             // btnDeny
             // 
+            btnDeny.Anchor = AnchorStyles.None;
             btnDeny.FlatAppearance.BorderSize = 0;
             btnDeny.FlatStyle = FlatStyle.Flat;
             btnDeny.Font = new Font("Berlin Sans FB", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);

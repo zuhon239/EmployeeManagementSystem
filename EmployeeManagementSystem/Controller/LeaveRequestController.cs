@@ -47,7 +47,7 @@ namespace EmployeeManagementSystem.Controller
                 {
                     DateTime now = DateTime.Now;
                     bool isMorningShift = now.Hour >= 5 && now.Hour < 12; // Ca sáng: 5:00 - 12:00
-                    bool isAfternoonShift = now.Hour >= 12 && now.Hour < 19; // Ca chiều: 12:00 - 19:00
+                    bool isAfternoonShift = now.Hour >= 12 && now.Hour < 24; // Ca chiều: 12:00 - 19:00
 
                     if (isMorningShift && (shift == "Morning"||shift == "FullDay"))
                         throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đang trong ca sáng.");

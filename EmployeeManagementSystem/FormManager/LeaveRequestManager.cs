@@ -27,8 +27,10 @@ namespace EmployeeManagementSystem.FormManager
             _currentUserId = currentUserId;
             LoadLeaveRequests(currentUserId);
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
+            dataGridView1.CellMouseEnter += DataGridView1_CellMouseEnter; 
+            dataGridView1.CellMouseLeave += DataGridView1_CellMouseLeave;
         }
-        private void LoadLeaveRequests(int currentManagerId) // Replace with actual Manager's UserId
+        private void LoadLeaveRequests(int currentManagerId) 
         {
             try
             {
@@ -59,7 +61,6 @@ namespace EmployeeManagementSystem.FormManager
                     return;
                 }
 
-                // Step 3: Load LeaveRequest data for those employees
                 var leaveRequests = _context.LeaveRequests
                     .Include(lr => lr.Employee)
                     .Where(lr => employeesInDepartment.Contains(lr.UserId) && lr.Status == "Pending")
@@ -74,11 +75,9 @@ namespace EmployeeManagementSystem.FormManager
                         lr.Status
                     })
                     .ToList();
-
-                // Clear existing rows
+         
                 dataGridView1.Rows.Clear();
 
-                // Populate DataGridView
                 foreach (var request in leaveRequests)
                 {
                     dataGridView1.Rows.Add(
@@ -102,22 +101,18 @@ namespace EmployeeManagementSystem.FormManager
         }
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra nếu click vào cột "View Details" (cột thứ 7)
             if (e.ColumnIndex == dataGridView1.Columns["clDetail"].Index && e.RowIndex >= 0)
             {
                 try
                 {
-                    // Lấy LeaveId từ cột đầu tiên
                     _selectedLeaveId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["clLeaveId"].Value);
-
-                    // Tìm yêu cầu nghỉ phép trong cơ sở dữ liệu
+ 
                     var leaveRequest = _context.LeaveRequests
                         .Include(lr => lr.Employee)
                         .FirstOrDefault(lr => lr.LeaveId == _selectedLeaveId);
 
                     if (leaveRequest != null)
-                    {
-                        // Hiển thị thông tin trong panel
+                    {                    
                         lblHoTen.Text = $"Họ và tên: {leaveRequest.Employee?.Name ?? "N/A"}";
                         lblReason.Text = $"Lý do: {leaveRequest.Reason ?? "No reason provided"}";
                     }
@@ -130,6 +125,22 @@ namespace EmployeeManagementSystem.FormManager
                 {
                     MessageBox.Show($"Lỗi khi hiển thị chi tiết: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+        private void DataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {          
+            if (e.ColumnIndex == dataGridView1.Columns["clDetail"].Index && e.RowIndex >= 0)
+            {
+                dataGridView1.Cursor = Cursors.Hand;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.ForeColor = Color.Blue;
+            }
+        }
+        private void DataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns["clDetail"].Index && e.RowIndex >= 0)
+            {
+                dataGridView1.Cursor = Cursors.Default;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.ForeColor = Color.Black;
             }
         }
 
@@ -149,14 +160,11 @@ namespace EmployeeManagementSystem.FormManager
             {
                 try
                 {
-                    // Gọi phương thức duyệt yêu cầu
                     await _controller.ApproveOrRejectLeaveRequestAsync(_selectedLeaveId.Value, _currentUserId, true);
                     MessageBox.Show("Yêu cầu nghỉ phép đã được duyệt.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Làm mới DataGridView
                     LoadLeaveRequests(_currentUserId);
 
-                    // Xóa thông tin trong panel
                     lblHoTen.Text = "";
                     lblReason.Text = "";
                     _selectedLeaveId = null;
@@ -166,10 +174,6 @@ namespace EmployeeManagementSystem.FormManager
                     MessageBox.Show($"Lỗi khi duyệt yêu cầu: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-        private async void btnDeny_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private async void btnDeny_Click_1(object sender, EventArgs e)
@@ -188,14 +192,11 @@ namespace EmployeeManagementSystem.FormManager
             {
                 try
                 {
-                    // Gọi phương thức từ chối yêu cầu
                     await _controller.ApproveOrRejectLeaveRequestAsync(_selectedLeaveId.Value, _currentUserId, false);
                     MessageBox.Show("Yêu cầu nghỉ phép đã bị từ chối.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Làm mới DataGridView
                     LoadLeaveRequests(_currentUserId);
 
-                    // Xóa thông tin trong panel
                     lblHoTen.Text = "";
                     lblReason.Text = "";
                     _selectedLeaveId = null;

@@ -150,3 +150,8 @@ S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagemen
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\ref\EmployeeManagementSystem.dll
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormManager.DepartmentManagerForm.resources
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormManager.LeaveRequestManager.resources
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormManager.AttendanceManagerForm.resources
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormManager.DashboardManagerForm.resources
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormManager.EmployeeManagerForm.resources
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormManager.SalaryManagerForm.resources
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.AttendanceForm.resources

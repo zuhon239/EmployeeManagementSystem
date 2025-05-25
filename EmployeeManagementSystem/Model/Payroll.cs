@@ -28,7 +28,10 @@ namespace EmployeeManagementSystem.Model
         public int DaysWorked { get; set; } // Số ngày làm việc
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Bonus { get; set; } // Tiền thưởng
+        public decimal? Bonus { get; set; } // Tiền thưởng
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? Deduction { get; set; } // Tiền thưởng
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
@@ -43,13 +46,14 @@ namespace EmployeeManagementSystem.Model
         }
 
         // Constructor với tham số
-        public Payroll(int userId, DateTime month, decimal baseSalary, int daysWorked, decimal bonus, decimal totalSalary)
+        public Payroll(int userId, DateTime month, decimal baseSalary, int daysWorked, decimal? bonus, decimal? deduction, decimal totalSalary)
         {
             UserId = userId;
             Month = month;
             BaseSalary = baseSalary;
             DaysWorked = daysWorked;
             Bonus = bonus;
+            Deduction = deduction;
             TotalSalary = totalSalary;
         }
 
