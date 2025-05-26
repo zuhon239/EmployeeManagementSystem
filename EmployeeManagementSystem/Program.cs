@@ -13,9 +13,17 @@ namespace EmployeeManagementSystem
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            Application.EnableVisualStyles();
+            using (var context = new EmployeeManagementContext()) 
+            { var users = context.Users.ToList(); 
+                foreach (var user in users) 
+                { if (string.IsNullOrEmpty(user.HashedPassword) && !string.IsNullOrEmpty(user.Password)) 
+                  { user.HashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password); } 
+                } context.SaveChanges(); 
+                Console.WriteLine("Mật khẩu đã được mã hóa và lưu vào cột HashedPassword!"); }
+        
+        // To customize application configuration such as set high DPI settings or default font,
+        // see https://aka.ms/applicationconfiguration.
+        Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var serviceProvider = new ServiceCollection()
            .AddDbContext<EmployeeManagementContext>()

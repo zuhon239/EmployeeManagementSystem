@@ -66,5 +66,11 @@ namespace EmployeeManagementSystem
         {
             this.Close();
         }
+
+        private void btnForgotPassWord_Click(object sender, EventArgs e)
+        {
+            var forgotpassword = new ForgotPassWordForm(_loginController);
+            forgotpassword.ShowDialog();
+        }
     }
 }

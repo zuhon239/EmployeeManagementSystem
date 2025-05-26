@@ -61,16 +61,17 @@ namespace EmployeeManagementSystem.Model
 
         // Constructor với tham số
         public Employee(
-            string username, string password, int roleId, bool status,
+            string username, string password, int roleId, bool status,string email,
             string name, string gender, DateTime dateOfBirth, string phone,
             int departmentId, string position, DateTime hireDate)
-            : base(username, password, roleId, status)
+            : base(username, password,email, roleId, status)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Gender = gender ?? throw new ArgumentNullException(nameof(gender));
             DateOfBirth = dateOfBirth;
             Phone = phone;
             DepartmentId = departmentId;
+            Email = email;
             Position = position ?? throw new ArgumentNullException(nameof(position));
             HireDate = hireDate;
             Attendances = new List<Attendance>();

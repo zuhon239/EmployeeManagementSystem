@@ -120,7 +120,7 @@ namespace EmployeeManagementSystem
 
         private void btnLeaveRequest_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAdmin.LeaveRequestAdminForm(), sender);
+            OpenChildForm(new FormAdmin.LeaveRequestAdminForm(_userId,_context), sender);
         }
 
         private void btnSalary_Click(object sender, EventArgs e)

@@ -161,3 +161,8 @@ S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagemen
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormAdmin.EmployeeAdminForm.resources
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormAdmin.LeaveRequestAdminForm.resources
 S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.FormAdmin.SalaryAdminForm.resources
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.ForgotPassWordForm.resources
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\net8.0-windows\EmployeeManagementSystem.ResetPasswordForm.resources
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\bin\Debug\net8.0-windows\SendGrid.dll
+S:\đại học\Phát triển desktop\đồ án cuối kì\EmployeeManagementSystem\EmployeeManagementSystem\EmployeeManagementSystem\bin\Debug\net8.0-windows\StarkbankEcdsa.dll

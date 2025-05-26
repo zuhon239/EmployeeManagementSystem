@@ -184,7 +184,7 @@ namespace EmployeeManagementSystem.FormManager
 
         private void btnManager_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormManager.EmployeeManagerForm(), sender);
+            OpenChildForm(new FormManager.EmployeeManagerForm(_userId,_context), sender);
         }
 
         private void btnLeaveRequest_Click(object sender, EventArgs e)

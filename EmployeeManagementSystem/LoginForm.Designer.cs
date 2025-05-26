@@ -44,6 +44,7 @@
             panel2 = new Panel();
             btnExit = new Button();
             btnOut = new Button();
+            btnForgotPassWord = new Button();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -91,9 +92,9 @@
             btnShowPassWord.FlatStyle = FlatStyle.Flat;
             btnShowPassWord.Font = new Font("Bahnschrift", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnShowPassWord.ForeColor = Color.FromArgb(0, 117, 214);
-            btnShowPassWord.Location = new Point(247, 268);
+            btnShowPassWord.Location = new Point(240, 268);
             btnShowPassWord.Name = "btnShowPassWord";
-            btnShowPassWord.Size = new Size(59, 29);
+            btnShowPassWord.Size = new Size(66, 29);
             btnShowPassWord.TabIndex = 3;
             btnShowPassWord.Text = "Show";
             btnShowPassWord.UseVisualStyleBackColor = true;
@@ -200,6 +201,18 @@
             btnOut.UseVisualStyleBackColor = false;
             btnOut.Click += btnOut_Click;
             // 
+            // btnForgotPassWord
+            // 
+            btnForgotPassWord.FlatAppearance.BorderSize = 0;
+            btnForgotPassWord.FlatStyle = FlatStyle.Flat;
+            btnForgotPassWord.Location = new Point(40, 268);
+            btnForgotPassWord.Name = "btnForgotPassWord";
+            btnForgotPassWord.Size = new Size(132, 29);
+            btnForgotPassWord.TabIndex = 16;
+            btnForgotPassWord.Text = "Forgot password?";
+            btnForgotPassWord.UseVisualStyleBackColor = true;
+            btnForgotPassWord.Click += btnForgotPassWord_Click;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
@@ -207,6 +220,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.White;
             ClientSize = new Size(343, 447);
+            Controls.Add(btnForgotPassWord);
             Controls.Add(btnOut);
             Controls.Add(btnExit);
             Controls.Add(panel2);
@@ -249,5 +263,6 @@
         private Panel panel2;
         private Button btnExit;
         private Button btnOut;
+        private Button btnForgotPassWord;
     }
 }

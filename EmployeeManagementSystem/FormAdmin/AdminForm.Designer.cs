@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             pnlMenu = new Panel();
+            panel1 = new Panel();
+            label1 = new Label();
+            lblAdminName = new Label();
             btnBack = new Button();
             btnSalary = new Button();
             btnLeaveRequest = new Button();
             btnAttendance = new Button();
             btnEmployee = new Button();
-            panel1 = new Panel();
-            label1 = new Label();
-            lblAdminName = new Label();
             btnDashBoard = new Button();
-            panel2 = new Panel();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             pnlDesktopPane = new Panel();
             pnlMenu.SuspendLayout();
@@ -48,18 +47,50 @@
             // pnlMenu
             // 
             pnlMenu.BackColor = Color.FromArgb(73, 40, 243);
+            pnlMenu.Controls.Add(panel1);
             pnlMenu.Controls.Add(btnBack);
             pnlMenu.Controls.Add(btnSalary);
             pnlMenu.Controls.Add(btnLeaveRequest);
             pnlMenu.Controls.Add(btnAttendance);
             pnlMenu.Controls.Add(btnEmployee);
-            pnlMenu.Controls.Add(panel1);
             pnlMenu.Controls.Add(btnDashBoard);
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
             pnlMenu.Name = "pnlMenu";
             pnlMenu.Size = new Size(200, 549);
             pnlMenu.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Navy;
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(lblAdminName);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 75);
+            panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 19);
+            label1.TabIndex = 1;
+            label1.Text = "Admin";
+            // 
+            // lblAdminName
+            // 
+            lblAdminName.AutoSize = true;
+            lblAdminName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAdminName.ForeColor = Color.White;
+            lblAdminName.Location = new Point(12, 28);
+            lblAdminName.Name = "lblAdminName";
+            lblAdminName.Size = new Size(57, 21);
+            lblAdminName.TabIndex = 0;
+            lblAdminName.Text = "label1";
             // 
             // btnBack
             // 
@@ -131,38 +162,6 @@
             btnEmployee.UseVisualStyleBackColor = true;
             btnEmployee.Click += btnEmployee_Click;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Navy;
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(lblAdminName);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(200, 76);
-            panel1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(49, 19);
-            label1.TabIndex = 1;
-            label1.Text = "Admin";
-            // 
-            // lblAdminName
-            // 
-            lblAdminName.AutoSize = true;
-            lblAdminName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAdminName.ForeColor = Color.White;
-            lblAdminName.Location = new Point(12, 28);
-            lblAdminName.Name = "lblAdminName";
-            lblAdminName.Size = new Size(57, 21);
-            lblAdminName.TabIndex = 0;
-            lblAdminName.Text = "label1";
-            // 
             // btnDashBoard
             // 
             btnDashBoard.FlatAppearance.BorderSize = 0;
@@ -177,14 +176,6 @@
             btnDashBoard.UseVisualStyleBackColor = true;
             btnDashBoard.Click += btnDashBoard_Click;
             // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(73, 40, 243);
-            panel2.Location = new Point(198, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(783, 86);
-            panel2.TabIndex = 1;
-            // 
             // sqliteCommand1
             // 
             sqliteCommand1.CommandTimeout = 30;
@@ -194,9 +185,10 @@
             // 
             // pnlDesktopPane
             // 
-            pnlDesktopPane.Location = new Point(201, 73);
+            pnlDesktopPane.Anchor = AnchorStyles.None;
+            pnlDesktopPane.Location = new Point(202, 73);
             pnlDesktopPane.Name = "pnlDesktopPane";
-            pnlDesktopPane.Size = new Size(780, 476);
+            pnlDesktopPane.Size = new Size(902, 476);
             pnlDesktopPane.TabIndex = 2;
             // 
             // AdminForm
@@ -204,9 +196,8 @@
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(979, 549);
+            ClientSize = new Size(1107, 549);
             Controls.Add(pnlDesktopPane);
-            Controls.Add(panel2);
             Controls.Add(pnlMenu);
             Name = "AdminForm";
             Text = "AdminForm";
@@ -226,7 +217,6 @@
         private Button btnAttendance;
         private Button btnBack;
         private Button btnSalary;
-        private Panel panel2;
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
         private Label lblAdminName;
         private Panel pnlDesktopPane;
