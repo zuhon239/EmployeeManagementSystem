@@ -72,5 +72,10 @@ namespace EmployeeManagementSystem
             var forgotpassword = new ForgotPassWordForm(_loginController);
             forgotpassword.ShowDialog();
         }
+
+        private void lblWelcomeback_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -110,7 +110,7 @@ namespace EmployeeManagementSystem
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAdmin.EmployeeAdminForm(), sender);
+            OpenChildForm(new FormAdmin.EmployeeAdminForm(_userId, _context), sender);
         }
 
         private void btnAttendance_Click(object sender, EventArgs e)

@@ -185,10 +185,10 @@
             // 
             // pnlDesktopPane
             // 
-            pnlDesktopPane.Anchor = AnchorStyles.None;
-            pnlDesktopPane.Location = new Point(202, 73);
+            pnlDesktopPane.Dock = DockStyle.Fill;
+            pnlDesktopPane.Location = new Point(200, 0);
             pnlDesktopPane.Name = "pnlDesktopPane";
-            pnlDesktopPane.Size = new Size(902, 476);
+            pnlDesktopPane.Size = new Size(907, 549);
             pnlDesktopPane.TabIndex = 2;
             // 
             // AdminForm

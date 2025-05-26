@@ -52,6 +52,7 @@
             // 
             // txtUsername
             // 
+            txtUsername.Anchor = AnchorStyles.None;
             txtUsername.BorderStyle = BorderStyle.None;
             txtUsername.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtUsername.Location = new Point(92, 165);
@@ -62,6 +63,7 @@
             // 
             // btnLogin
             // 
+            btnLogin.Anchor = AnchorStyles.None;
             btnLogin.BackColor = Color.FromArgb(0, 117, 214);
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.FlatStyle = FlatStyle.Flat;
@@ -85,6 +87,7 @@
             // 
             // btnShowPassWord
             // 
+            btnShowPassWord.Anchor = AnchorStyles.None;
             btnShowPassWord.FlatAppearance.BorderColor = Color.FromArgb(0, 117, 214);
             btnShowPassWord.FlatAppearance.BorderSize = 0;
             btnShowPassWord.FlatAppearance.MouseDownBackColor = Color.Gainsboro;
@@ -115,6 +118,7 @@
             // 
             // lblWelcomeback
             // 
+            lblWelcomeback.Anchor = AnchorStyles.None;
             lblWelcomeback.AutoSize = true;
             lblWelcomeback.Font = new Font("Bauhaus 93", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblWelcomeback.ForeColor = Color.FromArgb(0, 117, 214);
@@ -123,9 +127,11 @@
             lblWelcomeback.Size = new Size(258, 36);
             lblWelcomeback.TabIndex = 9;
             lblWelcomeback.Text = "WELCOME BACK";
+            lblWelcomeback.Click += lblWelcomeback_Click;
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(39, 151);
             pictureBox1.Name = "pictureBox1";
@@ -136,6 +142,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.None;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(49, 214);
             pictureBox2.Name = "pictureBox2";
@@ -146,6 +153,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.Black;
             panel1.ForeColor = Color.Black;
             panel1.Location = new Point(39, 195);
@@ -155,6 +163,7 @@
             // 
             // txtPassword
             // 
+            txtPassword.Anchor = AnchorStyles.None;
             txtPassword.BorderStyle = BorderStyle.None;
             txtPassword.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtPassword.Location = new Point(92, 229);
@@ -165,6 +174,7 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.Black;
             panel2.ForeColor = Color.Black;
             panel2.Location = new Point(40, 254);
@@ -188,6 +198,7 @@
             // 
             // btnOut
             // 
+            btnOut.Anchor = AnchorStyles.None;
             btnOut.BackColor = Color.White;
             btnOut.FlatAppearance.BorderColor = Color.FromArgb(0, 117, 214);
             btnOut.FlatStyle = FlatStyle.Flat;
@@ -203,6 +214,7 @@
             // 
             // btnForgotPassWord
             // 
+            btnForgotPassWord.Anchor = AnchorStyles.None;
             btnForgotPassWord.FlatAppearance.BorderSize = 0;
             btnForgotPassWord.FlatStyle = FlatStyle.Flat;
             btnForgotPassWord.Location = new Point(40, 268);

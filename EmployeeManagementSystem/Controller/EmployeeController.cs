@@ -122,8 +122,6 @@ namespace EmployeeManagementSystem.Controller
                 employee.UpdatePhone(phone);
                 employee.UpdateEmail(string.IsNullOrWhiteSpace(email) ? null : email); // Chấp nhận null nếu email rỗng
                 employee.UpdatePosition(position);
-                employee.HireDate = DateTime.Now;
-
                 _context.SaveChanges();
                 return true;
             }
