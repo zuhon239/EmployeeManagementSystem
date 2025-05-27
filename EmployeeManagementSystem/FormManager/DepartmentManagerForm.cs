@@ -174,7 +174,7 @@ namespace EmployeeManagementSystem.FormManager
         }
         private void btnAttendance_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormManager.AttendanceManagerForm(), sender);
+            OpenChildForm(new FormManager.AttendanceManagerForm(_userId), sender);
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
