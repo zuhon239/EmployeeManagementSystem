@@ -194,7 +194,7 @@ namespace EmployeeManagementSystem.FormManager
 
         private void btnSalary_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormManager.SalaryManagerForm(), sender);
+            OpenChildForm(new FormManager.SalaryManagerForm(_userId), sender);
         }
     }
 }
