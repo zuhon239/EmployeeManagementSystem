@@ -60,6 +60,9 @@
             panel4 = new Panel();
             label2 = new Label();
             lblTotalSalary = new Label();
+            cbxDepartments = new ComboBox();
+            panel5 = new Panel();
+            panel6 = new Panel();
             pnlTotalEmployee.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -67,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)chartSalary).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // lblHeader
@@ -266,14 +271,14 @@
             chartSalary.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chartSalary.Legends.Add(legend1);
-            chartSalary.Location = new Point(-2, 163);
+            chartSalary.Location = new Point(3, 2);
             chartSalary.Name = "chartSalary";
             chartSalary.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chartSalary.Series.Add(series1);
-            chartSalary.Size = new Size(561, 239);
+            chartSalary.Size = new Size(515, 257);
             chartSalary.TabIndex = 11;
             chartSalary.Text = "Salary";
             title1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -286,7 +291,7 @@
             chart1.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             chart1.Legends.Add(legend2);
-            chart1.Location = new Point(565, 163);
+            chart1.Location = new Point(7, 6);
             chart1.Name = "chart1";
             chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series2.ChartArea = "ChartArea1";
@@ -294,7 +299,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             chart1.Series.Add(series2);
-            chart1.Size = new Size(358, 327);
+            chart1.Size = new Size(350, 294);
             chart1.TabIndex = 12;
             chart1.Text = "Salary";
             // 
@@ -328,15 +333,42 @@
             lblTotalSalary.Text = "TotalSalary";
             lblTotalSalary.Click += lblTotalSalary_Click;
             // 
+            // cbxDepartments
+            // 
+            cbxDepartments.FormattingEnabled = true;
+            cbxDepartments.Location = new Point(540, 146);
+            cbxDepartments.Name = "cbxDepartments";
+            cbxDepartments.Size = new Size(179, 27);
+            cbxDepartments.TabIndex = 13;
+            // 
+            // panel5
+            // 
+            panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(chartSalary);
+            panel5.Location = new Point(15, 142);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(515, 264);
+            panel5.TabIndex = 14;
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Controls.Add(chart1);
+            panel6.Location = new Point(540, 179);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(383, 327);
+            panel6.TabIndex = 15;
+            // 
             // DashboardManagerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(935, 518);
+            Controls.Add(panel6);
+            Controls.Add(panel5);
+            Controls.Add(cbxDepartments);
             Controls.Add(panel4);
-            Controls.Add(chart1);
-            Controls.Add(chartSalary);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -363,6 +395,8 @@
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -395,5 +429,8 @@
         private Panel panel4;
         private Label label2;
         private Label lblTotalSalary;
+        private ComboBox cbxDepartments;
+        private Panel panel5;
+        private Panel panel6;
     }
 }
