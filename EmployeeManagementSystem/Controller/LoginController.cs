@@ -14,11 +14,13 @@ namespace EmployeeManagementSystem.Controller
         private readonly LeaveRequestController _leaveRequestController;
         private readonly Dictionary<string, (string Token, DateTime Expiry, int UserId)> _resetTokens;
         private readonly EmailService _emailService;
-        public LoginController(EmployeeManagementContext context, LeaveRequestController leaveRequestController)
+        private readonly AttendanceController _attendanceController;
+        public LoginController(EmployeeManagementContext context, LeaveRequestController leaveRequestController, AttendanceController attendanceController)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _emailService = new EmailService();
             _leaveRequestController = leaveRequestController ?? throw new ArgumentNullException(nameof(leaveRequestController));
+            _attendanceController = attendanceController ?? throw new ArgumentNullException(nameof(attendanceController));
             _resetTokens = new Dictionary<string, (string, DateTime, int)>();
         }
 
@@ -47,10 +49,10 @@ namespace EmployeeManagementSystem.Controller
                     nextForm = new AdminForm(user.UserId, _context);
                     break;
                 case "Manager":
-                    nextForm = new ManagerForm(user.UserId, _leaveRequestController, _context);
+                    nextForm = new ManagerForm(user.UserId, _leaveRequestController, _context, _attendanceController );
                     break;
                 case "Employee":
-                    nextForm = new EmployeeForm(user.UserId, _leaveRequestController, _context);
+                    nextForm = new EmployeeForm(user.UserId, _leaveRequestController, _context, _attendanceController);
                     break;
                 default:
                     errorMessage = "Unknown role.";

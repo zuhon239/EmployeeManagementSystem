@@ -23,7 +23,8 @@ namespace EmployeeManagementSystem
         private string _managerName;
         private string _departmentName;
         private readonly LoginController _loginController;
-        public ManagerForm(int userId, LeaveRequestController leaveRequestController, EmployeeManagementContext context)
+        private readonly AttendanceController _attendanceController;
+        public ManagerForm(int userId, LeaveRequestController leaveRequestController, EmployeeManagementContext context, AttendanceController attendanceController)
         {
             _userId = userId;
             _context = context;
@@ -31,6 +32,7 @@ namespace EmployeeManagementSystem
             InitializeComponent();
             LoadManagerInfo();
             LoadDepartmentInfo();
+            _attendanceController = attendanceController;
         }
         private void LoadManagerInfo()
         {
@@ -95,7 +97,8 @@ namespace EmployeeManagementSystem
         }
         private void BtnAttendance_Click(object sender, EventArgs e)
         {
-
+            var attendanceForm = new AttendanceForm(_userId);
+            attendanceForm.ShowDialog();
         }
 
         private void BtnLeaveRequest_Click(object sender, EventArgs e)
