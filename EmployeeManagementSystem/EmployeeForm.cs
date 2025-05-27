@@ -20,11 +20,13 @@ namespace EmployeeManagementSystem
         private readonly int _userId;
         private readonly LeaveRequestController _leaveRequestController;
         private readonly EmployeeManagementContext _context;
-        public EmployeeForm(int userId, LeaveRequestController leaveRequestController, EmployeeManagementContext context)
+        private readonly AttendanceController _attendanceController;
+        public EmployeeForm(int userId, LeaveRequestController leaveRequestController, EmployeeManagementContext context, AttendanceController attendanceController)
         {
             InitializeComponent();
             _userId = userId;
             _leaveRequestController = leaveRequestController ?? throw new ArgumentNullException(nameof(leaveRequestController));
+            _attendanceController = attendanceController ?? throw new ArgumentNullException(nameof(attendanceController));
             _context = context ?? throw new ArgumentNullException(nameof(context));
             LoadUserName();
         }
@@ -58,7 +60,8 @@ namespace EmployeeManagementSystem
         }
         private void BtnAttendance_Click(object sender, EventArgs e)
         {
-            // Placeholder for attendance functionality
+            var attendanceForm = new AttendanceForm(_userId);
+            attendanceForm.ShowDialog();
         }
         private void BtnRequestLeave_Click(object sender, EventArgs e)
         {
@@ -88,6 +91,7 @@ namespace EmployeeManagementSystem
                         .AddScoped<LeaveRequestController>()
                         .AddScoped<LoginController>()
                         .AddScoped<LoginForm>()
+                        .AddScoped<AttendanceController>()
                         .BuildServiceProvider())
                     {
                         var loginForm = serviceProvider.GetService<LoginForm>();
