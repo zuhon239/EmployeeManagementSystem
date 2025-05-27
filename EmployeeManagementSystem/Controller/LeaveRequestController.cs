@@ -46,8 +46,9 @@ namespace EmployeeManagementSystem.Controller
                 if (isSingleDay && startDate.Date == DateTime.Today)
                 {
                     DateTime now = DateTime.Now;
-                    bool isMorningShift = now.Hour >= 5 && now.Hour < 12; // Ca sáng: 5:00 - 12:00
-                    bool isAfternoonShift = now.Hour >= 12 && now.Hour < 24; // Ca chiều: 12:00 - 19:00
+                    bool isMorningShift = now.Hour >= 7 && now.Hour < 12; // Ca sáng: 7:00 - 12:00
+                    bool isAfternoonShift = now.Hour >= 13 && now.Hour < 24; // Ca chiều: 12:00 - 19:00
+                    bool isRest = now.Hour >= 12 && now.Hour < 13; 
 
                     if (isMorningShift && (shift == "Morning"||shift == "FullDay"))
                         throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đang trong ca sáng.");
@@ -55,6 +56,8 @@ namespace EmployeeManagementSystem.Controller
                         throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đang trong buổi chiều.");
                     if (isAfternoonShift && (shift == "Afternoon" || shift == "FullDay"))
                         throw new ArgumentException("Không thể xin nghỉ ca chiều hoặc cả ngày trong khi đang trong ca chiều.");
+                    if (isRest && (shift == "Morning" || shift == "FullDay"))
+                        throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đã qua ca sáng rồi.");
                 }
                 if (!isSingleDay)
                     shift = null;

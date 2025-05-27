@@ -87,25 +87,33 @@ namespace EmployeeManagementSystem
         }
         private void OpenChildForm(Form ChildForm, object btnSender)
         {
-            ActivateButton(btnSender);
-            if (ActiveForm != null)
+            try
             {
-                ActiveForm.Close();
+                ActivateButton(btnSender);
+                if (ActiveForm != null)
+                {
+                    ActiveForm.Close();
+                }
+                ActiveForm = ChildForm;
+                ChildForm.TopLevel = false;
+                ChildForm.FormBorderStyle = FormBorderStyle.None;
+                ChildForm.Dock = DockStyle.Fill;
+                this.pnlDesktopPane.Controls.Add(ChildForm);
+                this.pnlDesktopPane.Tag
+                    = ChildForm;
+                ChildForm.BringToFront();
+                ChildForm.Show();
             }
-            ActiveForm = ChildForm;
-            ChildForm.TopLevel = false;
-            ChildForm.FormBorderStyle = FormBorderStyle.None;
-            ChildForm.Dock = DockStyle.Fill;
-            this.pnlDesktopPane.Controls.Add(ChildForm);
-            this.pnlDesktopPane.Tag
-                = ChildForm;
-            ChildForm.BringToFront();
-            ChildForm.Show();           
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+               
         }
 
         private void btnDashBoard_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAdmin.DashboardAdminForm(),sender);
+            OpenChildForm(new FormAdmin.DashboardAdminForm(_userId),sender);
         }
 
         private void btnEmployee_Click(object sender, EventArgs e)

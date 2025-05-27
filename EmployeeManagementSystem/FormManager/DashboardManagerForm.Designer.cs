@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             lblHeader = new Label();
             dtpFrom = new DateTimePicker();
             dtpTo = new DateTimePicker();
@@ -104,24 +104,30 @@
             // 
             // btnToday
             // 
-            btnToday.Location = new Point(486, 9);
+            btnToday.FlatAppearance.BorderColor = Color.Gainsboro;
+            btnToday.FlatStyle = FlatStyle.Flat;
+            btnToday.Location = new Point(509, 9);
             btnToday.Name = "btnToday";
-            btnToday.Size = new Size(103, 34);
+            btnToday.Size = new Size(103, 32);
             btnToday.TabIndex = 3;
             btnToday.Text = "Today";
             btnToday.UseVisualStyleBackColor = true;
             // 
             // btnLast30days
             // 
-            btnLast30days.Location = new Point(706, 9);
+            btnLast30days.FlatAppearance.BorderColor = Color.Gainsboro;
+            btnLast30days.FlatStyle = FlatStyle.Flat;
+            btnLast30days.Location = new Point(713, 9);
             btnLast30days.Name = "btnLast30days";
-            btnLast30days.Size = new Size(103, 33);
+            btnLast30days.Size = new Size(103, 32);
             btnLast30days.TabIndex = 4;
             btnLast30days.Text = "Last 30 days";
             btnLast30days.UseVisualStyleBackColor = true;
             // 
             // btnThisMonth
             // 
+            btnThisMonth.FlatAppearance.BorderColor = Color.Gainsboro;
+            btnThisMonth.FlatStyle = FlatStyle.Flat;
             btnThisMonth.Location = new Point(815, 9);
             btnThisMonth.Name = "btnThisMonth";
             btnThisMonth.Size = new Size(103, 32);
@@ -131,9 +137,11 @@
             // 
             // btnLast7days
             // 
-            btnLast7days.Location = new Point(595, 9);
+            btnLast7days.FlatAppearance.BorderColor = Color.Gainsboro;
+            btnLast7days.FlatStyle = FlatStyle.Flat;
+            btnLast7days.Location = new Point(611, 9);
             btnLast7days.Name = "btnLast7days";
-            btnLast7days.Size = new Size(103, 33);
+            btnLast7days.Size = new Size(103, 32);
             btnLast7days.TabIndex = 6;
             btnLast7days.Text = "Last 7 days";
             btnLast7days.UseVisualStyleBackColor = true;
@@ -161,6 +169,7 @@
             // lblTotalemployee
             // 
             lblTotalemployee.AutoSize = true;
+            lblTotalemployee.ForeColor = Color.Gray;
             lblTotalemployee.Location = new Point(15, 0);
             lblTotalemployee.Name = "lblTotalemployee";
             lblTotalemployee.Size = new Size(101, 19);
@@ -199,6 +208,7 @@
             // lblActiveEmployee
             // 
             lblActiveEmployee.AutoSize = true;
+            lblActiveEmployee.ForeColor = Color.Gray;
             lblActiveEmployee.Location = new Point(13, 0);
             lblActiveEmployee.Name = "lblActiveEmployee";
             lblActiveEmployee.Size = new Size(109, 19);
@@ -228,6 +238,7 @@
             // lblAttendance
             // 
             lblAttendance.AutoSize = true;
+            lblAttendance.ForeColor = Color.Gray;
             lblAttendance.Location = new Point(13, 0);
             lblAttendance.Name = "lblAttendance";
             lblAttendance.Size = new Size(79, 19);
@@ -257,6 +268,7 @@
             // lblLeaveRequestPending
             // 
             lblLeaveRequestPending.AutoSize = true;
+            lblLeaveRequestPending.ForeColor = Color.Gray;
             lblLeaveRequestPending.Location = new Point(-1, 0);
             lblLeaveRequestPending.Name = "lblLeaveRequestPending";
             lblLeaveRequestPending.Size = new Size(205, 19);
@@ -267,38 +279,38 @@
             // 
             chartSalary.BorderlineColor = Color.Black;
             chartSalary.BorderSkin.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            chartArea1.Name = "ChartArea1";
-            chartSalary.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chartSalary.Legends.Add(legend1);
-            chartSalary.Location = new Point(3, 2);
+            chartArea3.Name = "ChartArea1";
+            chartSalary.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chartSalary.Legends.Add(legend3);
+            chartSalary.Location = new Point(3, 8);
             chartSalary.Name = "chartSalary";
             chartSalary.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartSalary.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chartSalary.Series.Add(series3);
             chartSalary.Size = new Size(515, 257);
             chartSalary.TabIndex = 11;
             chartSalary.Text = "Salary";
-            title1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            title1.Name = "Salary";
-            chartSalary.Titles.Add(title1);
+            title2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            title2.Name = "Salary";
+            chartSalary.Titles.Add(title2);
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chart1.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            chart1.Legends.Add(legend4);
             chart1.Location = new Point(7, 6);
             chart1.Name = "chart1";
             chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chart1.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chart1.Series.Add(series4);
             chart1.Size = new Size(350, 294);
             chart1.TabIndex = 12;
             chart1.Text = "Salary";
@@ -308,25 +320,25 @@
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label2);
             panel4.Controls.Add(lblTotalSalary);
-            panel4.Location = new Point(15, 408);
+            panel4.Location = new Point(15, 421);
             panel4.Name = "panel4";
-            panel4.Size = new Size(421, 68);
+            panel4.Size = new Size(421, 59);
             panel4.TabIndex = 11;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Dubai", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(22, 19);
+            label2.Font = new Font("Dubai", 20.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(15, 19);
             label2.Name = "label2";
-            label2.Size = new Size(54, 49);
+            label2.Size = new Size(350, 38);
             label2.TabIndex = 2;
             label2.Text = "60";
             // 
             // lblTotalSalary
             // 
             lblTotalSalary.AutoSize = true;
-            lblTotalSalary.Location = new Point(15, 0);
+            lblTotalSalary.ForeColor = Color.Gray;
+            lblTotalSalary.Location = new Point(14, 0);
             lblTotalSalary.Name = "lblTotalSalary";
             lblTotalSalary.Size = new Size(74, 19);
             lblTotalSalary.TabIndex = 1;
@@ -345,7 +357,7 @@
             // 
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(chartSalary);
-            panel5.Location = new Point(15, 142);
+            panel5.Location = new Point(15, 149);
             panel5.Name = "panel5";
             panel5.Size = new Size(515, 264);
             panel5.TabIndex = 14;
@@ -356,7 +368,7 @@
             panel6.Controls.Add(chart1);
             panel6.Location = new Point(540, 179);
             panel6.Name = "panel6";
-            panel6.Size = new Size(383, 327);
+            panel6.Size = new Size(383, 311);
             panel6.TabIndex = 15;
             // 
             // DashboardManagerForm
