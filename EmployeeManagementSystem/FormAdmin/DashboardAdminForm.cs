@@ -98,7 +98,6 @@ namespace EmployeeManagementSystem.FormAdmin
             if (cbxDepartments.SelectedItem is KeyValuePair<int, string> selected)
             {
                 _selectedDepartmentId = selected.Key;
-                UpdatePerformanceChartForSelectedDepartment();
                 LoadData(dtpFrom.Value, dtpTo.Value); // Refresh all data with new department filter
             }
         }
@@ -110,7 +109,7 @@ namespace EmployeeManagementSystem.FormAdmin
             {
                 selectedDepartmentName = selected.Value;
             }
-            UpdatePerformanceDistributionChart(dtpFrom.Value, dtpTo.Value, selectedDepartmentName);
+            UpdatePerformanceDistributionChart(dtpFrom.Value, dtpTo.Value);
         }
 
         private void LoadData(DateTime fromDate, DateTime toDate)
@@ -150,11 +149,11 @@ namespace EmployeeManagementSystem.FormAdmin
                 .Sum(p => p.TotalSalary);
             label2.Text = totalSalary.ToString("C");
 
-            UpdateSalaryChart(fromDate, toDate, employeesQuery);
-            UpdatePerformanceChartForSelectedDepartment();
+            UpdateSalaryChart(fromDate, toDate);
+            UpdatePerformanceDistributionChart(fromDate, toDate);
         }
 
-        private void UpdateSalaryChart(DateTime fromDate, DateTime toDate, IQueryable<Employee> employeesQuery)
+        private void UpdateSalaryChart(DateTime fromDate, DateTime toDate)
         {
             chartSalary.Series.Clear();
             chartSalary.Titles.Clear();
@@ -164,135 +163,187 @@ namespace EmployeeManagementSystem.FormAdmin
                 IsVisibleInLegend = false
             };
 
-            var payrolls = _context.Payrolls
-                .Where(p => p.Month >= fromDate && p.Month <= toDate)
-                .Where(p => employeesQuery.Select(e => e.UserId).Contains(p.UserId))
-                .GroupBy(p => p.UserId)
-                .Select(g => new
+            if (_selectedDepartmentId == 0) // Tổng công ty
+            {
+                var payrolls = _context.Payrolls
+                    .Where(p => p.Month >= fromDate && p.Month <= toDate)
+                    .Join(_context.Employees, p => p.UserId, e => e.UserId, (p, e) => new { p, e.DepartmentId })
+                    .GroupBy(x => x.DepartmentId)
+                    .Select(g => new
+                    {
+                        DepartmentId = g.Key,
+                        Total = g.Sum(x => x.p.TotalSalary)
+                    })
+                    .ToList();
+
+                var departmentNames = _context.Departments
+                    .AsNoTracking()
+                    .ToDictionary(d => d.DepartmentId, d => d.Name);
+
+                foreach (var payroll in payrolls)
                 {
-                    UserId = g.Key,
-                    Total = g.Sum(p => p.TotalSalary)
-                })
-                .ToList();
+                    string deptName = departmentNames.ContainsKey(payroll.DepartmentId) ? departmentNames[payroll.DepartmentId] : $"Phòng {payroll.DepartmentId}";
+                    series.Points.AddXY(deptName, payroll.Total);
+                }
 
-            var employeeNames = _context.Employees
-                .Where(e => employeesQuery.Select(e => e.UserId).Contains(e.UserId))
-                .Select(e => new { e.UserId, e.Name })
-                .ToDictionary(e => e.UserId, e => e.Name);
+                if (payrolls.Count == 0)
+                {
+                    series.Points.AddXY("Không có dữ liệu", 0);
+                    series.Points[0].Color = Color.Gray;
+                    series.Points[0].ToolTip = "Không có bản ghi lương trong khoảng thời gian này";
+                }
 
-            foreach (var payroll in payrolls)
-            {
-                string employeeName = employeeNames.ContainsKey(payroll.UserId) ? employeeNames[payroll.UserId] : $"ID {payroll.UserId}";
-                series.Points.AddXY(employeeName, payroll.Total);
+                chartSalary.Titles.Add($"Tổng lương các phòng ban từ {fromDate:dd/MM/yyyy} đến {toDate:dd/MM/yyyy}");
             }
-
-            if (payrolls.Count == 0)
+            else // Phòng ban cụ thể
             {
-                series.Points.AddXY("Không có dữ liệu", 0);
-                series.Points[0].Color = System.Drawing.Color.Gray;
-                series.Points[0].ToolTip = "Không có bản ghi lương trong khoảng thời gian này";
+                var employeesQuery = _context.Employees.AsNoTracking().Where(e => e.DepartmentId == _selectedDepartmentId);
+                var payrolls = _context.Payrolls
+                    .Where(p => p.Month >= fromDate && p.Month <= toDate)
+                    .Where(p => employeesQuery.Select(e => e.UserId).Contains(p.UserId))
+                    .GroupBy(p => p.UserId)
+                    .Select(g => new
+                    {
+                        UserId = g.Key,
+                        Total = g.Sum(p => p.TotalSalary)
+                    })
+                    .ToList();
+
+                var employeeNames = _context.Employees
+                    .Where(e => employeesQuery.Select(e => e.UserId).Contains(e.UserId))
+                    .Select(e => new { e.UserId, e.Name })
+                    .ToDictionary(e => e.UserId, e => e.Name);
+
+                foreach (var payroll in payrolls)
+                {
+                    string employeeName = employeeNames.ContainsKey(payroll.UserId) ? employeeNames[payroll.UserId] : $"ID {payroll.UserId}";
+                    series.Points.AddXY(employeeName, payroll.Total);
+                }
+
+                if (payrolls.Count == 0)
+                {
+                    series.Points.AddXY("Không có dữ liệu", 0);
+                    series.Points[0].Color = Color.Gray;
+                    series.Points[0].ToolTip = "Không có bản ghi lương trong khoảng thời gian này";
+                }
+
+                string deptName = cbxDepartments.SelectedItem is KeyValuePair<int, string> selected ? selected.Value : "Phòng ban";
+                chartSalary.Titles.Add($"Tổng lương phòng {deptName} từ {fromDate:dd/MM/yyyy} đến {toDate:dd/MM/yyyy}");
             }
 
             chartSalary.Series.Add(series);
-            string title = _selectedDepartmentId == 0
-                ? $"Tổng lương toàn công ty từ {fromDate:dd/MM/yyyy} đến {toDate:dd/MM/yyyy}"
-                : $"Tổng lương phòng ban từ {fromDate:dd/MM/yyyy} đến {toDate:dd/MM/yyyy}";
-            chartSalary.Titles.Add(title);
-
             chartSalary.ChartAreas[0].AxisX.Interval = 1;
             chartSalary.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
             chartSalary.ChartAreas[0].AxisX.IsLabelAutoFit = true;
             chartSalary.ChartAreas[0].AxisY.Title = "Tổng lương (VND)";
         }
 
-        private void UpdatePerformanceDistributionChart(DateTime fromDate, DateTime toDate, string departmentName)
+        private void UpdatePerformanceDistributionChart(DateTime fromDate, DateTime toDate)
         {
             try
             {
                 chart1.Series.Clear();
-                var series = new Series("PerformanceDistribution")
-                {
-                    ChartType = SeriesChartType.Pie,
-                    IsVisibleInLegend = true,
-                    Label = "#PERCENT{P1}",
-                    LegendText = "#VALX: #PERCENT{P1}"
-                };
+                chart1.Titles.Clear();
+                chart1.Annotations.Clear();
 
-                var (effectiveTime, approvedLeave, ineffectiveTime, detailMessage) =
-                    _controller.CalculatePerformanceDistribution(fromDate, toDate, _selectedDepartmentId == 0 ? null : _selectedDepartmentId);
-
-                series.ToolTip = detailMessage;
-
-                if (effectiveTime > 0)
-                {
-                    var point1 = series.Points.Add(effectiveTime);
-                    point1.AxisLabel = "Thời gian làm việc hiệu quả";
-                    point1.LegendText = $"Hiệu quả: {effectiveTime:F1}%";
-                    point1.Color = System.Drawing.Color.Green;
-                    point1.ToolTip = $"Thời gian làm việc hiệu quả: {effectiveTime:F1}%";
-                }
-
-                if (approvedLeave > 0)
-                {
-                    var point2 = series.Points.Add(approvedLeave);
-                    point2.AxisLabel = "Nghỉ phép được duyệt";
-                    point2.LegendText = $"Nghỉ phép: {approvedLeave:F1}%";
-                    point2.Color = System.Drawing.Color.Orange;
-                    point2.ToolTip = $"Nghỉ phép được duyệt: {approvedLeave:F1}%";
-                }
-
-                if (ineffectiveTime > 0)
-                {
-                    var point3 = series.Points.Add(ineffectiveTime);
-                    point3.AxisLabel = "Thời gian không hiệu quả";
-                    point3.LegendText = $"Không hiệu quả: {ineffectiveTime:F1}%";
-                    point3.Color = System.Drawing.Color.Red;
-                    point3.ToolTip = $"Thời gian không hiệu quả: {ineffectiveTime:F1}% (bao gồm: đi muộn, về sớm, vắng mặt, nghỉ không được duyệt, không chấm công)";
-                }
-
-                if (series.Points.Count == 0)
-                {
-                    var point = series.Points.Add(100);
-                    point.AxisLabel = "Chưa có dữ liệu chấm công";
-                    point.LegendText = "Chưa có dữ liệu: 100%";
-                    point.Color = System.Drawing.Color.Gray;
-                    point.ToolTip = "Chưa có bản ghi chấm công nào trong khoảng thời gian này";
-                }
-
-                chart1.Series.Add(series);
-
+                string deptName = cbxDepartments.SelectedItem is KeyValuePair<int, string> selected ? selected.Value : "Tổng công ty";
                 string dateRange = $"{fromDate:dd/MM/yyyy} - {toDate:dd/MM/yyyy}";
-                string chartTitle = string.IsNullOrEmpty(departmentName) || departmentName == "Total"
-                    ? $"Phân bố hiệu suất toàn công ty ({dateRange})"
-                    : $"Phân bố hiệu suất - {departmentName} ({dateRange})";
 
-                if (chart1.Titles.Count > 0)
+                if (_selectedDepartmentId == 0) // So sánh giữa các phòng ban
                 {
-                    chart1.Titles[0].Text = chartTitle;
-                }
-                else
-                {
-                    chart1.Titles.Add(chartTitle);
-                }
+                    var series = new Series("PerformanceDistribution")
+                    {
+                        ChartType = SeriesChartType.Bar,
+                        IsVisibleInLegend = true
+                    };
 
-                if (chart1.Annotations.Count > 0)
-                {
-                    chart1.Annotations.Clear();
-                }
+                    var performances = _controller.CalculateAllDepartmentsPerformance(fromDate, toDate);
+                    foreach (var perf in performances)
+                    {
+                        var point = series.Points.Add(perf.EffectiveTimePercentage);
+                        point.AxisLabel = perf.DepartmentName;
+                        point.LegendText = $"{perf.DepartmentName}: {perf.EffectiveTimePercentage:F1}%";
+                        point.Color = Color.Green;
+                        point.ToolTip = $"Hiệu quả: {perf.EffectiveTimePercentage:F1}%\nNghỉ phép: {perf.ApprovedLeavePercentage:F1}%\nKhông hiệu quả: {perf.IneffectiveTimePercentage:F1}%";
+                    }
 
-                var annotation = new TextAnnotation();
-                annotation.Text = detailMessage.Replace("\n", " | ");
-                annotation.Font = new System.Drawing.Font("Arial", 8);
-                annotation.ForeColor = System.Drawing.Color.DarkBlue;
-                annotation.AnchorX = 50;
-                annotation.AnchorY = 95;
-                chart1.Annotations.Add(annotation);
+                    if (performances.Count == 0)
+                    {
+                        var point = series.Points.Add(100);
+                        point.AxisLabel = "Chưa có dữ liệu";
+                        point.LegendText = "Chưa có dữ liệu: 100%";
+                        point.Color = Color.Gray;
+                        point.ToolTip = "Chưa có dữ liệu chấm công";
+                    }
+
+                    chart1.Series.Add(series);
+                    chart1.Titles.Add($"So sánh hiệu suất các phòng ban ({dateRange})");
+                }
+                else // Hiển thị hiệu suất của một phòng ban
+                {
+                    var series = new Series("PerformanceDistribution")
+                    {
+                        ChartType = SeriesChartType.Pie,
+                        IsVisibleInLegend = true,
+                        Label = "#PERCENT{P1}",
+                        LegendText = "#VALX: #PERCENT{P1}"
+                    };
+
+                    var (effectiveTime, approvedLeave, ineffectiveTime, detailMessage) =
+                        _controller.CalculatePerformanceDistribution(fromDate, toDate, _selectedDepartmentId);
+
+                    if (effectiveTime > 0)
+                    {
+                        var point1 = series.Points.Add(effectiveTime);
+                        point1.AxisLabel = "Thời gian làm việc hiệu quả";
+                        point1.LegendText = $"Hiệu quả: {effectiveTime:F1}%";
+                        point1.Color = Color.Green;
+                        point1.ToolTip = $"Thời gian làm việc hiệu quả: {effectiveTime:F1}%";
+                    }
+
+                    if (approvedLeave > 0)
+                    {
+                        var point2 = series.Points.Add(approvedLeave);
+                        point2.AxisLabel = "Nghỉ phép được duyệt";
+                        point2.LegendText = $"Nghỉ phép: {approvedLeave:F1}%";
+                        point2.Color = Color.Orange;
+                        point2.ToolTip = $"Nghỉ phép được duyệt: {approvedLeave:F1}%";
+                    }
+
+                    if (ineffectiveTime > 0)
+                    {
+                        var point3 = series.Points.Add(ineffectiveTime);
+                        point3.AxisLabel = "Thời gian không hiệu quả";
+                        point3.LegendText = $"Không hiệu quả: {ineffectiveTime:F1}%";
+                        point3.Color = Color.Red;
+                        point3.ToolTip = $"Thời gian không hiệu quả: {ineffectiveTime:F1}% (bao gồm: đi muộn, về sớm, vắng mặt, nghỉ không được duyệt, không chấm công)";
+                    }
+
+                    if (series.Points.Count == 0)
+                    {
+                        var point = series.Points.Add(100);
+                        point.AxisLabel = "Chưa có dữ liệu chấm công";
+                        point.LegendText = "Chưa có dữ liệu: 100%";
+                        point.Color = Color.Gray;
+                        point.ToolTip = "Chưa có bản ghi chấm công nào trong khoảng thời gian này";
+                    }
+
+                    series.ToolTip = detailMessage;
+                    chart1.Series.Add(series);
+                    chart1.Titles.Add($"Phân bố hiệu suất - {deptName} ({dateRange})");
+
+                    var annotation = new TextAnnotation();
+                    annotation.Text = detailMessage.Replace("\n", " | ");
+                    annotation.Font = new Font("Arial", 8);
+                    annotation.ForeColor = Color.DarkBlue;
+                    annotation.AnchorX = 50;
+                    annotation.AnchorY = 95;
+                    chart1.Annotations.Add(annotation);
+                }
 
                 chart1.ChartAreas[0].Area3DStyle.Enable3D = false;
                 chart1.Legends[0].Enabled = true;
                 chart1.Legends[0].Docking = Docking.Right;
-
-                chart1.GetToolTipText += (sender, e) => e.Text = detailMessage;
             }
             catch (Exception ex)
             {
@@ -303,7 +354,7 @@ namespace EmployeeManagementSystem.FormAdmin
                     ChartType = SeriesChartType.Pie
                 };
                 emptySeries.Points.AddXY("Lỗi dữ liệu", 100);
-                emptySeries.Points[0].Color = System.Drawing.Color.Red;
+                emptySeries.Points[0].Color = Color.Red;
                 emptySeries.Points[0].ToolTip = $"Lỗi: {ex.Message}";
                 chart1.Series.Add(emptySeries);
             }

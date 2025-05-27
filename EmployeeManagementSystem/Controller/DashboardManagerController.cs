@@ -46,16 +46,17 @@ namespace EmployeeManagementSystem.Controller
         }
 
         public (double EffectiveTimePercentage, double ApprovedLeavePercentage,
-             double IneffectiveTimePercentage, string DetailMessage) CalculatePerformanceDistribution(DateTime fromDate, DateTime toDate, int userId)
+         double IneffectiveTimePercentage, string DetailMessage) CalculatePerformanceDistribution(DateTime fromDate, DateTime toDate, int userId)
         {
             try
             {
-                // Tính tổng số ngày làm việc trong khoảng thời gian (loại trừ weekend nếu cần)
+                // Tính tổng số ca làm việc trong khoảng thời gian (2 ca/ngày x số ngày làm việc)
                 var totalWorkingDays = CalculateWorkingDays(fromDate.Date, toDate.Date);
+                var totalShifts = totalWorkingDays * 2; // 2 ca mỗi ngày
 
-                if (totalWorkingDays <= 0)
+                if (totalShifts <= 0)
                 {
-                    return (0, 0, 0, "Không có ngày làm việc trong khoảng thời gian này.");
+                    return (0, 0, 0, "Không có ca làm việc trong khoảng thời gian này.");
                 }
 
                 // Kiểm tra nhân viên có tồn tại không
@@ -65,34 +66,25 @@ namespace EmployeeManagementSystem.Controller
                     return (0, 0, 0, "Nhân viên không tồn tại.");
                 }
 
-                // Đếm số ngày có bản ghi chấm công
+                // Lấy tất cả các bản ghi chấm công theo ca
                 var attendanceRecords = _context.Attendances
                     .Where(a => a.Date >= fromDate.Date && a.Date <= toDate.Date && a.UserId == userId)
                     .ToList();
 
-                var attendanceDates = attendanceRecords.Select(a => a.Date.Date).Distinct().ToList();
-                var totalAttendanceDays = attendanceDates.Count;
+                // Đếm số ca theo từng trạng thái
+                var onTimeShifts = attendanceRecords.Count(a => a.Status == "Đúng giờ");
+                var lateShifts = attendanceRecords.Count(a => a.Status == "Đi muộn" || a.Status == "Late");
+                var earlyLeaveShifts = attendanceRecords.Count(a => a.Status == "Về sớm");
+                var absentShifts = attendanceRecords.Count(a => a.Status == "Absent" || a.Status == "Vắng mặt");
 
-                // Đếm số ngày chấm công đúng giờ
-                var onTimeDays = attendanceRecords.Count(a => a.Status == "Đúng giờ");
-
-                // Đếm số ngày đi muộn
-                var lateDays = attendanceRecords.Count(a => a.Status == "Đi muộn" || a.Status == "Late");
-
-                // Đếm số ngày về sớm
-                var earlyLeaveDays = attendanceRecords.Count(a => a.Status == "Về sớm");
-
-                // Đếm số ngày vắng mặt (có record nhưng absent)
-                var absentWithRecordDays = attendanceRecords.Count(a => a.Status == "Absent" || a.Status == "Vắng mặt");
-
-                // Tính số ngày nghỉ phép được duyệt
+                // Tính số ca nghỉ phép được duyệt
                 var approvedLeaveRequests = _context.LeaveRequests
                     .Where(lr => lr.UserId == userId)
                     .Where(lr => lr.Status == "Approved")
                     .Where(lr => lr.StartDate.Date <= toDate.Date && lr.EndDate.Date >= fromDate.Date)
                     .ToList();
 
-                var approvedLeaveDays = 0;
+                var approvedLeaveShifts = 0;
                 var approvedLeaveDates = new HashSet<DateTime>();
 
                 foreach (var lr in approvedLeaveRequests)
@@ -102,22 +94,20 @@ namespace EmployeeManagementSystem.Controller
 
                     for (var date = startDate; date <= endDate; date = date.AddDays(1))
                     {
-                        if (IsWorkingDay(date))
-                        {
-                            approvedLeaveDates.Add(date);
-                        }
+                                                
+                            approvedLeaveDates.Add(date);                       
                     }
                 }
-                approvedLeaveDays = approvedLeaveDates.Count;
+                approvedLeaveShifts = approvedLeaveDates.Count * 2; // 2 ca mỗi ngày nghỉ phép
 
-                // Tính số ngày nghỉ phép không được duyệt hoặc đang chờ
+                // Tính số ca nghỉ phép không được duyệt hoặc đang chờ
                 var ineffectiveLeaveRequests = _context.LeaveRequests
                     .Where(lr => lr.UserId == userId)
                     .Where(lr => lr.Status == "Pending" || lr.Status == "Rejected")
                     .Where(lr => lr.StartDate.Date <= toDate.Date && lr.EndDate.Date >= fromDate.Date)
                     .ToList();
 
-                var ineffectiveLeaveDays = 0;
+                var ineffectiveLeaveShifts = 0;
                 var ineffectiveLeaveDates = new HashSet<DateTime>();
 
                 foreach (var lr in ineffectiveLeaveRequests)
@@ -127,44 +117,41 @@ namespace EmployeeManagementSystem.Controller
 
                     for (var date = startDate; date <= endDate; date = date.AddDays(1))
                     {
-                        if (IsWorkingDay(date) && !approvedLeaveDates.Contains(date))
+                        if (!approvedLeaveDates.Contains(date))
                         {
                             ineffectiveLeaveDates.Add(date);
                         }
                     }
                 }
-                ineffectiveLeaveDays = ineffectiveLeaveDates.Count;
+                ineffectiveLeaveShifts = ineffectiveLeaveDates.Count * 2; // 2 ca mỗi ngày
 
-                // Tính số ngày không có bản ghi chấm công và không có nghỉ phép
-                var allWorkingDates = new HashSet<DateTime>();
-                for (var date = fromDate.Date; date <= toDate.Date; date = date.AddDays(1))
-                {
-                    if (IsWorkingDay(date))
-                    {
-                        allWorkingDates.Add(date);
-                    }
-                }
+                // Tính số ca không có bản ghi chấm công
+                var totalRecordedShifts = attendanceRecords.Count;
+                var expectedShiftsFromWorkingDays = totalWorkingDays * 2;
+                var shiftsFromApprovedLeave = approvedLeaveShifts;
+                var shiftsFromIneffectiveLeave = ineffectiveLeaveShifts;
 
-                var unrecordedDays = allWorkingDates
-                    .Where(date => !attendanceDates.Contains(date) &&
-                                  !approvedLeaveDates.Contains(date) &&
-                                  !ineffectiveLeaveDates.Contains(date))
-                    .Count();
+                // Ca không có record = Tổng ca dự kiến - Ca có record - Ca nghỉ phép
+                var unrecordedShifts = Math.Max(0, expectedShiftsFromWorkingDays - totalRecordedShifts - shiftsFromApprovedLeave);
 
-                // Tính phần trăm
-                double effectiveTimePercentage = (onTimeDays / (double)totalWorkingDays) * 100;
-                double approvedLeavePercentage = (approvedLeaveDays / (double)totalWorkingDays) * 100;
-                double ineffectiveTimePercentage = ((lateDays + earlyLeaveDays + absentWithRecordDays + ineffectiveLeaveDays + unrecordedDays) / (double)totalWorkingDays) * 100;
+                // Tính phần trăm dựa trên tổng số ca
+                double effectiveTimePercentage = (onTimeShifts / (double)totalShifts) * 100;
+                double approvedLeavePercentage = (approvedLeaveShifts / (double)totalShifts) * 100;
+
+                // Thời gian không hiệu quả = Đi muộn + Về sớm + Vắng mặt + Nghỉ không phép + Không có record
+                var ineffectiveShifts = lateShifts + earlyLeaveShifts + absentShifts + ineffectiveLeaveShifts + unrecordedShifts;
+                double ineffectiveTimePercentage = (ineffectiveShifts / (double)totalShifts) * 100;
 
                 // Tạo thông tin chi tiết
-                var detailMessage = $"Tổng ngày làm việc: {totalWorkingDays}\n" +
-                                  $"Đúng giờ: {onTimeDays} ngày\n" +
-                                  $"Đi muộn: {lateDays} ngày\n" +
-                                  $"Về sớm: {earlyLeaveDays} ngày\n" +
-                                  $"Vắng mặt (có record): {absentWithRecordDays} ngày\n" +
-                                  $"Nghỉ phép được duyệt: {approvedLeaveDays} ngày\n" +
-                                  $"Nghỉ phép không được duyệt/chờ: {ineffectiveLeaveDays} ngày\n" +
-                                  $"Không có bản ghi chấm công: {unrecordedDays} ngày";
+                var detailMessage = $"Tổng số ca làm việc: {totalShifts} ca ({totalWorkingDays} ngày x 2 ca)\n" +
+                                  $"Ca đúng giờ: {onTimeShifts} ca\n" +
+                                  $"Ca đi muộn: {lateShifts} ca\n" +
+                                  $"Ca về sớm: {earlyLeaveShifts} ca\n" +
+                                  $"Ca vắng mặt: {absentShifts} ca\n" +
+                                  $"Ca nghỉ phép được duyệt: {approvedLeaveShifts} ca\n" +
+                                  $"Ca nghỉ phép không được duyệt/chờ: {ineffectiveLeaveShifts} ca\n" +
+                                  $"Ca không có bản ghi chấm công: {unrecordedShifts} ca\n" +
+                                  $"Tổng ca có bản ghi: {totalRecordedShifts} ca";
 
                 // Đảm bảo tổng không vượt quá 100%
                 double totalPercentage = effectiveTimePercentage + approvedLeavePercentage + ineffectiveTimePercentage;
@@ -193,19 +180,14 @@ namespace EmployeeManagementSystem.Controller
         {
             int workingDays = 0;
             for (var date = startDate; date <= endDate; date = date.AddDays(1))
-            {
-                if (IsWorkingDay(date))
-                {
+            {             
+                
                     workingDays++;
-                }
+              
             }
             return workingDays;
         }
 
-        private bool IsWorkingDay(DateTime date)
-        {
-            // Loại trừ thứ 7 và Chủ nhật (có thể tùy chỉnh theo quy định công ty)
-            return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
-        }
+
     }
 }
