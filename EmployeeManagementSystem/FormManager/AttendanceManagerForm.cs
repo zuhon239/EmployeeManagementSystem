@@ -15,7 +15,6 @@ namespace EmployeeManagementSystem.FormManager
         private readonly EmployeeManagementContext _context;
         private readonly int _managerId;
         private Employee _currentManager;
-        private bool _isDetailedView = false;
 
         public AttendanceManagerForm(int managerId)
         {
@@ -51,12 +50,12 @@ namespace EmployeeManagementSystem.FormManager
             }
         }
 
-        // ✅ Load filter options
+        // ✅ Load filter options (chỉ Sáng, Chiều)
         private async void LoadFilterOptions()
         {
             try
             {
-                // Load shift filter
+                // Load shift filter - chỉ Sáng, Chiều
                 cmbShiftFilter.Items.Clear();
                 cmbShiftFilter.Items.Add("All");
                 cmbShiftFilter.Items.Add("Sáng");
@@ -80,12 +79,11 @@ namespace EmployeeManagementSystem.FormManager
             }
         }
 
-        private async void dtpMonth_ValueChanged(object sender, EventArgs e)
+        // ✅ Thay đổi từ tháng sang ngày
+        private async void dtpDate_ValueChanged(object sender, EventArgs e)
         {
             await LoadAttendanceReportAsync();
         }
-
-        // ✅ Bỏ btnRefresh_Click method
 
         // ✅ Filter changed events
         private async void cmbShiftFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,12 +96,12 @@ namespace EmployeeManagementSystem.FormManager
             await LoadAttendanceReportAsync();
         }
 
-        // ✅ Toggle view button
-        private async void btnToggleView_Click(object sender, EventArgs e)
+        // ✅ Thêm nút Refresh
+        private async void btnRefresh_Click(object sender, EventArgs e)
         {
-            _isDetailedView = !_isDetailedView;
-            btnToggleView.Text = _isDetailedView ? "Xem Tổng Quan" : "Xem Chi Tiết";
             await LoadAttendanceReportAsync();
+            MessageBox.Show("Đã làm mới dữ liệu!", "Thông báo",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async Task LoadAttendanceReportAsync()
@@ -112,26 +110,75 @@ namespace EmployeeManagementSystem.FormManager
             {
                 System.Diagnostics.Debug.WriteLine($"=== LOAD ATTENDANCE REPORT ===");
 
-                DateTime selectedMonth = dtpMonth.Value;
+                DateTime selectedDate = dtpDate.Value.Date;
                 string shiftFilter = cmbShiftFilter.SelectedItem?.ToString() ?? "All";
                 string statusFilter = cmbStatusFilter.SelectedItem?.ToString() ?? "All";
+
+                System.Diagnostics.Debug.WriteLine($"Filters: Shift={shiftFilter}, Status={statusFilter}");
 
                 // Clear existing columns
                 dgvAttendanceReport.Columns.Clear();
                 dgvAttendanceReport.Rows.Clear();
 
-                if (_isDetailedView)
+                // ✅ Lấy dữ liệu theo ngày VỚI FILTER
+                var reportData = await _controller.GetDailyAttendanceReportAsync(_managerId, selectedDate, shiftFilter, statusFilter);
+
+                System.Diagnostics.Debug.WriteLine($"✅ Controller trả về {reportData.Count} records sau filter");
+
+                if (reportData.Count == 0)
                 {
-                    // ✅ View chi tiết theo ca
-                    await LoadDetailedViewAsync(selectedMonth, shiftFilter, statusFilter);
-                }
-                else
-                {
-                    // ✅ View tổng quan theo tháng
-                    await LoadMonthlyViewAsync(selectedMonth);
+                    // ✅ Thông báo khác nhau tùy theo filter
+                    string message;
+                    if (shiftFilter != "All" || statusFilter != "All")
+                    {
+                        message = $"Không có dữ liệu phù hợp với filter:\n- Ca: {shiftFilter}\n- Trạng thái: {statusFilter}\n\nThử thay đổi filter hoặc chọn ngày khác.";
+                    }
+                    else
+                    {
+                        message = "Không có nhân viên nào trong phòng ban hoặc bạn không phải Manager!";
+                    }
+
+                    MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
 
-                // ✅ Bỏ LoadStatisticsAsync()
+                // ✅ Add columns theo yêu cầu
+                dgvAttendanceReport.Columns.Add("UserId", "User ID");
+                dgvAttendanceReport.Columns.Add("EmployeeName", "Tên Nhân Viên");
+                dgvAttendanceReport.Columns.Add("Position", "Chức Vụ");
+                dgvAttendanceReport.Columns.Add("Shift", "Ca");
+                dgvAttendanceReport.Columns.Add("ClockIn", "Giờ Check In");
+                dgvAttendanceReport.Columns.Add("ClockOut", "Giờ Check Out");
+                dgvAttendanceReport.Columns.Add("Status", "Trạng Thái");
+
+                // ✅ Add data rows
+                foreach (var item in reportData)
+                {
+                    dgvAttendanceReport.Rows.Add(
+                        item.UserId,
+                        item.EmployeeName,
+                        item.Position,
+                        item.Shift,
+                        item.ClockIn?.ToString("HH:mm:ss") ?? "",
+                        item.ClockOut?.ToString("HH:mm:ss") ?? "",
+                        item.Status ?? ""
+                    );
+                }
+
+                // ✅ Style the grid
+                dgvAttendanceReport.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvAttendanceReport.Columns["UserId"].Width = 80;
+                dgvAttendanceReport.Columns["EmployeeName"].Width = 150;
+                dgvAttendanceReport.Columns["Position"].Width = 120;
+                dgvAttendanceReport.Columns["Shift"].Width = 60;
+                dgvAttendanceReport.Columns["ClockIn"].Width = 100;
+                dgvAttendanceReport.Columns["ClockOut"].Width = 100;
+                dgvAttendanceReport.Columns["Status"].Width = 150;
+
+                // Color code rows based on status
+                ColorCodeRows();
+
+                System.Diagnostics.Debug.WriteLine($"✅ Hiển thị thành công {dgvAttendanceReport.Rows.Count} rows");
             }
             catch (Exception ex)
             {
@@ -141,121 +188,43 @@ namespace EmployeeManagementSystem.FormManager
             }
         }
 
-        // ✅ Load view chi tiết theo ca
-        private async Task LoadDetailedViewAsync(DateTime selectedMonth, string shiftFilter, string statusFilter)
+        // ✅ Color code cho rows
+        private void ColorCodeRows()
         {
-            var reportData = await _controller.GetDetailedAttendanceReportAsync(_managerId, selectedMonth, shiftFilter, statusFilter);
-
-            if (reportData.Count == 0)
+            foreach (DataGridViewRow row in dgvAttendanceReport.Rows)
             {
-                MessageBox.Show("Không có dữ liệu phù hợp với filter!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                var status = row.Cells["Status"].Value?.ToString() ?? "";
 
-            // Add columns for detailed view
-            dgvAttendanceReport.Columns.Add("UserId", "ID");
-            dgvAttendanceReport.Columns.Add("EmployeeName", "Tên Nhân Viên");
-            dgvAttendanceReport.Columns.Add("Position", "Chức Vụ");
-            dgvAttendanceReport.Columns.Add("Date", "Ngày");
-            dgvAttendanceReport.Columns.Add("Shift", "Ca");
-            dgvAttendanceReport.Columns.Add("ClockIn", "Giờ Vào");
-            dgvAttendanceReport.Columns.Add("ClockOut", "Giờ Ra");
-            dgvAttendanceReport.Columns.Add("Status", "Trạng Thái");
+                Color rowColor = Color.White;
 
-            // Add data rows
-            foreach (var item in reportData)
-            {
-                dgvAttendanceReport.Rows.Add(
-                    item.UserId,
-                    item.EmployeeName,
-                    item.Position,
-                    item.Date.ToString("dd/MM/yyyy"),
-                    item.Shift,
-                    item.ClockIn?.ToString("HH:mm:ss") ?? "",
-                    item.ClockOut?.ToString("HH:mm:ss") ?? "",
-                    item.Status
-                );
-            }
-
-            // Style the grid
-            dgvAttendanceReport.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvAttendanceReport.Columns["UserId"].Width = 50;
-            dgvAttendanceReport.Columns["EmployeeName"].Width = 120;
-            dgvAttendanceReport.Columns["Position"].Width = 100;
-            dgvAttendanceReport.Columns["Date"].Width = 80;
-            dgvAttendanceReport.Columns["Shift"].Width = 60;
-            dgvAttendanceReport.Columns["ClockIn"].Width = 80;
-            dgvAttendanceReport.Columns["ClockOut"].Width = 80;
-            dgvAttendanceReport.Columns["Status"].Width = 120;
-
-        }
-
-        // ✅ Load view tổng quan theo tháng
-        private async Task LoadMonthlyViewAsync(DateTime selectedMonth)
-        {
-            var reportData = await _controller.GetMonthlyAttendanceReportAsync(_managerId, selectedMonth);
-
-            if (reportData.Count == 0)
-            {
-                MessageBox.Show("Không có nhân viên nào để hiển thị!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            // Add employee info columns
-            dgvAttendanceReport.Columns.Add("UserId", "ID");
-            dgvAttendanceReport.Columns.Add("EmployeeName", "Tên Nhân Viên");
-            dgvAttendanceReport.Columns.Add("Position", "Chức Vụ");
-            dgvAttendanceReport.Columns.Add("Phone", "Số ĐT");
-
-            // Add day columns
-            int daysInMonth = DateTime.DaysInMonth(selectedMonth.Year, selectedMonth.Month);
-            for (int day = 1; day <= daysInMonth; day++)
-            {
-                var dayColumn = new DataGridViewTextBoxColumn
+                if (status.Contains("Chưa check out"))
                 {
-                    Name = $"Day{day}",
-                    HeaderText = day.ToString(),
-                    Width = 50,
-                    DefaultCellStyle = new DataGridViewCellStyle
-                    {
-                        Alignment = DataGridViewContentAlignment.MiddleCenter
-                    }
-                };
-                dgvAttendanceReport.Columns.Add(dayColumn);
-            }
-
-            // Add data rows
-            foreach (var employee in reportData)
-            {
-                var row = new object[4 + daysInMonth];
-                row[0] = employee.UserId;
-                row[1] = employee.EmployeeName;
-                row[2] = employee.Position;
-                row[3] = employee.Phone;
-
-                for (int day = 1; day <= daysInMonth; day++)
+                    rowColor = Color.LightBlue; // Xanh dương - Đang trong ca làm
+                }
+                else if (status == "Đúng giờ")
                 {
-                    row[3 + day] = employee.DailyAttendances.ContainsKey(day)
-                        ? employee.DailyAttendances[day]
-                        : "";
+                    rowColor = Color.LightGreen; // Xanh lá - Đúng giờ
+                }
+                else if (status == "Đi trễ")
+                {
+                    rowColor = Color.Orange; // Cam - Đi trễ
+                }
+                else if (status == "Về sớm")
+                {
+                    rowColor = Color.Yellow; // Vàng - Về sớm
+                }
+                else if (status == "Đi trễ và về sớm")
+                {
+                    rowColor = Color.Red; // Đỏ - Đi trễ và về sớm
+                }
+                else if (status == "Vắng mặt" || string.IsNullOrEmpty(status))
+                {
+                    rowColor = Color.LightGray; // Xám - Vắng mặt
                 }
 
-                dgvAttendanceReport.Rows.Add(row);
+                row.DefaultCellStyle.BackColor = rowColor;
             }
-
-            // Style the grid
-            dgvAttendanceReport.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            dgvAttendanceReport.Columns["UserId"].Width = 50;
-            dgvAttendanceReport.Columns["EmployeeName"].Width = 150;
-            dgvAttendanceReport.Columns["Position"].Width = 100;
-            dgvAttendanceReport.Columns["Phone"].Width = 100;
         }
-
-       
-
-        
 
         private void AttendanceManagerForm_Load(object sender, EventArgs e)
         {

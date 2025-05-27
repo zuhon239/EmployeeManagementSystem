@@ -26,30 +26,29 @@ namespace EmployeeManagementSystem.Controller
                                        e.Status == true);
         }
 
-        // ✅ Quy trình truy xuất với filter theo ca và status
-        public async Task<List<DetailedAttendanceReportViewModel>> GetDetailedAttendanceReportAsync(
-            int managerId, 
-            DateTime month, 
-            string shiftFilter = "All", 
-            string statusFilter = "All")
+        // ✅ Quy trình truy xuất theo ngày - BỎ HOÀN TOÀN FILTER
+        public async Task<List<DailyAttendanceReportViewModel>> GetDailyAttendanceReportAsync(
+    int managerId,
+    DateTime selectedDate,
+    string shiftFilter = "All",
+    string statusFilter = "All")
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine($"=== BẮT ĐẦU QUY TRÌNH TRUY XUẤT VỚI FILTER ===");
-                System.Diagnostics.Debug.WriteLine($"Manager ID: {managerId}, Shift: {shiftFilter}, Status: {statusFilter}");
+                System.Diagnostics.Debug.WriteLine($"=== BẮT ĐẦU QUY TRÌNH TRUY XUẤT ===");
+                System.Diagnostics.Debug.WriteLine($"Manager ID: {managerId}, Date: {selectedDate:dd/MM/yyyy}, Shift: {shiftFilter}, Status: {statusFilter}");
 
                 // Bước 1: Lấy thông tin Manager
                 var manager = await GetManagerInfoAsync(managerId);
                 if (manager == null)
                 {
                     System.Diagnostics.Debug.WriteLine($"❌ Không tìm thấy Manager với ID: {managerId}");
-                    return new List<DetailedAttendanceReportViewModel>();
+                    return new List<DailyAttendanceReportViewModel>();
                 }
 
-                var startDate = new DateTime(month.Year, month.Month, 1);
-                var endDate = startDate.AddMonths(1).AddDays(-1);
+                System.Diagnostics.Debug.WriteLine($"✅ Manager: {manager.Name}, Department: {manager.Department?.Name}");
 
-                // Bước 2: Lấy nhân viên trong phòng ban (không bao gồm Manager)
+                // Bước 2: Lấy tất cả nhân viên trong phòng ban (không bao gồm Manager)
                 var employees = await _context.Employees
                     .Where(e => e.DepartmentId == manager.DepartmentId &&
                                e.Status == true &&
@@ -58,155 +57,125 @@ namespace EmployeeManagementSystem.Controller
                     .OrderBy(e => e.Name)
                     .ToListAsync();
 
-                System.Diagnostics.Debug.WriteLine($"✅ Tìm thấy {employees.Count} nhân viên");
+                System.Diagnostics.Debug.WriteLine($"✅ Tìm thấy {employees.Count} nhân viên trong phòng ban");
 
-                // Bước 3: Lấy attendance records với filter
-                var attendanceQuery = _context.Attendances
-                    .Where(a => employees.Select(e => e.UserId).Contains(a.UserId) &&
-                               a.Date >= startDate && a.Date <= endDate);
-
-                // ✅ Filter theo ca
-                if (shiftFilter != "All")
+                if (employees.Count == 0)
                 {
-                    attendanceQuery = attendanceQuery.Where(a => a.Shift == shiftFilter);
+                    System.Diagnostics.Debug.WriteLine($"❌ Không có nhân viên nào trong phòng ban");
+                    return new List<DailyAttendanceReportViewModel>();
                 }
 
-                // ✅ Filter theo status
-                if (statusFilter != "All")
-                {
-                    attendanceQuery = attendanceQuery.Where(a => a.Status.Contains(statusFilter));
-                }
-
-                var attendances = await attendanceQuery.ToListAsync();
-
-                System.Diagnostics.Debug.WriteLine($"✅ Tìm thấy {attendances.Count} records sau filter");
-
-                var result = new List<DetailedAttendanceReportViewModel>();
+                var result = new List<DailyAttendanceReportViewModel>();
 
                 foreach (var employee in employees)
                 {
-                    var employeeAttendances = attendances
-                        .Where(a => a.UserId == employee.UserId)
-                        .OrderBy(a => a.Date)
-                        .ThenBy(a => a.Shift)
-                        .ToList();
+                    System.Diagnostics.Debug.WriteLine($"Xử lý nhân viên: {employee.Name} (ID: {employee.UserId})");
 
-                    // ✅ Tạo record cho từng attendance thay vì gộp theo ngày
-                    foreach (var attendance in employeeAttendances)
+                    // ✅ ÁP DỤNG FILTER SHIFT
+                    List<string> shiftsToShow = new List<string>();
+                    if (shiftFilter == "All")
                     {
-                        var reportItem = new DetailedAttendanceReportViewModel
+                        shiftsToShow.AddRange(new[] { "Sáng", "Chiều" });
+                    }
+                    else
+                    {
+                        shiftsToShow.Add(shiftFilter);
+                    }
+
+                    foreach (var shift in shiftsToShow)
+                    {
+                        // ✅ Tìm attendance record cho ca này (có thể null)
+                        var attendance = await _context.Attendances
+                            .FirstOrDefaultAsync(a => a.UserId == employee.UserId &&
+                                                   a.Date.Date == selectedDate.Date &&
+                                                   a.Shift == shift);
+
+                        // ✅ XỬ LÝ TRẠNG THÁI CHO NHÂN VIÊN
+                        string displayStatus;
+                        if (attendance != null)
+                        {
+                            if (attendance.ClockIn.HasValue && !attendance.ClockOut.HasValue)
+                            {
+                                // Đã check in nhưng chưa check out
+                                displayStatus = $"{attendance.Status} - Chưa check out";
+                            }
+                            else
+                            {
+                                // Đã hoàn thành ca hoặc chỉ có thông tin không đầy đủ
+                                displayStatus = attendance.Status;
+                            }
+                        }
+                        else
+                        {
+                            // Không có attendance record
+                            displayStatus = "Vắng mặt";
+                        }
+
+                        // ✅ TẠO RECORD CHO NHÂN VIÊN
+                        var reportItem = new DailyAttendanceReportViewModel
                         {
                             UserId = employee.UserId,
                             EmployeeName = employee.Name,
                             Position = employee.Position,
-                            Phone = employee.Phone ?? "N/A",
-                            Date = attendance.Date,
-                            Shift = attendance.Shift,
-                            ClockIn = attendance.ClockIn,
-                            ClockOut = attendance.ClockOut,
-                            Status = attendance.Status,
-                            ShortStatus = GetShortStatus(attendance.Status)
+                            Shift = shift,
+                            ClockIn = attendance?.ClockIn,
+                            ClockOut = attendance?.ClockOut,
+                            Status = displayStatus
                         };
 
-                        result.Add(reportItem);
-                    }
-                }
-
-                System.Diagnostics.Debug.WriteLine($"✅ Tổng cộng {result.Count} records trong báo cáo chi tiết");
-                return result;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"❌ Lỗi GetDetailedAttendanceReportAsync: {ex.Message}");
-                return new List<DetailedAttendanceReportViewModel>();
-            }
-        }
-
-        // ✅ Lấy báo cáo tháng với cột động (giữ nguyên cho tổng quan)
-        public async Task<List<MonthlyAttendanceReportViewModel>> GetMonthlyAttendanceReportAsync(int managerId, DateTime month)
-        {
-            try
-            {
-                var manager = await GetManagerInfoAsync(managerId);
-                if (manager == null)
-                {
-                    return new List<MonthlyAttendanceReportViewModel>();
-                }
-
-                var startDate = new DateTime(month.Year, month.Month, 1);
-                var endDate = startDate.AddMonths(1).AddDays(-1);
-
-                var employees = await _context.Employees
-                    .Where(e => e.DepartmentId == manager.DepartmentId &&
-                               e.Status == true &&
-                               e.RoleId == 1 &&
-                               e.UserId != managerId)
-                    .OrderBy(e => e.Name)
-                    .ToListAsync();
-
-                var attendances = await _context.Attendances
-                    .Where(a => employees.Select(e => e.UserId).Contains(a.UserId) &&
-                               a.Date >= startDate && a.Date <= endDate)
-                    .ToListAsync();
-
-                var result = new List<MonthlyAttendanceReportViewModel>();
-
-                foreach (var employee in employees)
-                {
-                    var employeeAttendances = attendances
-                        .Where(a => a.UserId == employee.UserId)
-                        .ToList();
-
-                    var reportItem = new MonthlyAttendanceReportViewModel
-                    {
-                        UserId = employee.UserId,
-                        EmployeeName = employee.Name,
-                        Position = employee.Position,
-                        Phone = employee.Phone ?? "N/A",
-                        DailyAttendances = new Dictionary<int, string>()
-                    };
-
-                    // Tạo dictionary cho từng ngày trong tháng
-                    for (int day = 1; day <= DateTime.DaysInMonth(month.Year, month.Month); day++)
-                    {
-                        var dayAttendances = employeeAttendances
-                            .Where(a => a.Date.Day == day)
-                            .ToList();
-
-                        if (dayAttendances.Any())
+                        // ✅ ÁP DỤNG FILTER STATUS
+                        bool shouldInclude = true;
+                        if (statusFilter != "All")
                         {
-                            // ✅ Hiển thị cả 2 ca: S=Sáng, C=Chiều
-                            var morningAttendance = dayAttendances.FirstOrDefault(a => a.Shift == "Sáng");
-                            var afternoonAttendance = dayAttendances.FirstOrDefault(a => a.Shift == "Chiều");
-
-                            var statusText = "";
-                            if (morningAttendance != null)
+                            // Filter theo status cụ thể
+                            if (statusFilter == "Đúng giờ")
                             {
-                                statusText += $"S:{GetShortStatus(morningAttendance.Status)}";
+                                shouldInclude = displayStatus.Contains("Đúng giờ") && !displayStatus.Contains("Chưa check out");
                             }
-                            if (afternoonAttendance != null)
+                            else if (statusFilter == "Đi trễ")
                             {
-                                if (!string.IsNullOrEmpty(statusText)) statusText += "/";
-                                statusText += $"C:{GetShortStatus(afternoonAttendance.Status)}";
+                                shouldInclude = displayStatus.Contains("Đi trễ") && !displayStatus.Contains("Chưa check out");
                             }
+                            else if (statusFilter == "Về sớm")
+                            {
+                                shouldInclude = displayStatus.Contains("Về sớm");
+                            }
+                            else if (statusFilter == "Vắng mặt")
+                            {
+                                shouldInclude = displayStatus == "Vắng mặt";
+                            }
+                            else if (statusFilter == "Chưa check out")
+                            {
+                                shouldInclude = displayStatus.Contains("Chưa check out");
+                            }
+                            else
+                            {
+                                // Filter khác
+                                shouldInclude = displayStatus.Contains(statusFilter);
+                            }
+                        }
 
-                            reportItem.DailyAttendances[day] = statusText;
+                        // ✅ CHỈ THÊM VÀO KẾT QUẢ NẾU PASS FILTER
+                        if (shouldInclude)
+                        {
+                            result.Add(reportItem);
+                            System.Diagnostics.Debug.WriteLine($"✅ Đã thêm: {employee.Name} - {shift} - {displayStatus}");
                         }
                         else
                         {
-                            reportItem.DailyAttendances[day] = "";
+                            System.Diagnostics.Debug.WriteLine($"❌ Bị filter: {employee.Name} - {shift} - {displayStatus}");
                         }
                     }
-
-                    result.Add(reportItem);
                 }
 
+                System.Diagnostics.Debug.WriteLine($"✅ Tổng cộng {result.Count} records sau filter");
                 return result;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"❌ Lỗi GetMonthlyAttendanceReportAsync: {ex.Message}");
-                return new List<MonthlyAttendanceReportViewModel>();
+                System.Diagnostics.Debug.WriteLine($"❌ Lỗi GetDailyAttendanceReportAsync: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"❌ Stack trace: {ex.StackTrace}");
+                return new List<DailyAttendanceReportViewModel>();
             }
         }
 
@@ -220,10 +189,10 @@ namespace EmployeeManagementSystem.Controller
 
                 var statuses = await _context.Attendances
                     .Where(a => _context.Employees
-                        .Any(e => e.UserId == a.UserId && 
-                                 e.DepartmentId == manager.DepartmentId && 
-                                 e.Status == true && 
-                                 e.RoleId == 1 && 
+                        .Any(e => e.UserId == a.UserId &&
+                                 e.DepartmentId == manager.DepartmentId &&
+                                 e.Status == true &&
+                                 e.RoleId == 1 &&
                                  e.UserId != managerId))
                     .Select(a => a.Status)
                     .Distinct()
@@ -238,59 +207,17 @@ namespace EmployeeManagementSystem.Controller
                 return new List<string>();
             }
         }
-
-        // Chuyển đổi status thành ký hiệu ngắn
-        private string GetShortStatus(string status)
-        {
-            return status switch
-            {
-                "Đúng giờ" => "P",
-                "Đi trễ" => "L",
-                "Về sớm" => "E",
-                "Đi trễ và về sớm" => "LE",
-                _ => "A"
-            };
-        }
-
-        private int GetWorkingDaysInMonth(DateTime month)
-        {
-            var startDate = new DateTime(month.Year, month.Month, 1);
-            var endDate = startDate.AddMonths(1).AddDays(-1);
-            int workingDays = 0;
-
-            for (var date = startDate; date <= endDate; date = date.AddDays(1))
-            {
-                if (date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday)
-                    workingDays++;
-            }
-
-            return workingDays;
-        }
     }
 
-    // ✅ ViewModel mới cho báo cáo chi tiết theo ca
-    public class DetailedAttendanceReportViewModel
+    // ViewModel cho báo cáo theo ngày
+    public class DailyAttendanceReportViewModel
     {
         public int UserId { get; set; }
         public string EmployeeName { get; set; }
         public string Position { get; set; }
-        public string Phone { get; set; }
-        public DateTime Date { get; set; }
         public string Shift { get; set; }
         public DateTime? ClockIn { get; set; }
         public DateTime? ClockOut { get; set; }
         public string Status { get; set; }
-        public string ShortStatus { get; set; }
     }
-
-    // ViewModel cho báo cáo tháng với cột động
-    public class MonthlyAttendanceReportViewModel
-    {
-        public int UserId { get; set; }
-        public string EmployeeName { get; set; }
-        public string Position { get; set; }
-        public string Phone { get; set; }
-        public Dictionary<int, string> DailyAttendances { get; set; }
-    }
-
 }
