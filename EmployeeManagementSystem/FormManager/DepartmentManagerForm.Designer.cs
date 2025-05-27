@@ -259,6 +259,7 @@
             Controls.Add(pnlDesktopPane);
             Controls.Add(panel1);
             Controls.Add(pnlMenu);
+            MaximizeBox = false;
             Name = "DepartmentManagerForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DepartmentManagerForm";

@@ -155,5 +155,25 @@ namespace EmployeeManagementSystem.Controller
         {
             return _context.Employees.FirstOrDefault(e => e.UserId == userId);
         }
+        public bool PromoteEmployee(int userId)
+        {
+            try
+            {
+                var employee = _context.Employees.FirstOrDefault(e => e.UserId == userId);
+                if (employee == null)
+                    throw new ArgumentException("Nhân viên không tồn tại.");
+
+                if (employee.RoleId != 1)
+                    throw new ArgumentException("Chỉ có thể thăng chức cho nhân viên có vai trò Employee.");
+
+                employee.RoleId = 2; // Cập nhật thành Manager
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi thăng chức nhân viên: {ex.Message}");
+            }
+        }
     }
 }

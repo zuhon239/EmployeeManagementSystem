@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hSAX94E8mUs=",
+  "dgSpecHash": "2De3cKmSDKM=",
   "success": true,
   "projectFilePath": "S:\\đại học\\Phát triển desktop\\đồ án cuối kì\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj",
   "expectedPackageFiles": [
@@ -57,7 +57,8 @@
     "C:\\Users\\vuxhng\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\vuxhng\\.nuget\\packages\\system.text.encodings.web\\9.0.5\\system.text.encodings.web.9.0.5.nupkg.sha512",
     "C:\\Users\\vuxhng\\.nuget\\packages\\system.text.json\\9.0.5\\system.text.json.9.0.5.nupkg.sha512",
-    "C:\\Users\\vuxhng\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
+    "C:\\Users\\vuxhng\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
+    "C:\\Users\\vuxhng\\.nuget\\packages\\winforms.datavisualization\\1.10.0\\winforms.datavisualization.1.10.0.nupkg.sha512"
   ],
   "logs": []
 }

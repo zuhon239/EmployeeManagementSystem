@@ -29,15 +29,8 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
-            clUserID = new DataGridViewTextBoxColumn();
-            clName = new DataGridViewTextBoxColumn();
-            clGender = new DataGridViewTextBoxColumn();
-            clDateofBirth = new DataGridViewTextBoxColumn();
-            clPhone = new DataGridViewTextBoxColumn();
-            clPosition = new DataGridViewTextBoxColumn();
-            clHireDate = new DataGridViewTextBoxColumn();
-            clUpdateRole = new DataGridViewTextBoxColumn();
             pnlData = new Panel();
             comboBox1 = new ComboBox();
             lblHeader = new Label();
@@ -60,6 +53,14 @@
             txtName = new TextBox();
             lblID = new Label();
             txtID = new TextBox();
+            clUserID = new DataGridViewTextBoxColumn();
+            clName = new DataGridViewTextBoxColumn();
+            clGender = new DataGridViewTextBoxColumn();
+            clDateofBirth = new DataGridViewTextBoxColumn();
+            clPhone = new DataGridViewTextBoxColumn();
+            clPosition = new DataGridViewTextBoxColumn();
+            clHireDate = new DataGridViewTextBoxColumn();
+            clUpdateRole = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             pnlData.SuspendLayout();
             SuspendLayout();
@@ -85,64 +86,6 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(839, 271);
             dataGridView1.TabIndex = 0;
-            // 
-            // clUserID
-            // 
-            clUserID.Frozen = true;
-            clUserID.HeaderText = "ID";
-            clUserID.Name = "clUserID";
-            clUserID.ReadOnly = true;
-            clUserID.Width = 70;
-            // 
-            // clName
-            // 
-            clName.Frozen = true;
-            clName.HeaderText = "Name";
-            clName.Name = "clName";
-            clName.ReadOnly = true;
-            clName.Width = 180;
-            // 
-            // clGender
-            // 
-            clGender.Frozen = true;
-            clGender.HeaderText = "Gender";
-            clGender.Name = "clGender";
-            clGender.ReadOnly = true;
-            // 
-            // clDateofBirth
-            // 
-            clDateofBirth.Frozen = true;
-            clDateofBirth.HeaderText = "DateOfBirth";
-            clDateofBirth.Name = "clDateofBirth";
-            clDateofBirth.ReadOnly = true;
-            // 
-            // clPhone
-            // 
-            clPhone.Frozen = true;
-            clPhone.HeaderText = "Phone";
-            clPhone.Name = "clPhone";
-            clPhone.ReadOnly = true;
-            // 
-            // clPosition
-            // 
-            clPosition.Frozen = true;
-            clPosition.HeaderText = "Position";
-            clPosition.Name = "clPosition";
-            clPosition.ReadOnly = true;
-            // 
-            // clHireDate
-            // 
-            clHireDate.Frozen = true;
-            clHireDate.HeaderText = "HireDate";
-            clHireDate.Name = "clHireDate";
-            clHireDate.ReadOnly = true;
-            // 
-            // clUpdateRole
-            // 
-            clUpdateRole.Frozen = true;
-            clUpdateRole.HeaderText = "Promote";
-            clUpdateRole.Name = "clUpdateRole";
-            clUpdateRole.ReadOnly = true;
             // 
             // pnlData
             // 
@@ -334,6 +277,67 @@
             txtID.ReadOnly = true;
             txtID.Size = new Size(130, 26);
             txtID.TabIndex = 23;
+            // 
+            // clUserID
+            // 
+            clUserID.Frozen = true;
+            clUserID.HeaderText = "ID";
+            clUserID.Name = "clUserID";
+            clUserID.ReadOnly = true;
+            clUserID.Width = 70;
+            // 
+            // clName
+            // 
+            clName.Frozen = true;
+            clName.HeaderText = "Name";
+            clName.Name = "clName";
+            clName.ReadOnly = true;
+            clName.Width = 180;
+            // 
+            // clGender
+            // 
+            clGender.Frozen = true;
+            clGender.HeaderText = "Gender";
+            clGender.Name = "clGender";
+            clGender.ReadOnly = true;
+            // 
+            // clDateofBirth
+            // 
+            clDateofBirth.Frozen = true;
+            clDateofBirth.HeaderText = "DateOfBirth";
+            clDateofBirth.Name = "clDateofBirth";
+            clDateofBirth.ReadOnly = true;
+            // 
+            // clPhone
+            // 
+            clPhone.Frozen = true;
+            clPhone.HeaderText = "Phone";
+            clPhone.Name = "clPhone";
+            clPhone.ReadOnly = true;
+            // 
+            // clPosition
+            // 
+            clPosition.Frozen = true;
+            clPosition.HeaderText = "Position";
+            clPosition.Name = "clPosition";
+            clPosition.ReadOnly = true;
+            // 
+            // clHireDate
+            // 
+            clHireDate.Frozen = true;
+            clHireDate.HeaderText = "HireDate";
+            clHireDate.Name = "clHireDate";
+            clHireDate.ReadOnly = true;
+            // 
+            // clUpdateRole
+            // 
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            clUpdateRole.DefaultCellStyle = dataGridViewCellStyle2;
+            clUpdateRole.Frozen = true;
+            clUpdateRole.HeaderText = "Promote";
+            clUpdateRole.Name = "clUpdateRole";
+            clUpdateRole.ReadOnly = true;
+            clUpdateRole.Resizable = DataGridViewTriState.True;
             // 
             // EmployeeAdminForm
             // 

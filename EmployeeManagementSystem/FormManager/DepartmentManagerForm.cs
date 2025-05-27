@@ -179,7 +179,7 @@ namespace EmployeeManagementSystem.FormManager
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormManager.DashboardManagerForm(), sender);
+            OpenChildForm(new FormManager.DashboardManagerForm(_userId), sender);
         }
 
         private void btnManager_Click(object sender, EventArgs e)

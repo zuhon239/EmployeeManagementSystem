@@ -103,7 +103,6 @@ namespace EmployeeManagementSystem
 
         private void BtnLeaveRequest_Click(object sender, EventArgs e)
         {
-            // Mở form xin nghỉ phép
             var leaveRequestForm = new LeaveRequestForm(_userId, _leaveRequestController, _context);
             leaveRequestForm.ShowDialog();
         }
@@ -117,7 +116,6 @@ namespace EmployeeManagementSystem
         {
             try
             {
-                // Xác nhận đăng xuất
                 var result = MessageBox.Show(
                     "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?",
                     "Xác nhận đăng xuất",
@@ -127,13 +125,13 @@ namespace EmployeeManagementSystem
 
                 if (result == DialogResult.Yes)
                 {
-                    // Ẩn form hiện tại
+                    
                     this.Hide();
 
-                    // Tạo và hiển thị form đăng nhập mới
                     using (var serviceProvider = new ServiceCollection()
                         .AddDbContext<EmployeeManagementContext>()
                         .AddScoped<LeaveRequestController>()
+                        .AddScoped<AttendanceController>()
                         .AddScoped<LoginController>()
                         .AddScoped<LoginForm>()
                         .BuildServiceProvider())
@@ -142,7 +140,6 @@ namespace EmployeeManagementSystem
                         loginForm.ShowDialog();
                     }
 
-                    // Đóng form hiện tại sau khi đăng xuất
                     this.Close();
                 }
             }

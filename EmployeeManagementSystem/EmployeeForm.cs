@@ -89,6 +89,7 @@ namespace EmployeeManagementSystem
                     using (var serviceProvider = new ServiceCollection()
                         .AddDbContext<EmployeeManagementContext>()
                         .AddScoped<LeaveRequestController>()
+                        .AddScoped<AttendanceController>()
                         .AddScoped<LoginController>()
                         .AddScoped<LoginForm>()
                         .AddScoped<AttendanceController>()

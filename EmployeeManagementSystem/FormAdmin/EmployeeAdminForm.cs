@@ -30,10 +30,14 @@ namespace EmployeeManagementSystem.FormAdmin
             LoadEmployee();
             comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
             dataGridView1.CellClick += DataGridView1_CellClick;
+            dataGridView1.CellContentClick += DataGridView1_CellContentClick;
+            dataGridView1.CellMouseEnter += DataGridView1_CellMouseEnter; 
+            dataGridView1.CellMouseLeave += DataGridView1_CellMouseLeave;
             cbGender.Items.AddRange(new[] { "Male", "Female" });
             btnThem.Click += BtnThem_Click;
             button1.Click += BtnSua_Click;
             btnSaThai.Click += BtnSaThai_Click;
+         
         }
         private void LoadEmployee()
         {         
@@ -168,6 +172,22 @@ namespace EmployeeManagementSystem.FormAdmin
                 }
             }
         }
+        private void DataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns["clUpdateRole"].Index && e.RowIndex >= 0)
+            {
+                dataGridView1.Cursor = Cursors.Hand;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.ForeColor = Color.Blue;
+            }
+        }
+        private void DataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns["clUpdateRole"].Index && e.RowIndex >= 0)
+            {
+                dataGridView1.Cursor = Cursors.Default;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.ForeColor = Color.Black;
+            }
+        }
         private void BtnThem_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show(
@@ -279,6 +299,37 @@ namespace EmployeeManagementSystem.FormAdmin
                 }
             }
 
+        }
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["clUpdateRole"].Index)
+            {
+                var selectedEmployeeId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["clUserId"].Value);
+                var result = MessageBox.Show(
+                    "Xác nhận thăng chức nhân viên này thành Manager?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        if (_employeecontroller.PromoteEmployee(selectedEmployeeId))
+                        {
+                            MessageBox.Show("Thăng chức nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            int currentIndex = comboBox1.SelectedIndex;
+                            comboBox1.SelectedIndex = currentIndex; // Làm mới danh sách
+                            LoadEmployee();
+                            ClearInputs();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi khi thăng chức nhân viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
         private void ClearInputs()
         {
