@@ -21,11 +21,11 @@ namespace EmployeeManagementSystem.Model
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; } // Ngày chấm công
 
-        [Required]
+   
         [DataType(DataType.DateTime)]
         public DateTime? ClockIn { get; set; } // Giờ vào
 
-        [Required]
+ 
         [DataType(DataType.DateTime)]
         public DateTime? ClockOut { get; set; } // Giờ ra
 

@@ -95,7 +95,7 @@ namespace EmployeeManagementSystem.Controller
                     return "Phải kết nối WiFi công ty!";
 
                 // Thời gian test: 7h00 ca sáng
-                DateTime now = new DateTime(2025, 5, 27, 7, 0, 0);
+                DateTime now = new DateTime(2025, 5, 28, 6, 0, 0);
                 DateTime today = now.Date;
 
                 // ✅ Xác định ca hiện tại

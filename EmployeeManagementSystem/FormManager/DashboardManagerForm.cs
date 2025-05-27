@@ -202,27 +202,55 @@ namespace EmployeeManagementSystem.FormManager
 
         private void UpdateSalaryChart(DateTime fromDate, DateTime toDate, IQueryable<Employee> employeesQuery)
         {
-            chartSalary.Series.Clear();
+            chartSalary.Series.Clear(); 
+            chartSalary.Titles.Clear();
             var series = new Series("TotalSalary")
             {
-                ChartType = SeriesChartType.Column
+                ChartType = SeriesChartType.Column,
+                IsVisibleInLegend = false // Tắt legend vì mỗi cột đã có nhãn nhân viên
             };
 
+            // Lấy dữ liệu lương của từng nhân viên
             var payrolls = _context.Payrolls
                 .Where(p => p.Month >= fromDate && p.Month <= toDate)
                 .Where(p => employeesQuery.Select(e => e.UserId).Contains(p.UserId))
-                .GroupBy(p => p.Month)
-                .Select(g => new { Month = g.Key, Total = g.Sum(p => p.TotalSalary) })
-                .OrderBy(g => g.Month)
+                .GroupBy(p => p.UserId)
+                .Select(g => new
+                {
+                    UserId = g.Key,
+                    Total = g.Sum(p => p.TotalSalary)
+                })
                 .ToList();
 
-            foreach (var item in payrolls)
+            // Lấy danh sách nhân viên để lấy tên
+            var employeeNames = _context.Employees
+                .Where(e => employeesQuery.Select(e => e.UserId).Contains(e.UserId))
+                .Select(e => new { e.UserId, e.Name })
+                .ToDictionary(e => e.UserId, e => e.Name);
+
+            // Thêm dữ liệu vào series
+            foreach (var payroll in payrolls)
             {
-                series.Points.AddXY(item.Month.ToString("MMM yyyy"), item.Total);
+                string employeeName = employeeNames.ContainsKey(payroll.UserId) ? employeeNames[payroll.UserId] : $"ID {payroll.UserId}";
+                series.Points.AddXY(employeeName, payroll.Total);
+            }
+
+            // Nếu không có dữ liệu, hiển thị thông báo trên biểu đồ
+            if (payrolls.Count == 0)
+            {
+                series.Points.AddXY("Không có dữ liệu", 0);
+                series.Points[0].Color = System.Drawing.Color.Gray;
+                series.Points[0].ToolTip = "Không có bản ghi lương trong khoảng thời gian này";
             }
 
             chartSalary.Series.Add(series);
-            chartSalary.Titles[0].Text = "Total Salary by Month";
+            chartSalary.Titles.Add($"Tổng lương nhân viên từ {fromDate:dd/MM/yyyy} đến {toDate:dd/MM/yyyy}");
+
+            // Cấu hình trục X để hiển thị tên nhân viên rõ ràng
+            chartSalary.ChartAreas[0].AxisX.Interval = 1; // Đảm bảo mỗi cột đều hiển thị nhãn
+            chartSalary.ChartAreas[0].AxisX.LabelStyle.Angle = -45; // Xoay nhãn 45 độ để tránh chồng lấn
+            chartSalary.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+            chartSalary.ChartAreas[0].AxisY.Title = "Tổng lương (VND)";
         }
 
         private void UpdatePerformanceDistributionChart(DateTime fromDate, DateTime toDate, string employeeName)
