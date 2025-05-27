@@ -40,13 +40,34 @@ namespace EmployeeManagementSystem.FormManager
         }
         private void InitializeEvents()
         {
-            btnToday.Click += (s, e) => LoadData(DateTime.Today, DateTime.Today);
-            btnLast7days.Click += (s, e) => LoadData(DateTime.Today.AddDays(-7), DateTime.Today);
-            btnLast30days.Click += (s, e) => LoadData(DateTime.Today.AddDays(-30), DateTime.Today);
-            btnThisMonth.Click += (s, e) => LoadData(new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1), DateTime.Today);
+            btnToday.Click += (s, e) =>
+            {
+                dtpFrom.Value = DateTime.Today;
+                dtpTo.Value = DateTime.Today;
+                LoadData(dtpFrom.Value, dtpTo.Value);
+            };
+            btnLast7days.Click += (s, e) =>
+            {
+                dtpFrom.Value = DateTime.Today.AddDays(-7);
+                dtpTo.Value = DateTime.Today.AddDays(1).AddTicks(-1); // Bao gồm toàn bộ ngày hiện tại
+                LoadData(dtpFrom.Value, dtpTo.Value);
+            };
+            btnLast30days.Click += (s, e) =>
+            {
+                dtpFrom.Value = DateTime.Today.AddDays(-30);
+                dtpTo.Value = DateTime.Today.AddDays(1).AddTicks(-1); // Bao gồm toàn bộ ngày hiện tại
+                LoadData(dtpFrom.Value, dtpTo.Value);
+            };
+            btnThisMonth.Click += (s, e) =>
+            {
+                dtpFrom.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+                dtpTo.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month), 23, 59, 59); // Ngày cuối tháng, 23:59:59
+                LoadData(dtpFrom.Value, dtpTo.Value);
+            };
             dtpFrom.ValueChanged += (s, e) => LoadData(dtpFrom.Value, dtpTo.Value);
             dtpTo.ValueChanged += (s, e) => LoadData(dtpFrom.Value, dtpTo.Value);
         }
+
         private void LoadData(DateTime fromDate, DateTime toDate)
         {
             // Đảm bảo ngày kết thúc không nhỏ hơn ngày bắt đầu
@@ -59,14 +80,15 @@ namespace EmployeeManagementSystem.FormManager
             // Tìm phòng ban của manager
             var department = _context.Users
                .OfType<Employee>()
-               .AsNoTracking().Include(e => e.Department)
+               .AsNoTracking()
+               .Include(e => e.Department)
                .Select(e => new
                {
                    e.UserId,
                    e.DepartmentId,
                    e.Department.Name
                })
-                                  .FirstOrDefault(e => e.UserId == _currentManagerId); ;
+               .FirstOrDefault(e => e.UserId == _currentManagerId);
 
             if (department == null)
             {
@@ -95,19 +117,19 @@ namespace EmployeeManagementSystem.FormManager
 
             // Số lượt chấm công
             var attendanceCount = _context.Attendances
-                .Where(a => a.Date >= fromDate && a.Date <= toDate)
+                .Where(a => a.Date >= fromDate.Date && a.Date <= toDate.Date)
                 .Count(a => employeesQuery.Select(e => e.UserId).Contains(a.UserId));
             lblAmountAttendance.Text = attendanceCount.ToString();
 
             // Yêu cầu nghỉ phép đang chờ phê duyệt
-            var pendingLeaveRequests = _context.LeaveRequests               
-                .Where(lr => lr.Status == "Pending" && lr.StartDate >= fromDate && lr.EndDate <= toDate)
+            var pendingLeaveRequests = _context.LeaveRequests
+                .Where(lr => lr.Status == "Pending" && lr.StartDate.Date >= fromDate.Date && lr.EndDate.Date <= toDate.Date)
                 .Count(lr => employeesQuery.Select(e => e.UserId).Contains(lr.UserId));
             lblPendingAmount.Text = pendingLeaveRequests.ToString();
 
             // Tổng lương
             var totalSalary = _context.Payrolls
-                .Where(p => p.Month >= fromDate && p.Month <= toDate)
+                .Where(p => p.Month >= fromDate.Date && p.Month <= toDate.Date)
                 .Where(p => employeesQuery.Select(e => e.UserId).Contains(p.UserId))
                 .Sum(p => p.TotalSalary);
             label2.Text = totalSalary.ToString("C");

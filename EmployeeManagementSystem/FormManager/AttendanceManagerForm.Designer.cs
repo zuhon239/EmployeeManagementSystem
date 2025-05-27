@@ -34,108 +34,138 @@
             lblMonth = new Label();
             dgvAttendanceReport = new DataGridView();
             lblLegend = new Label();
-
-            // Filter controls
             cmbShiftFilter = new ComboBox();
             cmbStatusFilter = new ComboBox();
             lblShiftFilter = new Label();
             lblStatusFilter = new Label();
             btnToggleView = new Button();
-
             ((System.ComponentModel.ISupportInitialize)dgvAttendanceReport).BeginInit();
             SuspendLayout();
-
-            // Form
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            // 
+            // lblDepartmentInfo
+            // 
+            lblDepartmentInfo.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
+            lblDepartmentInfo.Location = new Point(23, 25);
+            lblDepartmentInfo.Name = "lblDepartmentInfo";
+            lblDepartmentInfo.Size = new Size(914, 38);
+            lblDepartmentInfo.TabIndex = 0;
+            lblDepartmentInfo.Text = "Thông tin phòng ban";
+            // 
+            // dtpMonth
+            // 
+            dtpMonth.CustomFormat = "MM/yyyy";
+            dtpMonth.Format = DateTimePickerFormat.Custom;
+            dtpMonth.Location = new Point(126, 76);
+            dtpMonth.Margin = new Padding(3, 4, 3, 4);
+            dtpMonth.Name = "dtpMonth";
+            dtpMonth.Size = new Size(114, 26);
+            dtpMonth.TabIndex = 2;
+            dtpMonth.Value = new DateTime(2025, 5, 27, 21, 16, 50, 37);
+            dtpMonth.ValueChanged += dtpMonth_ValueChanged;
+            // 
+            // lblMonth
+            // 
+            lblMonth.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            lblMonth.Location = new Point(23, 76);
+            lblMonth.Name = "lblMonth";
+            lblMonth.Size = new Size(91, 32);
+            lblMonth.TabIndex = 1;
+            lblMonth.Text = "Tháng/Năm:";
+            // 
+            // dgvAttendanceReport
+            // 
+            dgvAttendanceReport.AllowUserToAddRows = false;
+            dgvAttendanceReport.AllowUserToDeleteRows = false;
+            dgvAttendanceReport.ColumnHeadersHeight = 30;
+            dgvAttendanceReport.Location = new Point(23, 165);
+            dgvAttendanceReport.Margin = new Padding(3, 4, 3, 4);
+            dgvAttendanceReport.Name = "dgvAttendanceReport";
+            dgvAttendanceReport.ReadOnly = true;
+            dgvAttendanceReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAttendanceReport.Size = new Size(1149, 570);
+            dgvAttendanceReport.TabIndex = 9;
+            // 
+            // lblLegend
+            // 
+            lblLegend.Font = new Font("Microsoft Sans Serif", 9F);
+            lblLegend.Location = new Point(23, 120);
+            lblLegend.Name = "lblLegend";
+            lblLegend.Size = new Size(914, 38);
+            lblLegend.TabIndex = 8;
+            lblLegend.Text = "Ký hiệu: P=Đúng giờ, L=Đi trễ, E=Về sớm, LE=Đi trễ&Về sớm, S=Sáng, C=Chiều, Trống=Vắng mặt";
+            // 
+            // cmbShiftFilter
+            // 
+            cmbShiftFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbShiftFilter.Location = new Point(320, 76);
+            cmbShiftFilter.Margin = new Padding(3, 4, 3, 4);
+            cmbShiftFilter.Name = "cmbShiftFilter";
+            cmbShiftFilter.Size = new Size(91, 27);
+            cmbShiftFilter.TabIndex = 4;
+            cmbShiftFilter.SelectedIndexChanged += cmbShiftFilter_SelectedIndexChanged;
+            // 
+            // cmbStatusFilter
+            // 
+            cmbStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatusFilter.Location = new Point(526, 76);
+            cmbStatusFilter.Margin = new Padding(3, 4, 3, 4);
+            cmbStatusFilter.Name = "cmbStatusFilter";
+            cmbStatusFilter.Size = new Size(137, 27);
+            cmbStatusFilter.TabIndex = 6;
+            cmbStatusFilter.SelectedIndexChanged += cmbStatusFilter_SelectedIndexChanged;
+            // 
+            // lblShiftFilter
+            // 
+            lblShiftFilter.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            lblShiftFilter.Location = new Point(263, 76);
+            lblShiftFilter.Name = "lblShiftFilter";
+            lblShiftFilter.Size = new Size(46, 32);
+            lblShiftFilter.TabIndex = 3;
+            lblShiftFilter.Text = "Ca:";
+            // 
+            // lblStatusFilter
+            // 
+            lblStatusFilter.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            lblStatusFilter.Location = new Point(434, 76);
+            lblStatusFilter.Name = "lblStatusFilter";
+            lblStatusFilter.Size = new Size(80, 32);
+            lblStatusFilter.TabIndex = 5;
+            lblStatusFilter.Text = "Trạng thái:";
+            // 
+            // btnToggleView
+            // 
+            btnToggleView.BackColor = Color.FromArgb(255, 193, 7);
+            btnToggleView.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            btnToggleView.ForeColor = Color.Black;
+            btnToggleView.Location = new Point(686, 73);
+            btnToggleView.Margin = new Padding(3, 4, 3, 4);
+            btnToggleView.Name = "btnToggleView";
+            btnToggleView.Size = new Size(114, 38);
+            btnToggleView.TabIndex = 7;
+            btnToggleView.Text = "Xem Chi Tiết";
+            btnToggleView.UseVisualStyleBackColor = false;
+            btnToggleView.Click += btnToggleView_Click;
+            // 
+            // AttendanceManagerForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 600); // ✅ Giảm height vì bỏ statistics
+            ClientSize = new Size(1184, 760);
+            Controls.Add(lblDepartmentInfo);
+            Controls.Add(lblMonth);
+            Controls.Add(dtpMonth);
+            Controls.Add(lblShiftFilter);
+            Controls.Add(cmbShiftFilter);
+            Controls.Add(lblStatusFilter);
+            Controls.Add(cmbStatusFilter);
+            Controls.Add(btnToggleView);
+            Controls.Add(lblLegend);
+            Controls.Add(dgvAttendanceReport);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AttendanceManagerForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Báo Cáo Chấm Công Phòng Ban";
             Load += AttendanceManagerForm_Load;
-
-            // lblDepartmentInfo
-            lblDepartmentInfo.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
-            lblDepartmentInfo.Location = new Point(20, 20);
-            lblDepartmentInfo.Size = new Size(800, 30);
-            lblDepartmentInfo.Text = "Thông tin phòng ban";
-
-            // lblMonth
-            lblMonth.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            lblMonth.Location = new Point(20, 60);
-            lblMonth.Size = new Size(80, 25);
-            lblMonth.Text = "Tháng/Năm:";
-
-            // dtpMonth
-            dtpMonth.Format = DateTimePickerFormat.Custom;
-            dtpMonth.CustomFormat = "MM/yyyy";
-            dtpMonth.Location = new Point(110, 60);
-            dtpMonth.Size = new Size(100, 25);
-            dtpMonth.Value = DateTime.Now;
-            dtpMonth.ValueChanged += dtpMonth_ValueChanged;
-
-            // ✅ lblShiftFilter
-            lblShiftFilter.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            lblShiftFilter.Location = new Point(230, 60);
-            lblShiftFilter.Size = new Size(40, 25);
-            lblShiftFilter.Text = "Ca:";
-
-            // ✅ cmbShiftFilter
-            cmbShiftFilter.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbShiftFilter.Location = new Point(280, 60);
-            cmbShiftFilter.Size = new Size(80, 25);
-            cmbShiftFilter.SelectedIndexChanged += cmbShiftFilter_SelectedIndexChanged;
-
-            // ✅ lblStatusFilter
-            lblStatusFilter.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            lblStatusFilter.Location = new Point(380, 60);
-            lblStatusFilter.Size = new Size(70, 25);
-            lblStatusFilter.Text = "Trạng thái:";
-
-            // ✅ cmbStatusFilter
-            cmbStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbStatusFilter.Location = new Point(460, 60);
-            cmbStatusFilter.Size = new Size(120, 25);
-            cmbStatusFilter.SelectedIndexChanged += cmbStatusFilter_SelectedIndexChanged;
-
-            // ✅ btnToggleView
-            btnToggleView.BackColor = Color.FromArgb(255, 193, 7);
-            btnToggleView.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            btnToggleView.ForeColor = Color.Black;
-            btnToggleView.Location = new Point(600, 58);
-            btnToggleView.Size = new Size(100, 30);
-            btnToggleView.Text = "Xem Chi Tiết";
-            btnToggleView.UseVisualStyleBackColor = false;
-            btnToggleView.Click += btnToggleView_Click;
-
-            // ✅ Bỏ btnRefresh
-
-            // lblLegend
-            lblLegend.Font = new Font("Microsoft Sans Serif", 9F);
-            lblLegend.Location = new Point(20, 95);
-            lblLegend.Size = new Size(800, 30);
-            lblLegend.Text = "Ký hiệu: P=Đúng giờ, L=Đi trễ, E=Về sớm, LE=Đi trễ&Về sớm, S=Sáng, C=Chiều, Trống=Vắng mặt";
-
-            // dgvAttendanceReport - ✅ Tăng height vì bỏ statistics
-            dgvAttendanceReport.AllowUserToAddRows = false;
-            dgvAttendanceReport.AllowUserToDeleteRows = false;
-            dgvAttendanceReport.Location = new Point(20, 130);
-            dgvAttendanceReport.ReadOnly = true;
-            dgvAttendanceReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAttendanceReport.Size = new Size(1160, 450); // ✅ Tăng height
-            dgvAttendanceReport.ColumnHeadersHeight = 30;
-            dgvAttendanceReport.ScrollBars = ScrollBars.Both;
-
-            // ✅ Bỏ gbStatistics và tất cả label statistics
-
-            // Add controls to form
-            Controls.AddRange(new Control[] {
-                lblDepartmentInfo, lblMonth, dtpMonth,
-                lblShiftFilter, cmbShiftFilter, lblStatusFilter, cmbStatusFilter,
-                btnToggleView, lblLegend, dgvAttendanceReport
-                // ✅ Bỏ gbStatistics
-            });
-
             ((System.ComponentModel.ISupportInitialize)dgvAttendanceReport).EndInit();
             ResumeLayout(false);
         }

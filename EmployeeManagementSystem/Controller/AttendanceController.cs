@@ -17,7 +17,7 @@ namespace EmployeeManagementSystem.Controller
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _allowedBSSIDs = new List<string>
             {
-                "24:0B:2A:9B:E9:15"
+                "64:6c:80:ff:9a:39"
             };
         }
 
