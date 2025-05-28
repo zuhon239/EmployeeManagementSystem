@@ -32,6 +32,11 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             comboBox1 = new ComboBox();
             dataGridView1 = new DataGridView();
+            pnlDetail = new Panel();
+            lblReason = new Label();
+            lblName = new Label();
+            btnAccept = new Button();
+            btnReject = new Button();
             clLeave_Id = new DataGridViewTextBoxColumn();
             clUserID = new DataGridViewTextBoxColumn();
             clName = new DataGridViewTextBoxColumn();
@@ -40,11 +45,6 @@
             clEndDate = new DataGridViewTextBoxColumn();
             clShift = new DataGridViewTextBoxColumn();
             clDetail = new DataGridViewTextBoxColumn();
-            pnlDetail = new Panel();
-            lblReason = new Label();
-            lblName = new Label();
-            btnAccept = new Button();
-            btnReject = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             pnlDetail.SuspendLayout();
             SuspendLayout();
@@ -89,62 +89,6 @@
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView1.Size = new Size(878, 264);
             dataGridView1.TabIndex = 2;
-            // 
-            // clLeave_Id
-            // 
-            clLeave_Id.Frozen = true;
-            clLeave_Id.HeaderText = "Leave_ID";
-            clLeave_Id.Name = "clLeave_Id";
-            clLeave_Id.ReadOnly = true;
-            // 
-            // clUserID
-            // 
-            clUserID.Frozen = true;
-            clUserID.HeaderText = "User_ID";
-            clUserID.Name = "clUserID";
-            clUserID.ReadOnly = true;
-            // 
-            // clName
-            // 
-            clName.Frozen = true;
-            clName.HeaderText = "Name";
-            clName.Name = "clName";
-            clName.ReadOnly = true;
-            clName.Width = 180;
-            // 
-            // clRoleName
-            // 
-            clRoleName.Frozen = true;
-            clRoleName.HeaderText = "Role";
-            clRoleName.Name = "clRoleName";
-            clRoleName.ReadOnly = true;
-            // 
-            // clStartDate
-            // 
-            clStartDate.Frozen = true;
-            clStartDate.HeaderText = "Start Date";
-            clStartDate.Name = "clStartDate";
-            // 
-            // clEndDate
-            // 
-            clEndDate.Frozen = true;
-            clEndDate.HeaderText = "End Date";
-            clEndDate.Name = "clEndDate";
-            clEndDate.ReadOnly = true;
-            // 
-            // clShift
-            // 
-            clShift.Frozen = true;
-            clShift.HeaderText = "Shift";
-            clShift.Name = "clShift";
-            clShift.ReadOnly = true;
-            // 
-            // clDetail
-            // 
-            clDetail.Frozen = true;
-            clDetail.HeaderText = "Detail";
-            clDetail.Name = "clDetail";
-            clDetail.ReadOnly = true;
             // 
             // pnlDetail
             // 
@@ -201,6 +145,62 @@
             btnReject.UseVisualStyleBackColor = true;
             btnReject.Click += btnReject_Click;
             // 
+            // clLeave_Id
+            // 
+            clLeave_Id.Frozen = true;
+            clLeave_Id.HeaderText = "Leave_ID";
+            clLeave_Id.Name = "clLeave_Id";
+            clLeave_Id.ReadOnly = true;
+            // 
+            // clUserID
+            // 
+            clUserID.Frozen = true;
+            clUserID.HeaderText = "User_ID";
+            clUserID.Name = "clUserID";
+            clUserID.ReadOnly = true;
+            // 
+            // clName
+            // 
+            clName.Frozen = true;
+            clName.HeaderText = "Tên";
+            clName.Name = "clName";
+            clName.ReadOnly = true;
+            clName.Width = 180;
+            // 
+            // clRoleName
+            // 
+            clRoleName.Frozen = true;
+            clRoleName.HeaderText = "Vai trò";
+            clRoleName.Name = "clRoleName";
+            clRoleName.ReadOnly = true;
+            // 
+            // clStartDate
+            // 
+            clStartDate.Frozen = true;
+            clStartDate.HeaderText = "Ngày bắt đầu";
+            clStartDate.Name = "clStartDate";
+            // 
+            // clEndDate
+            // 
+            clEndDate.Frozen = true;
+            clEndDate.HeaderText = "Ngày kết thúc";
+            clEndDate.Name = "clEndDate";
+            clEndDate.ReadOnly = true;
+            // 
+            // clShift
+            // 
+            clShift.Frozen = true;
+            clShift.HeaderText = "Ca";
+            clShift.Name = "clShift";
+            clShift.ReadOnly = true;
+            // 
+            // clDetail
+            // 
+            clDetail.Frozen = true;
+            clDetail.HeaderText = "Chi tiết";
+            clDetail.Name = "clDetail";
+            clDetail.ReadOnly = true;
+            // 
             // LeaveRequestAdminForm
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
@@ -226,6 +226,11 @@
 
         private ComboBox comboBox1;
         private DataGridView dataGridView1;
+        private Panel pnlDetail;
+        private Button btnAccept;
+        private Button btnReject;
+        private Label lblReason;
+        private Label lblName;
         private DataGridViewTextBoxColumn clLeave_Id;
         private DataGridViewTextBoxColumn clUserID;
         private DataGridViewTextBoxColumn clName;
@@ -234,10 +239,5 @@
         private DataGridViewTextBoxColumn clEndDate;
         private DataGridViewTextBoxColumn clShift;
         private DataGridViewTextBoxColumn clDetail;
-        private Panel pnlDetail;
-        private Button btnAccept;
-        private Button btnReject;
-        private Label lblReason;
-        private Label lblName;
     }
 }

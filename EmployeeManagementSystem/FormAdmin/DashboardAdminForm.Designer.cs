@@ -71,6 +71,7 @@
             // 
             // panel6
             // 
+            panel6.Anchor = AnchorStyles.None;
             panel6.BorderStyle = BorderStyle.FixedSingle;
             panel6.Controls.Add(chart1);
             panel6.Location = new Point(517, 171);
@@ -98,6 +99,7 @@
             // 
             // panel5
             // 
+            panel5.Anchor = AnchorStyles.None;
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(chartSalary);
             panel5.Location = new Point(12, 171);
@@ -130,6 +132,7 @@
             // 
             // cbxDepartments
             // 
+            cbxDepartments.Anchor = AnchorStyles.None;
             cbxDepartments.FormattingEnabled = true;
             cbxDepartments.Location = new Point(12, 57);
             cbxDepartments.Name = "cbxDepartments";
@@ -138,6 +141,7 @@
             // 
             // panel4
             // 
+            panel4.Anchor = AnchorStyles.None;
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label2);
             panel4.Controls.Add(lblTotalSalary);
@@ -161,12 +165,13 @@
             lblTotalSalary.ForeColor = Color.Gray;
             lblTotalSalary.Location = new Point(14, 3);
             lblTotalSalary.Name = "lblTotalSalary";
-            lblTotalSalary.Size = new Size(74, 19);
+            lblTotalSalary.Size = new Size(79, 19);
             lblTotalSalary.TabIndex = 1;
-            lblTotalSalary.Text = "TotalSalary";
+            lblTotalSalary.Text = "Tổng lương";
             // 
             // panel3
             // 
+            panel3.Anchor = AnchorStyles.None;
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(lblPendingAmount);
             panel3.Controls.Add(lblLeaveRequestPending);
@@ -191,12 +196,13 @@
             lblLeaveRequestPending.ForeColor = Color.Gray;
             lblLeaveRequestPending.Location = new Point(-1, 0);
             lblLeaveRequestPending.Name = "lblLeaveRequestPending";
-            lblLeaveRequestPending.Size = new Size(205, 19);
+            lblLeaveRequestPending.Size = new Size(166, 19);
             lblLeaveRequestPending.TabIndex = 1;
-            lblLeaveRequestPending.Text = "Leave request pending approval";
+            lblLeaveRequestPending.Text = "Xin nghỉ phép chưa duyệt";
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(label1);
             panel1.Controls.Add(lblActiveEmployee);
@@ -221,12 +227,13 @@
             lblActiveEmployee.ForeColor = Color.Gray;
             lblActiveEmployee.Location = new Point(13, 0);
             lblActiveEmployee.Name = "lblActiveEmployee";
-            lblActiveEmployee.Size = new Size(109, 19);
+            lblActiveEmployee.Size = new Size(102, 19);
             lblActiveEmployee.TabIndex = 1;
-            lblActiveEmployee.Text = "Active Employee";
+            lblActiveEmployee.Text = "Còn hoạt động";
             // 
             // pnlTotalEmployee
             // 
+            pnlTotalEmployee.Anchor = AnchorStyles.None;
             pnlTotalEmployee.BorderStyle = BorderStyle.FixedSingle;
             pnlTotalEmployee.Controls.Add(lblTotalAmount);
             pnlTotalEmployee.Controls.Add(lblTotalemployee);
@@ -251,12 +258,13 @@
             lblTotalemployee.ForeColor = Color.Gray;
             lblTotalemployee.Location = new Point(15, 0);
             lblTotalemployee.Name = "lblTotalemployee";
-            lblTotalemployee.Size = new Size(101, 19);
+            lblTotalemployee.Size = new Size(104, 19);
             lblTotalemployee.TabIndex = 0;
-            lblTotalemployee.Text = "Total Employee";
+            lblTotalemployee.Text = "Tổng nhân viên";
             // 
             // btnLast7days
             // 
+            btnLast7days.Anchor = AnchorStyles.None;
             btnLast7days.FlatAppearance.BorderColor = Color.Gainsboro;
             btnLast7days.FlatStyle = FlatStyle.Flat;
             btnLast7days.Location = new Point(608, 16);
@@ -268,6 +276,7 @@
             // 
             // btnThisMonth
             // 
+            btnThisMonth.Anchor = AnchorStyles.None;
             btnThisMonth.FlatAppearance.BorderColor = Color.Gainsboro;
             btnThisMonth.FlatStyle = FlatStyle.Flat;
             btnThisMonth.Location = new Point(812, 16);
@@ -279,6 +288,7 @@
             // 
             // btnLast30days
             // 
+            btnLast30days.Anchor = AnchorStyles.None;
             btnLast30days.FlatAppearance.BorderColor = Color.Gainsboro;
             btnLast30days.FlatStyle = FlatStyle.Flat;
             btnLast30days.Location = new Point(710, 16);
@@ -290,6 +300,7 @@
             // 
             // btnToday
             // 
+            btnToday.Anchor = AnchorStyles.None;
             btnToday.FlatAppearance.BorderColor = Color.Gainsboro;
             btnToday.FlatStyle = FlatStyle.Flat;
             btnToday.Location = new Point(506, 16);
@@ -301,6 +312,7 @@
             // 
             // dtpTo
             // 
+            dtpTo.Anchor = AnchorStyles.None;
             dtpTo.CustomFormat = "MMM dd, yyyy";
             dtpTo.Format = DateTimePickerFormat.Custom;
             dtpTo.Location = new Point(321, 19);
@@ -310,6 +322,7 @@
             // 
             // dtpFrom
             // 
+            dtpFrom.Anchor = AnchorStyles.None;
             dtpFrom.CustomFormat = "MMM dd, yyyy";
             dtpFrom.Format = DateTimePickerFormat.Custom;
             dtpFrom.Location = new Point(166, 19);
@@ -319,6 +332,7 @@
             // 
             // lblHeader
             // 
+            lblHeader.Anchor = AnchorStyles.None;
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Segoe UI Historic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHeader.Location = new Point(9, 12);

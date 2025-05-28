@@ -254,6 +254,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1122, 564);
             Controls.Add(pnlDesktopPane);
             Controls.Add(panel1);

@@ -97,7 +97,7 @@ namespace EmployeeManagementSystem.Controller
                     EndDate = endDate,
                     Reason = reason,
                     Shift = shift,
-                    Status = "Chưa duyệt",
+                    Status = "Chờ duyệt",
                     ApproverId = null // Không gán ApproverId
                 };
 

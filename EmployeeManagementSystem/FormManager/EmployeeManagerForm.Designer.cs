@@ -30,6 +30,13 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
+            clUserId = new DataGridViewTextBoxColumn();
+            clName = new DataGridViewTextBoxColumn();
+            clGender = new DataGridViewTextBoxColumn();
+            clDateofBirth = new DataGridViewTextBoxColumn();
+            clPhone = new DataGridViewTextBoxColumn();
+            clPosition = new DataGridViewTextBoxColumn();
+            clHireDate = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             lblHeader = new Label();
             txtID = new TextBox();
@@ -51,13 +58,6 @@
             txtPosition = new TextBox();
             txtEmail = new TextBox();
             lblEmail = new Label();
-            clUserId = new DataGridViewTextBoxColumn();
-            clName = new DataGridViewTextBoxColumn();
-            clGender = new DataGridViewTextBoxColumn();
-            clDateofBirth = new DataGridViewTextBoxColumn();
-            clPhone = new DataGridViewTextBoxColumn();
-            clPosition = new DataGridViewTextBoxColumn();
-            clHireDate = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -87,188 +87,6 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(845, 229);
             dataGridView1.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            panel1.Anchor = AnchorStyles.None;
-            panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Controls.Add(lblHeader);
-            panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(12, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(866, 288);
-            panel1.TabIndex = 1;
-            // 
-            // lblHeader
-            // 
-            lblHeader.AutoSize = true;
-            lblHeader.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHeader.Location = new Point(12, 9);
-            lblHeader.Name = "lblHeader";
-            lblHeader.Size = new Size(194, 25);
-            lblHeader.TabIndex = 1;
-            lblHeader.Text = "Danh sách nhân viên";
-            // 
-            // txtID
-            // 
-            txtID.Location = new Point(88, 322);
-            txtID.Name = "txtID";
-            txtID.ReadOnly = true;
-            txtID.Size = new Size(130, 26);
-            txtID.TabIndex = 2;
-            // 
-            // lblID
-            // 
-            lblID.AutoSize = true;
-            lblID.Location = new Point(59, 325);
-            lblID.Name = "lblID";
-            lblID.Size = new Size(23, 19);
-            lblID.TabIndex = 3;
-            lblID.Text = "ID";
-            // 
-            // lblFullName
-            // 
-            lblFullName.AutoSize = true;
-            lblFullName.Location = new Point(37, 377);
-            lblFullName.Name = "lblFullName";
-            lblFullName.Size = new Size(30, 19);
-            lblFullName.TabIndex = 5;
-            lblFullName.Text = "Tên";
-            // 
-            // txtName
-            // 
-            txtName.Location = new Point(88, 374);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(180, 26);
-            txtName.TabIndex = 4;
-            // 
-            // lblGender
-            // 
-            lblGender.AutoSize = true;
-            lblGender.Location = new Point(303, 381);
-            lblGender.Name = "lblGender";
-            lblGender.Size = new Size(61, 19);
-            lblGender.TabIndex = 7;
-            lblGender.Text = "Giới tính";
-            // 
-            // lblDateOfBirth
-            // 
-            lblDateOfBirth.AutoSize = true;
-            lblDateOfBirth.Location = new Point(329, 329);
-            lblDateOfBirth.Name = "lblDateOfBirth";
-            lblDateOfBirth.Size = new Size(35, 19);
-            lblDateOfBirth.TabIndex = 9;
-            lblDateOfBirth.Text = "Sinh";
-            // 
-            // lblPhone
-            // 
-            lblPhone.AutoSize = true;
-            lblPhone.Location = new Point(275, 436);
-            lblPhone.Name = "lblPhone";
-            lblPhone.Size = new Size(89, 19);
-            lblPhone.TabIndex = 11;
-            lblPhone.Text = "Số điện thoại";
-            // 
-            // txtPhone
-            // 
-            txtPhone.Location = new Point(370, 433);
-            txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(130, 26);
-            txtPhone.TabIndex = 10;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(9, 436);
-            label3.Name = "label3";
-            label3.Size = new Size(73, 19);
-            label3.TabIndex = 13;
-            label3.Text = "UserName";
-            // 
-            // txtUserName
-            // 
-            txtUserName.Location = new Point(88, 433);
-            txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(180, 26);
-            txtUserName.TabIndex = 12;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(370, 377);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(130, 27);
-            comboBox1.TabIndex = 14;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Checked = false;
-            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(370, 325);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(130, 26);
-            dateTimePicker1.TabIndex = 15;
-            // 
-            // btnThem
-            // 
-            btnThem.Location = new Point(747, 316);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(121, 37);
-            btnThem.TabIndex = 16;
-            btnThem.Text = "Thêm";
-            btnThem.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(747, 371);
-            button1.Name = "button1";
-            button1.Size = new Size(121, 37);
-            button1.TabIndex = 17;
-            button1.Text = "Sửa";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // btnSaThai
-            // 
-            btnSaThai.Location = new Point(747, 427);
-            btnSaThai.Name = "btnSaThai";
-            btnSaThai.Size = new Size(121, 37);
-            btnSaThai.TabIndex = 18;
-            btnSaThai.Text = "Sa thải";
-            btnSaThai.UseVisualStyleBackColor = true;
-            // 
-            // lblPosition
-            // 
-            lblPosition.AutoSize = true;
-            lblPosition.Location = new Point(533, 329);
-            lblPosition.Name = "lblPosition";
-            lblPosition.Size = new Size(38, 19);
-            lblPosition.TabIndex = 19;
-            lblPosition.Text = "Vị trí";
-            // 
-            // txtPosition
-            // 
-            txtPosition.Location = new Point(577, 325);
-            txtPosition.Name = "txtPosition";
-            txtPosition.Size = new Size(142, 26);
-            txtPosition.TabIndex = 20;
-            // 
-            // txtEmail
-            // 
-            txtEmail.Location = new Point(577, 377);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(142, 26);
-            txtEmail.TabIndex = 22;
-            // 
-            // lblEmail
-            // 
-            lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(530, 381);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(41, 19);
-            lblEmail.TabIndex = 21;
-            lblEmail.Text = "Email";
             // 
             // clUserId
             // 
@@ -323,6 +141,207 @@
             clHireDate.Name = "clHireDate";
             clHireDate.ReadOnly = true;
             clHireDate.Width = 120;
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.None;
+            panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(lblHeader);
+            panel1.Controls.Add(dataGridView1);
+            panel1.Location = new Point(12, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(866, 288);
+            panel1.TabIndex = 1;
+            // 
+            // lblHeader
+            // 
+            lblHeader.AutoSize = true;
+            lblHeader.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHeader.Location = new Point(12, 9);
+            lblHeader.Name = "lblHeader";
+            lblHeader.Size = new Size(194, 25);
+            lblHeader.TabIndex = 1;
+            lblHeader.Text = "Danh sách nhân viên";
+            // 
+            // txtID
+            // 
+            txtID.Anchor = AnchorStyles.None;
+            txtID.Location = new Point(88, 322);
+            txtID.Name = "txtID";
+            txtID.ReadOnly = true;
+            txtID.Size = new Size(130, 26);
+            txtID.TabIndex = 2;
+            // 
+            // lblID
+            // 
+            lblID.Anchor = AnchorStyles.None;
+            lblID.AutoSize = true;
+            lblID.Location = new Point(59, 325);
+            lblID.Name = "lblID";
+            lblID.Size = new Size(23, 19);
+            lblID.TabIndex = 3;
+            lblID.Text = "ID";
+            // 
+            // lblFullName
+            // 
+            lblFullName.Anchor = AnchorStyles.None;
+            lblFullName.AutoSize = true;
+            lblFullName.Location = new Point(37, 377);
+            lblFullName.Name = "lblFullName";
+            lblFullName.Size = new Size(30, 19);
+            lblFullName.TabIndex = 5;
+            lblFullName.Text = "Tên";
+            // 
+            // txtName
+            // 
+            txtName.Anchor = AnchorStyles.None;
+            txtName.Location = new Point(88, 374);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(180, 26);
+            txtName.TabIndex = 4;
+            // 
+            // lblGender
+            // 
+            lblGender.Anchor = AnchorStyles.None;
+            lblGender.AutoSize = true;
+            lblGender.Location = new Point(303, 381);
+            lblGender.Name = "lblGender";
+            lblGender.Size = new Size(61, 19);
+            lblGender.TabIndex = 7;
+            lblGender.Text = "Giới tính";
+            // 
+            // lblDateOfBirth
+            // 
+            lblDateOfBirth.Anchor = AnchorStyles.None;
+            lblDateOfBirth.AutoSize = true;
+            lblDateOfBirth.Location = new Point(329, 329);
+            lblDateOfBirth.Name = "lblDateOfBirth";
+            lblDateOfBirth.Size = new Size(35, 19);
+            lblDateOfBirth.TabIndex = 9;
+            lblDateOfBirth.Text = "Sinh";
+            // 
+            // lblPhone
+            // 
+            lblPhone.Anchor = AnchorStyles.None;
+            lblPhone.AutoSize = true;
+            lblPhone.Location = new Point(275, 436);
+            lblPhone.Name = "lblPhone";
+            lblPhone.Size = new Size(89, 19);
+            lblPhone.TabIndex = 11;
+            lblPhone.Text = "Số điện thoại";
+            // 
+            // txtPhone
+            // 
+            txtPhone.Anchor = AnchorStyles.None;
+            txtPhone.Location = new Point(370, 433);
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(130, 26);
+            txtPhone.TabIndex = 10;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.None;
+            label3.AutoSize = true;
+            label3.Location = new Point(9, 436);
+            label3.Name = "label3";
+            label3.Size = new Size(73, 19);
+            label3.TabIndex = 13;
+            label3.Text = "UserName";
+            // 
+            // txtUserName
+            // 
+            txtUserName.Anchor = AnchorStyles.None;
+            txtUserName.Location = new Point(88, 433);
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new Size(180, 26);
+            txtUserName.TabIndex = 12;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Anchor = AnchorStyles.None;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(370, 377);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(130, 27);
+            comboBox1.TabIndex = 14;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Anchor = AnchorStyles.None;
+            dateTimePicker1.Checked = false;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(370, 325);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(130, 26);
+            dateTimePicker1.TabIndex = 15;
+            // 
+            // btnThem
+            // 
+            btnThem.Anchor = AnchorStyles.None;
+            btnThem.Location = new Point(747, 316);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(121, 37);
+            btnThem.TabIndex = 16;
+            btnThem.Text = "Thêm";
+            btnThem.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.None;
+            button1.Location = new Point(747, 371);
+            button1.Name = "button1";
+            button1.Size = new Size(121, 37);
+            button1.TabIndex = 17;
+            button1.Text = "Sửa";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // btnSaThai
+            // 
+            btnSaThai.Anchor = AnchorStyles.None;
+            btnSaThai.Location = new Point(747, 427);
+            btnSaThai.Name = "btnSaThai";
+            btnSaThai.Size = new Size(121, 37);
+            btnSaThai.TabIndex = 18;
+            btnSaThai.Text = "Sa thải";
+            btnSaThai.UseVisualStyleBackColor = true;
+            // 
+            // lblPosition
+            // 
+            lblPosition.Anchor = AnchorStyles.None;
+            lblPosition.AutoSize = true;
+            lblPosition.Location = new Point(533, 329);
+            lblPosition.Name = "lblPosition";
+            lblPosition.Size = new Size(38, 19);
+            lblPosition.TabIndex = 19;
+            lblPosition.Text = "Vị trí";
+            // 
+            // txtPosition
+            // 
+            txtPosition.Anchor = AnchorStyles.None;
+            txtPosition.Location = new Point(577, 325);
+            txtPosition.Name = "txtPosition";
+            txtPosition.Size = new Size(142, 26);
+            txtPosition.TabIndex = 20;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Anchor = AnchorStyles.None;
+            txtEmail.Location = new Point(577, 377);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(142, 26);
+            txtEmail.TabIndex = 22;
+            // 
+            // lblEmail
+            // 
+            lblEmail.Anchor = AnchorStyles.None;
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(530, 381);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(41, 19);
+            lblEmail.TabIndex = 21;
+            lblEmail.Text = "Email";
             // 
             // EmployeeManagerForm
             // 

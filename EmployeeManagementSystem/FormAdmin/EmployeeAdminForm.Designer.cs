@@ -289,7 +289,7 @@
             // clName
             // 
             clName.Frozen = true;
-            clName.HeaderText = "Name";
+            clName.HeaderText = "Tên";
             clName.Name = "clName";
             clName.ReadOnly = true;
             clName.Width = 180;
@@ -297,35 +297,35 @@
             // clGender
             // 
             clGender.Frozen = true;
-            clGender.HeaderText = "Gender";
+            clGender.HeaderText = "Giới tính";
             clGender.Name = "clGender";
             clGender.ReadOnly = true;
             // 
             // clDateofBirth
             // 
             clDateofBirth.Frozen = true;
-            clDateofBirth.HeaderText = "DateOfBirth";
+            clDateofBirth.HeaderText = "Sinh";
             clDateofBirth.Name = "clDateofBirth";
             clDateofBirth.ReadOnly = true;
             // 
             // clPhone
             // 
             clPhone.Frozen = true;
-            clPhone.HeaderText = "Phone";
+            clPhone.HeaderText = "Số điện thoại";
             clPhone.Name = "clPhone";
             clPhone.ReadOnly = true;
             // 
             // clPosition
             // 
             clPosition.Frozen = true;
-            clPosition.HeaderText = "Position";
+            clPosition.HeaderText = "Vị trí";
             clPosition.Name = "clPosition";
             clPosition.ReadOnly = true;
             // 
             // clHireDate
             // 
             clHireDate.Frozen = true;
-            clHireDate.HeaderText = "HireDate";
+            clHireDate.HeaderText = "Ngày tuyển dụng";
             clHireDate.Name = "clHireDate";
             clHireDate.ReadOnly = true;
             // 
@@ -334,7 +334,7 @@
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             clUpdateRole.DefaultCellStyle = dataGridViewCellStyle2;
             clUpdateRole.Frozen = true;
-            clUpdateRole.HeaderText = "Promote";
+            clUpdateRole.HeaderText = "Thăng chức";
             clUpdateRole.Name = "clUpdateRole";
             clUpdateRole.ReadOnly = true;
             clUpdateRole.Resizable = DataGridViewTriState.True;

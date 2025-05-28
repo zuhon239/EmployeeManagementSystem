@@ -1,5 +1,7 @@
-﻿using EmployeeManagementSystem.Model;
+﻿using EmployeeManagementSystem.Controller;
+using EmployeeManagementSystem.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -142,6 +144,32 @@ namespace EmployeeManagementSystem
             {
                 ActiveForm.Close();
                 DisableButton();
+            }
+            var result = MessageBox.Show(
+                    "Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?",
+                    "Xác nhận đăng xuất",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+            if (result == DialogResult.Yes)
+            {
+
+                this.Hide();
+
+                using (var serviceProvider = new ServiceCollection()
+                    .AddDbContext<EmployeeManagementContext>()
+                    .AddScoped<LeaveRequestController>()
+                    .AddScoped<AttendanceController>()
+                    .AddScoped<LoginController>()
+                    .AddScoped<LoginForm>()
+                    .BuildServiceProvider())
+                {
+                    var loginForm = serviceProvider.GetService<LoginForm>();
+                    loginForm.ShowDialog();
+                }
+
+                this.Close();
             }
         }
 

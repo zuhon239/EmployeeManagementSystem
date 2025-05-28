@@ -71,7 +71,7 @@ namespace EmployeeManagementSystem.Controller
 
                 // Tính ca nghỉ phép được duyệt
                 var approvedLeaveRequests = _context.LeaveRequests
-                    .Where(lr => employeeIds.Contains(lr.UserId) && lr.Status == "Approved")
+                    .Where(lr => employeeIds.Contains(lr.UserId) && lr.Status == "Đã duyệt")
                     .Where(lr => lr.StartDate.Date <= toDate.Date && lr.EndDate.Date >= fromDate.Date)
                     .ToList();
 
@@ -92,7 +92,7 @@ namespace EmployeeManagementSystem.Controller
 
                 // Tính ca nghỉ phép không được duyệt
                 var ineffectiveLeaveRequests = _context.LeaveRequests
-                    .Where(lr => employeeIds.Contains(lr.UserId) && (lr.Status == "Đã duyệt" || lr.Status == "Từ chối"))
+                    .Where(lr => employeeIds.Contains(lr.UserId) && (lr.Status == "Chờ duyệt" || lr.Status == "Từ chối"))
                     .Where(lr => lr.StartDate.Date <= toDate.Date && lr.EndDate.Date >= fromDate.Date)
                     .ToList();
 

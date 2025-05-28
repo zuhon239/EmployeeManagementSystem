@@ -63,6 +63,7 @@
             // 
             // lblManagerInfo
             // 
+            lblManagerInfo.Anchor = AnchorStyles.None;
             lblManagerInfo.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
             lblManagerInfo.ForeColor = Color.FromArgb(0, 123, 255);
             lblManagerInfo.Location = new Point(20, 20);
@@ -74,8 +75,9 @@
             // 
             // lblEmployeeLabel
             // 
+            lblEmployeeLabel.Anchor = AnchorStyles.None;
             lblEmployeeLabel.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            lblEmployeeLabel.Location = new Point(20, 70);
+            lblEmployeeLabel.Location = new Point(21, 53);
             lblEmployeeLabel.Name = "lblEmployeeLabel";
             lblEmployeeLabel.Size = new Size(100, 25);
             lblEmployeeLabel.TabIndex = 1;
@@ -84,18 +86,20 @@
             // 
             // cmbEmployee
             // 
+            cmbEmployee.Anchor = AnchorStyles.None;
             cmbEmployee.BackColor = Color.White;
             cmbEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbEmployee.Font = new Font("Microsoft Sans Serif", 9F);
-            cmbEmployee.Location = new Point(130, 70);
+            cmbEmployee.Location = new Point(131, 53);
             cmbEmployee.Name = "cmbEmployee";
             cmbEmployee.Size = new Size(250, 23);
             cmbEmployee.TabIndex = 2;
             // 
             // lblBonusLabel
             // 
+            lblBonusLabel.Anchor = AnchorStyles.None;
             lblBonusLabel.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            lblBonusLabel.Location = new Point(400, 70);
+            lblBonusLabel.Location = new Point(401, 53);
             lblBonusLabel.Name = "lblBonusLabel";
             lblBonusLabel.Size = new Size(60, 25);
             lblBonusLabel.TabIndex = 3;
@@ -104,10 +108,11 @@
             // 
             // txtBonus
             // 
+            txtBonus.Anchor = AnchorStyles.None;
             txtBonus.BackColor = Color.White;
             txtBonus.BorderStyle = BorderStyle.FixedSingle;
             txtBonus.Font = new Font("Microsoft Sans Serif", 9F);
-            txtBonus.Location = new Point(470, 70);
+            txtBonus.Location = new Point(471, 53);
             txtBonus.Name = "txtBonus";
             txtBonus.Size = new Size(120, 21);
             txtBonus.TabIndex = 4;
@@ -116,20 +121,22 @@
             // 
             // lblMonthLabel
             // 
+            lblMonthLabel.Anchor = AnchorStyles.None;
             lblMonthLabel.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            lblMonthLabel.Location = new Point(610, 70);
+            lblMonthLabel.Location = new Point(597, 52);
             lblMonthLabel.Name = "lblMonthLabel";
-            lblMonthLabel.Size = new Size(50, 25);
+            lblMonthLabel.Size = new Size(68, 25);
             lblMonthLabel.TabIndex = 5;
             lblMonthLabel.Text = "Tháng:";
             lblMonthLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dtpMonth
             // 
+            dtpMonth.Anchor = AnchorStyles.None;
             dtpMonth.CustomFormat = "MM/yyyy";
             dtpMonth.Font = new Font("Microsoft Sans Serif", 9F);
             dtpMonth.Format = DateTimePickerFormat.Custom;
-            dtpMonth.Location = new Point(670, 70);
+            dtpMonth.Location = new Point(671, 53);
             dtpMonth.Name = "dtpMonth";
             dtpMonth.Size = new Size(100, 21);
             dtpMonth.TabIndex = 6;
@@ -137,12 +144,13 @@
             // 
             // btnCalculate
             // 
+            btnCalculate.Anchor = AnchorStyles.None;
             btnCalculate.BackColor = Color.FromArgb(0, 123, 255);
             btnCalculate.Cursor = Cursors.Hand;
             btnCalculate.FlatStyle = FlatStyle.Flat;
             btnCalculate.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnCalculate.ForeColor = Color.White;
-            btnCalculate.Location = new Point(790, 68);
+            btnCalculate.Location = new Point(440, 89);
             btnCalculate.Name = "btnCalculate";
             btnCalculate.Size = new Size(100, 30);
             btnCalculate.TabIndex = 7;
@@ -152,12 +160,13 @@
             // 
             // btnSave
             // 
+            btnSave.Anchor = AnchorStyles.None;
             btnSave.BackColor = Color.FromArgb(40, 167, 69);
             btnSave.Cursor = Cursors.Hand;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(910, 68);
+            btnSave.Location = new Point(560, 89);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(100, 30);
             btnSave.TabIndex = 8;
@@ -167,12 +176,13 @@
             // 
             // btnReset
             // 
+            btnReset.Anchor = AnchorStyles.None;
             btnReset.BackColor = Color.FromArgb(220, 53, 69);
             btnReset.Cursor = Cursors.Hand;
             btnReset.FlatStyle = FlatStyle.Flat;
             btnReset.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnReset.ForeColor = Color.White;
-            btnReset.Location = new Point(1030, 68);
+            btnReset.Location = new Point(680, 89);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(100, 30);
             btnReset.TabIndex = 9;
@@ -182,6 +192,7 @@
             // 
             // gbResult
             // 
+            gbResult.Anchor = AnchorStyles.None;
             gbResult.BackColor = Color.FromArgb(248, 249, 250);
             gbResult.Controls.Add(lblEmployeeName);
             gbResult.Controls.Add(lblMonth);
@@ -192,9 +203,9 @@
             gbResult.Controls.Add(lblTotalSalary);
             gbResult.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             gbResult.ForeColor = Color.FromArgb(0, 123, 255);
-            gbResult.Location = new Point(20, 160);
+            gbResult.Location = new Point(21, 122);
             gbResult.Name = "gbResult";
-            gbResult.Size = new Size(1160, 150);
+            gbResult.Size = new Size(759, 134);
             gbResult.TabIndex = 11;
             gbResult.TabStop = false;
             gbResult.Text = "Kết Quả Tính Lương";
@@ -275,6 +286,7 @@
             dgvDetails.AllowUserToAddRows = false;
             dgvDetails.AllowUserToDeleteRows = false;
             dgvDetails.AllowUserToResizeRows = false;
+            dgvDetails.Anchor = AnchorStyles.None;
             dgvDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDetails.BackgroundColor = Color.White;
             dgvDetails.BorderStyle = BorderStyle.Fixed3D;
@@ -297,22 +309,23 @@
             dgvDetails.DefaultCellStyle = dataGridViewCellStyle2;
             dgvDetails.EnableHeadersVisualStyles = false;
             dgvDetails.GridColor = Color.LightGray;
-            dgvDetails.Location = new Point(20, 330);
+            dgvDetails.Location = new Point(21, 262);
             dgvDetails.MultiSelect = false;
             dgvDetails.Name = "dgvDetails";
             dgvDetails.ReadOnly = true;
             dgvDetails.RowHeadersVisible = false;
             dgvDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDetails.Size = new Size(1160, 450);
+            dgvDetails.Size = new Size(759, 249);
             dgvDetails.TabIndex = 12;
             // 
             // lblWarning
             // 
+            lblWarning.Anchor = AnchorStyles.None;
             lblWarning.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic);
             lblWarning.ForeColor = Color.Red;
-            lblWarning.Location = new Point(20, 110);
+            lblWarning.Location = new Point(20, 79);
             lblWarning.Name = "lblWarning";
-            lblWarning.Size = new Size(1160, 40);
+            lblWarning.Size = new Size(414, 40);
             lblWarning.TabIndex = 10;
             lblWarning.Text = "⚠️ Cảnh báo: Theo pháp luật Việt Nam, việc trừ lương do đi trễ/về sớm là bị cấm và có thể bị phạt 20-80 triệu đồng.\nCode này chỉ để demo kỹ thuật.";
             lblWarning.Click += lblWarning_Click;
@@ -322,7 +335,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1200, 800);
+            ClientSize = new Size(812, 554);
             Controls.Add(lblManagerInfo);
             Controls.Add(lblEmployeeLabel);
             Controls.Add(cmbEmployee);

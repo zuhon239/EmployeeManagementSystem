@@ -103,7 +103,7 @@ namespace EmployeeManagementSystem.Controller
                 // Tính số ca nghỉ phép không được duyệt hoặc đang chờ
                 var ineffectiveLeaveRequests = _context.LeaveRequests
                     .Where(lr => lr.UserId == userId)
-                    .Where(lr => lr.Status == "Chưa duyệt" || lr.Status == "Từ chối")
+                    .Where(lr => lr.Status == "Chờ duyệt" || lr.Status == "Từ chối")
                     .Where(lr => lr.StartDate.Date <= toDate.Date && lr.EndDate.Date >= fromDate.Date)
                     .ToList();
 

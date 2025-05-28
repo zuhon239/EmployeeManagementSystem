@@ -102,27 +102,7 @@ namespace EmployeeManagementSystem.FormManager
             this.pnlDesktopPane.Tag
                 = ChildForm;
             ChildForm.BringToFront();
-            ChildForm.Show();
-            if (ChildForm.Text == "LeaveRequestManager")
-            {
-                lblDepartment.Text = "Quản lý nghỉ phép";
-            }
-            else if (ChildForm.Text == "AttendanceManagerForm")
-            {
-                lblDepartment.Text = "Quản lý chấm công";
-            }
-            else if (ChildForm.Text == "DashboardManagerForm")
-            {
-                lblDepartment.Text = "Thống kê";
-            }
-            else if (ChildForm.Text == "EmployeeManagerForm")
-            {
-                lblDepartment.Text = "Quản lý nhân viên";
-            }
-            else if (ChildForm.Text == "SalaryManagerForm")
-            {
-                lblDepartment.Text = "Quản lý lương";
-            }
+            ChildForm.Show();          
         }
         private void ActivateButton(object btnSender)
         {
@@ -165,6 +145,15 @@ namespace EmployeeManagementSystem.FormManager
             {
                 ActiveForm.Close();
                 Reset();
+            }
+            var result = MessageBox.Show(
+                  "Xác nhận thoát?",
+                  "Xác nhận",
+                  MessageBoxButtons.YesNo,
+                  MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
         private void Reset()
