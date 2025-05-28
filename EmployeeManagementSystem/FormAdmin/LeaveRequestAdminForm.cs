@@ -48,11 +48,11 @@ namespace EmployeeManagementSystem.FormAdmin
 
                 if (selectedItem == "Manager")
                 {
-                    // Load leave requests for employees under managers (RoleId != 1 for non-employees, assuming RoleId 2 or higher for managers)
+                    
                     var managerLeaveRequests = _context.LeaveRequests
                         .Include(lr => lr.Employee)
                         .Include(lr => lr.Employee.Role)
-                        .Where(lr => lr.Employee.RoleId != 1 && lr.Status == "Pending") // Assuming RoleId 1 is for regular employees
+                        .Where(lr => lr.Employee.RoleId != 1 && lr.Status == "Chờ duyệt") 
                         .Select(lr => new
                         {
                             lr.LeaveId,
@@ -106,7 +106,7 @@ namespace EmployeeManagementSystem.FormAdmin
                     var leaveRequests = _context.LeaveRequests
                         .Include(lr => lr.Employee)
                         .Include(lr => lr.Employee.Role)
-                        .Where(lr => employeesInDepartment.Contains(lr.UserId) && lr.Status == "Pending")
+                        .Where(lr => employeesInDepartment.Contains(lr.UserId) && lr.Status == "Chờ duyệt")
                         .Select(lr => new
                         {
                             lr.LeaveId,
@@ -116,7 +116,7 @@ namespace EmployeeManagementSystem.FormAdmin
                             lr.StartDate,
                             lr.EndDate,
                             lr.Shift,
-                            Detail = "View Details"
+                            Detail = "Xem chi tiết"
                         })
                         .ToList();
 

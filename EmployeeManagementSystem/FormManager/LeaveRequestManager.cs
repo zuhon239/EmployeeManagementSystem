@@ -63,7 +63,7 @@ namespace EmployeeManagementSystem.FormManager
 
                 var leaveRequests = _context.LeaveRequests
                     .Include(lr => lr.Employee)
-                    .Where(lr => employeesInDepartment.Contains(lr.UserId) && lr.Status == "Chưa duyệt")
+                    .Where(lr => employeesInDepartment.Contains(lr.UserId) && lr.Status == "Chờ duyệt")
                     .Select(lr => new
                     {
                         lr.LeaveId,
