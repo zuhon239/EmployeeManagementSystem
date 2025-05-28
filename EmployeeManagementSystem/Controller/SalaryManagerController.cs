@@ -186,12 +186,12 @@ namespace EmployeeManagementSystem.Controller
 
             if (dayLeaveRequest != null)
             {
-                if (dayLeaveRequest.Status == "Approved")
+                if (dayLeaveRequest.Status == "Đã duyệt")
                 {
                     detail.DeductionReason = $"Nghỉ phép đã duyệt - Không trừ lương (Leave ID: {dayLeaveRequest.LeaveId})";
                     return detail;
                 }
-                else if (dayLeaveRequest.Status == "Rejected" || dayLeaveRequest.Status == "Pending")
+                else if (dayLeaveRequest.Status == "Từ chối" || dayLeaveRequest.Status == "Chờ duyệt")
                 {
                     detail.DeductionReason += $"Leave request {dayLeaveRequest.Status} - ";
                 }
