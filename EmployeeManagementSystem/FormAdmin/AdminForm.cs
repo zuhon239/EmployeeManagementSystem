@@ -104,16 +104,16 @@ namespace EmployeeManagementSystem
                 ChildForm.BringToFront();
                 ChildForm.Show();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-               
+
         }
 
         private void btnDashBoard_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAdmin.DashboardAdminForm(_userId),sender);
+            OpenChildForm(new FormAdmin.DashboardAdminForm(_userId), sender);
         }
 
         private void btnEmployee_Click(object sender, EventArgs e)
@@ -123,17 +123,17 @@ namespace EmployeeManagementSystem
 
         private void btnAttendance_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAdmin.AttendanceAdminForm(), sender);
+            OpenChildForm(new FormAdmin.AttendanceAdminForm(_userId), sender);
         }
 
         private void btnLeaveRequest_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAdmin.LeaveRequestAdminForm(_userId,_context), sender);
+            OpenChildForm(new FormAdmin.LeaveRequestAdminForm(_userId, _context), sender);
         }
 
         private void btnSalary_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormAdmin.SalaryAdminForm(), sender);
+            OpenChildForm(new FormAdmin.SalaryAdminForm(_userId), sender);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -143,6 +143,11 @@ namespace EmployeeManagementSystem
                 ActiveForm.Close();
                 DisableButton();
             }
+        }
+
+        private void pnlDesktopPane_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

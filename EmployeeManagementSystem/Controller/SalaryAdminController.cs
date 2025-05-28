@@ -7,26 +7,57 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagementSystem.Controller
 {
-    public class SalaryManagerController
+    public class SalaryAdminController
     {
         private readonly EmployeeManagementContext _context;
         private const decimal STANDARD_WORKING_DAYS = 22m;
-        
-        public SalaryManagerController(EmployeeManagementContext context)
+
+        public SalaryAdminController(EmployeeManagementContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<Employee> GetManagerInfoAsync(int managerId)
+        // Lấy thông tin Admin (khác với Manager)
+        public async Task<Employee> GetAdminInfoAsync(int adminId)
         {
             return await _context.Employees
                 .Include(e => e.Department)
-                .FirstOrDefaultAsync(e => e.UserId == managerId &&
-                                       e.RoleId == 2 &&
+                .FirstOrDefaultAsync(e => e.UserId == adminId &&
+                                       e.RoleId == 3 &&
                                        e.Status == true);
         }
 
-        public async Task<decimal> GetBaseSalaryAsync(int userId)
+        // Lấy tất cả phòng ban (Admin có quyền xem tất cả)
+        public async Task<List<Department>> GetAllDepartmentsForAdminAsync()
+        {
+            return await _context.Departments
+                .Include(d => d.Manager)
+                .Where(d => d.Status == true)
+                .OrderBy(d => d.Name)
+                .ToListAsync();
+        }
+
+        // Lấy tất cả nhân viên (bao gồm Manager) - khác với Manager chỉ xem phòng ban mình
+        public async Task<List<Employee>> GetAllEmployeesForAdminAsync(int? departmentId = null)
+        {
+            var query = _context.Employees
+                .Include(e => e.Department)
+                .Where(e => e.Status == true);
+
+            if (departmentId.HasValue)
+            {
+                query = query.Where(e => e.DepartmentId == departmentId.Value);
+            }
+
+            return await query
+                .OrderBy(e => e.Department.Name)
+                .ThenBy(e => e.RoleId) // Manager trước, Employee sau
+                .ThenBy(e => e.Name)
+                .ToListAsync();
+        }
+
+        // Lấy lương cơ bản cho Admin (bao gồm cả Admin role)
+        public async Task<decimal> GetBaseSalaryForAdminAsync(int userId)
         {
             try
             {
@@ -36,11 +67,15 @@ namespace EmployeeManagementSystem.Controller
 
                 if (employee == null) return 0m;
 
-                decimal departmentBaseSalary = GetDepartmentBaseSalary(employee.DepartmentId);
+                decimal departmentBaseSalary = GetDepartmentBaseSalaryForAdmin(employee.DepartmentId);
 
                 if (employee.RoleId == 2) // Manager
                 {
                     return departmentBaseSalary * 1.30m; // +30%
+                }
+                else if (employee.RoleId == 3) // Admin
+                {
+                    return departmentBaseSalary * 1.50m; // +50%
                 }
                 else // Employee
                 {
@@ -49,12 +84,13 @@ namespace EmployeeManagementSystem.Controller
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Lỗi GetBaseSalaryAsync: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Lỗi GetBaseSalaryForAdminAsync: {ex.Message}");
                 return 0m;
             }
         }
 
-        private decimal GetDepartmentBaseSalary(int departmentId)
+        //Lương cơ bản theo phòng ban cho Admin
+        private decimal GetDepartmentBaseSalaryForAdmin(int departmentId)
         {
             return departmentId switch
             {
@@ -62,35 +98,14 @@ namespace EmployeeManagementSystem.Controller
                 2 => 2800000m, // HR Department  
                 3 => 3200000m, // Finance Department
                 4 => 2900000m, // Marketing Department
-                5 => 3100000m, // Sales Department
+                5 => 3100000m, // QA Department
                 6 => 3300000m, // DevOps Department
                 _ => 3000000m  // Default
             };
         }
 
-        public async Task<List<Employee>> GetDepartmentEmployeesAsync(int managerId)
-        {
-            try
-            {
-                var manager = await GetManagerInfoAsync(managerId);
-                if (manager == null) return new List<Employee>();
-
-                return await _context.Employees
-                    .Where(e => e.DepartmentId == manager.DepartmentId &&
-                               e.Status == true &&
-                               e.RoleId == 1)
-                    .OrderBy(e => e.Name)
-                    .ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Lỗi GetDepartmentEmployeesAsync: {ex.Message}");
-                return new List<Employee>();
-            }
-        }
-
-        // Tính lương với Bonus (bỏ excluded days)
-        public async Task<PayrollCalculationResult> CalculatePayrollAsync(int userId, DateTime month, decimal bonus = 0m)
+        // Tính lương cho Admin (có thể tính cho bất kỳ ai)
+        public async Task<AdminPayrollCalculationResult> CalculatePayrollForAdminAsync(int userId, DateTime month, decimal bonus = 0m, List<DateTime> excludedDays = null)
         {
             try
             {
@@ -106,7 +121,7 @@ namespace EmployeeManagementSystem.Controller
                     throw new ArgumentException("Không tìm thấy nhân viên");
                 }
 
-                decimal baseSalary = await GetBaseSalaryAsync(userId);
+                decimal baseSalary = await GetBaseSalaryForAdminAsync(userId);
                 decimal dailySalary = baseSalary / STANDARD_WORKING_DAYS;
 
                 var attendances = await _context.Attendances
@@ -121,17 +136,20 @@ namespace EmployeeManagementSystem.Controller
                                 lr.EndDate >= startDate)
                     .ToListAsync();
 
-                var result = new PayrollCalculationResult
+                var result = new AdminPayrollCalculationResult
                 {
                     UserId = userId,
                     EmployeeName = employee.Name,
+                    EmployeeRole = GetRoleNameForAdmin(employee.RoleId),
+                    DepartmentName = employee.Department?.Name ?? "N/A",
                     Month = month,
                     BaseSalary = baseSalary,
                     DailySalary = dailySalary,
                     StandardWorkingDays = (int)STANDARD_WORKING_DAYS,
-                    AttendanceDetails = new List<AttendanceDetail>(),
+                    AttendanceDetails = new List<AdminAttendanceDetail>(),
                     TotalDeduction = 0m,
                     Bonus = bonus,
+                    ExcludedDays = excludedDays ?? new List<DateTime>(),
                     TotalSalary = baseSalary
                 };
 
@@ -139,7 +157,7 @@ namespace EmployeeManagementSystem.Controller
                     .GroupBy(a => a.Date.Date)
                     .ToDictionary(g => g.Key, g => g.ToList());
 
-                var workingDays = GetWorkingDaysInMonth(month);
+                var workingDays = GetWorkingDaysInMonthForAdmin(month);
 
                 foreach (var workingDay in workingDays)
                 {
@@ -151,25 +169,30 @@ namespace EmployeeManagementSystem.Controller
                         workingDay >= lr.StartDate.Date &&
                         workingDay <= lr.EndDate.Date);
 
-                    var dayDetail = CalculateDayDeduction(workingDay, dayAttendances, dailySalary, dayLeaveRequest);
+                    bool isExcludedDay = excludedDays != null && excludedDays.Any(ed => ed.Date == workingDay);
+
+                    var dayDetail = CalculateDayDeductionForAdmin(workingDay, dayAttendances, dailySalary, dayLeaveRequest, isExcludedDay);
                     result.AttendanceDetails.Add(dayDetail);
-                    result.TotalDeduction += dayDetail.DeductionAmount;
+
+                    if (!isExcludedDay)
+                    {
+                        result.TotalDeduction += dayDetail.DeductionAmount;
+                    }
                 }
 
-                //Tính lương thực nhận: (Lương cơ bản - Khấu trừ) + Bonus
                 result.TotalSalary = (baseSalary - result.TotalDeduction) + bonus;
                 return result;
             }
             catch (Exception ex)
             {
-                throw new Exception($"Lỗi tính lương: {ex.Message}", ex);
+                throw new Exception($"Lỗi tính lương cho Admin: {ex.Message}", ex);
             }
         }
 
-        // Tính khấu trừ bình thường (bỏ excluded days)
-        private AttendanceDetail CalculateDayDeduction(DateTime date, List<Attendance> dayAttendances, decimal dailySalary, LeaveRequest dayLeaveRequest)
+        
+        private AdminAttendanceDetail CalculateDayDeductionForAdmin(DateTime date, List<Attendance> dayAttendances, decimal dailySalary, LeaveRequest dayLeaveRequest, bool isExcludedDay)
         {
-            var detail = new AttendanceDetail
+            var detail = new AdminAttendanceDetail
             {
                 Date = date,
                 DailySalary = dailySalary,
@@ -177,7 +200,8 @@ namespace EmployeeManagementSystem.Controller
                 MorningShift = null,
                 AfternoonShift = null,
                 DeductionAmount = 0m,
-                DeductionReason = ""
+                DeductionReason = "",
+                IsExcludedDay = isExcludedDay
             };
 
             var morningAttendance = dayAttendances.FirstOrDefault(a => a.Shift == "Sáng");
@@ -185,6 +209,13 @@ namespace EmployeeManagementSystem.Controller
 
             detail.MorningShift = morningAttendance;
             detail.AfternoonShift = afternoonAttendance;
+
+            if (isExcludedDay)
+            {
+                detail.DeductionAmount = dailySalary;
+                detail.DeductionReason = "Ngày đã được xóa - Không tính lương";
+                return detail;
+            }
 
             if (dayLeaveRequest != null)
             {
@@ -199,18 +230,16 @@ namespace EmployeeManagementSystem.Controller
                 }
             }
 
-            //KIỂM TRA VẮNG MẶT NGUYÊN NGÀY
             bool morningAbsent = (morningAttendance == null);
             bool afternoonAbsent = (afternoonAttendance == null);
 
             if (morningAbsent && afternoonAbsent)
             {
-                detail.DeductionAmount = dailySalary; // Trừ 100% lương ngày
+                detail.DeductionAmount = dailySalary;
                 detail.DeductionReason += "Vắng mặt nguyên ngày - Không tính lương";
                 return detail;
             }
 
-            // CHỈ ĐI 1 CA - TRỪ 5%
             bool hasViolation = false;
             string violationDetails = "";
 
@@ -248,7 +277,7 @@ namespace EmployeeManagementSystem.Controller
 
             if (hasViolation)
             {
-                detail.DeductionAmount = dailySalary * 0.05m; // 5% lương ngày
+                detail.DeductionAmount = dailySalary * 0.05m;
                 detail.DeductionReason += $"Vi phạm - Trừ 5% lương ngày ({violationDetails.TrimEnd(' ', ';')})";
             }
             else
@@ -259,9 +288,8 @@ namespace EmployeeManagementSystem.Controller
             return detail;
         }
 
-
-
-        private List<DateTime> GetWorkingDaysInMonth(DateTime month)
+        
+        private List<DateTime> GetWorkingDaysInMonthForAdmin(DateTime month)
         {
             var workingDays = new List<DateTime>();
             var startDate = new DateTime(month.Year, month.Month, 1);
@@ -278,24 +306,23 @@ namespace EmployeeManagementSystem.Controller
             return workingDays;
         }
 
-        // Lưu payroll với Bonus và chỉ lưu tháng
-        public async Task<bool> SavePayrollAsync(PayrollCalculationResult result)
+        // Lưu payroll cho Admin
+        public async Task<bool> SavePayrollForAdminAsync(AdminPayrollCalculationResult result)
         {
             try
             {
-                // Tạo DateTime chỉ với tháng (ngày 1 của tháng)
                 var monthOnly = new DateTime(result.Month.Year, result.Month.Month, 1);
 
                 var existingPayroll = await _context.Payrolls
-                    .FirstOrDefaultAsync(p => p.UserId == result.UserId && 
-                                           p.Month.Year == result.Month.Year && 
+                    .FirstOrDefaultAsync(p => p.UserId == result.UserId &&
+                                           p.Month.Year == result.Month.Year &&
                                            p.Month.Month == result.Month.Month);
 
                 if (existingPayroll != null)
                 {
                     existingPayroll.BaseSalary = result.BaseSalary;
                     existingPayroll.DaysWorked = result.StandardWorkingDays;
-                    existingPayroll.Bonus = result.Bonus; // ✅ Cập nhật Bonus
+                    existingPayroll.Bonus = result.Bonus;
                     existingPayroll.Deduction = result.TotalDeduction;
                     existingPayroll.TotalSalary = result.TotalSalary;
                 }
@@ -303,10 +330,10 @@ namespace EmployeeManagementSystem.Controller
                 {
                     var newPayroll = new Payroll(
                         result.UserId,
-                        monthOnly, // Chỉ lưu tháng (ngày 1)
+                        monthOnly,
                         result.BaseSalary,
                         result.StandardWorkingDays,
-                        result.Bonus, // Lưu Bonus
+                        result.Bonus,
                         result.TotalDeduction,
                         result.TotalSalary
                     );
@@ -318,28 +345,87 @@ namespace EmployeeManagementSystem.Controller
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Lỗi lưu payroll: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Lỗi lưu payroll cho Admin: {ex.Message}");
                 return false;
             }
         }
+
+        //  Lấy báo cáo lương toàn công ty cho Admin
+        public async Task<List<AdminSalaryReportViewModel>> GetCompanySalaryReportForAdminAsync(DateTime month, int? departmentFilter = null)
+        {
+            try
+            {
+                var employees = await GetAllEmployeesForAdminAsync(departmentFilter);
+                var result = new List<AdminSalaryReportViewModel>();
+
+                foreach (var employee in employees)
+                {
+                    var payroll = await _context.Payrolls
+                        .FirstOrDefaultAsync(p => p.UserId == employee.UserId &&
+                                           p.Month.Year == month.Year &&
+                                           p.Month.Month == month.Month);
+
+                    var baseSalary = await GetBaseSalaryForAdminAsync(employee.UserId);
+
+                    result.Add(new AdminSalaryReportViewModel
+                    {
+                        UserId = employee.UserId,
+                        EmployeeName = employee.Name,
+                        Position = employee.Position,
+                        DepartmentName = employee.Department?.Name ?? "N/A",
+                        RoleName = GetRoleNameForAdmin(employee.RoleId),
+                        BaseSalary = baseSalary,
+                        Bonus = payroll?.Bonus ?? 0m,
+                        Deduction = payroll?.Deduction ?? 0m,
+                        TotalSalary = payroll?.TotalSalary ?? baseSalary,
+                        HasPayroll = payroll != null
+                    });
+                }
+
+                return result.OrderBy(r => r.DepartmentName)
+                           .ThenBy(r => r.RoleName)
+                           .ThenBy(r => r.EmployeeName)
+                           .ToList();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Lỗi GetCompanySalaryReportForAdminAsync: {ex.Message}");
+                return new List<AdminSalaryReportViewModel>();
+            }
+        }
+
+        // Helper method để lấy tên role cho Admin
+        private string GetRoleNameForAdmin(int roleId)
+        {
+            return roleId switch
+            {
+                1 => "Employee",
+                2 => "Manager",
+                3 => "Admin",
+                _ => "Unknown"
+            };
+        }
     }
 
-    // ✅ Cập nhật PayrollCalculationResult - thêm Bonus
-    public class PayrollCalculationResult
+    // ViewModel riêng cho Admin (tránh trùng tên)
+    public class AdminPayrollCalculationResult
     {
         public int UserId { get; set; }
         public string EmployeeName { get; set; }
+        public string EmployeeRole { get; set; }
+        public string DepartmentName { get; set; }
         public DateTime Month { get; set; }
         public decimal BaseSalary { get; set; }
         public decimal DailySalary { get; set; }
         public int StandardWorkingDays { get; set; }
-        public List<AttendanceDetail> AttendanceDetails { get; set; }
+        public List<AdminAttendanceDetail> AttendanceDetails { get; set; }
         public decimal TotalDeduction { get; set; }
-        public decimal Bonus { get; set; } // Thêm Bonus
-        public decimal TotalSalary { get; set; } // (BaseSalary - TotalDeduction) + Bonus
+        public decimal Bonus { get; set; }
+        public List<DateTime> ExcludedDays { get; set; }
+        public decimal TotalSalary { get; set; }
     }
 
-    public class AttendanceDetail
+    public class AdminAttendanceDetail
     {
         public DateTime Date { get; set; }
         public decimal DailySalary { get; set; }
@@ -348,5 +434,20 @@ namespace EmployeeManagementSystem.Controller
         public Attendance AfternoonShift { get; set; }
         public decimal DeductionAmount { get; set; }
         public string DeductionReason { get; set; }
+        public bool IsExcludedDay { get; set; }
+    }
+
+    public class AdminSalaryReportViewModel
+    {
+        public int UserId { get; set; }
+        public string EmployeeName { get; set; }
+        public string Position { get; set; }
+        public string DepartmentName { get; set; }
+        public string RoleName { get; set; }
+        public decimal BaseSalary { get; set; }
+        public decimal Bonus { get; set; }
+        public decimal Deduction { get; set; }
+        public decimal TotalSalary { get; set; }
+        public bool HasPayroll { get; set; }
     }
 }
