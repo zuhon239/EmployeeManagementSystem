@@ -17,7 +17,6 @@ namespace EmployeeManagementSystem.Controller
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        // Get list of departments for the combobox, including "Total" for company-wide data
         public (string[] DepartmentNames, int[] DepartmentIds) GetDepartments()
         {
             var departments = _context.Departments
@@ -25,14 +24,13 @@ namespace EmployeeManagementSystem.Controller
                 .Select(d => new { d.DepartmentId, d.Name })
                 .ToArray();
 
-            // Add "Total" as an option for company-wide data
+         
             var departmentNames = new[] { "Total" }.Concat(departments.Select(d => d.Name)).ToArray();
             var departmentIds = new[] { 0 }.Concat(departments.Select(d => d.DepartmentId)).ToArray();
 
             return (departmentNames, departmentIds);
         }
 
-        // Calculate performance distribution for a department or entire company
         public (double EffectiveTimePercentage, double ApprovedLeavePercentage,
             double IneffectiveTimePercentage, string DetailMessage) CalculatePerformanceDistribution(
             DateTime fromDate, DateTime toDate, int? departmentId)
@@ -94,7 +92,7 @@ namespace EmployeeManagementSystem.Controller
 
                 // Tính ca nghỉ phép không được duyệt
                 var ineffectiveLeaveRequests = _context.LeaveRequests
-                    .Where(lr => employeeIds.Contains(lr.UserId) && (lr.Status == "Pending" || lr.Status == "Rejected"))
+                    .Where(lr => employeeIds.Contains(lr.UserId) && (lr.Status == "Đã duyệt" || lr.Status == "Từ chối"))
                     .Where(lr => lr.StartDate.Date <= toDate.Date && lr.EndDate.Date >= fromDate.Date)
                     .ToList();
 

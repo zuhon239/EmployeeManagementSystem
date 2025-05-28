@@ -33,7 +33,7 @@ namespace EmployeeManagementSystem.FormAdmin
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             dataGridView1.CellMouseEnter += DataGridView1_CellMouseEnter; 
             dataGridView1.CellMouseLeave += DataGridView1_CellMouseLeave;
-            cbGender.Items.AddRange(new[] { "Male", "Female" });
+            cbGender.Items.AddRange(new[] { "Nam", "Nữ" });
             btnThem.Click += BtnThem_Click;
             button1.Click += BtnSua_Click;
             btnSaThai.Click += BtnSaThai_Click;
@@ -64,7 +64,7 @@ namespace EmployeeManagementSystem.FormAdmin
                         lr.Phone,
                         lr.Position,
                         lr.HireDate,
-                        Promotion = "Promotion"
+                        Promotion = "Thăng chức"
                     })
                     .ToList();
 
@@ -114,7 +114,7 @@ namespace EmployeeManagementSystem.FormAdmin
                             lr.Phone,
                             lr.Position,
                             lr.HireDate,
-                            Promotion = "Promotion"
+                            Promotion = "Thăng chức"
                         })
                         .ToList();
 

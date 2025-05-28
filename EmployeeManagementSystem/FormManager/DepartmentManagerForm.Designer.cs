@@ -80,7 +80,7 @@
             btnBackToMenu.Name = "btnBackToMenu";
             btnBackToMenu.Size = new Size(216, 65);
             btnBackToMenu.TabIndex = 6;
-            btnBackToMenu.Text = "Back";
+            btnBackToMenu.Text = "Thoát";
             btnBackToMenu.UseVisualStyleBackColor = true;
             btnBackToMenu.Click += btnBackToMenu_Click;
             // 
@@ -96,7 +96,7 @@
             btnSalary.Name = "btnSalary";
             btnSalary.Size = new Size(216, 65);
             btnSalary.TabIndex = 5;
-            btnSalary.Text = "Salary";
+            btnSalary.Text = "Lương";
             btnSalary.UseVisualStyleBackColor = true;
             btnSalary.Click += btnSalary_Click;
             // 
@@ -112,7 +112,7 @@
             btnLeaveRequest.Name = "btnLeaveRequest";
             btnLeaveRequest.Size = new Size(216, 65);
             btnLeaveRequest.TabIndex = 4;
-            btnLeaveRequest.Text = "LeaveRequest";
+            btnLeaveRequest.Text = "Nghỉ phép";
             btnLeaveRequest.UseVisualStyleBackColor = true;
             btnLeaveRequest.Click += btnLeaveRequest_Click;
             // 
@@ -128,7 +128,7 @@
             btnAttendance.Name = "btnAttendance";
             btnAttendance.Size = new Size(216, 65);
             btnAttendance.TabIndex = 3;
-            btnAttendance.Text = "Attendance";
+            btnAttendance.Text = "Chấm công";
             btnAttendance.UseVisualStyleBackColor = true;
             btnAttendance.Click += btnAttendance_Click;
             // 
@@ -144,7 +144,7 @@
             btnManager.Name = "btnManager";
             btnManager.Size = new Size(216, 65);
             btnManager.TabIndex = 2;
-            btnManager.Text = "Employee";
+            btnManager.Text = "Nhân viên";
             btnManager.UseVisualStyleBackColor = true;
             btnManager.Click += btnManager_Click;
             // 
@@ -160,7 +160,7 @@
             btnDashboard.Name = "btnDashboard";
             btnDashboard.Size = new Size(216, 65);
             btnDashboard.TabIndex = 1;
-            btnDashboard.Text = "Dashboard";
+            btnDashboard.Text = "Thống kê";
             btnDashboard.UseVisualStyleBackColor = true;
             btnDashboard.Click += btnDashboard_Click;
             // 

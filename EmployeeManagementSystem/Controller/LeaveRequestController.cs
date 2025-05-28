@@ -50,20 +50,20 @@ namespace EmployeeManagementSystem.Controller
                     bool isAfternoonShift = now.Hour >= 13 && now.Hour < 24; // Ca chiều: 12:00 - 19:00
                     bool isRest = now.Hour >= 12 && now.Hour < 13; 
 
-                    if (isMorningShift && (shift == "Morning"||shift == "FullDay"))
+                    if (isMorningShift && (shift == "Sáng"||shift == "Cả ngày"))
                         throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đang trong ca sáng.");
-                    if (isAfternoonShift && (shift == "Morning" || shift == "FullDay"))
+                    if (isAfternoonShift && (shift == "Sáng" || shift == "Cả ngày"))
                         throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đang trong buổi chiều.");
-                    if (isAfternoonShift && (shift == "Afternoon" || shift == "FullDay"))
+                    if (isAfternoonShift && (shift == "Chiều" || shift == "Cả ngày"))
                         throw new ArgumentException("Không thể xin nghỉ ca chiều hoặc cả ngày trong khi đang trong ca chiều.");
-                    if (isRest && (shift == "Morning" || shift == "FullDay"))
+                    if (isRest && (shift == "Sáng" || shift == "Cả ngày"))
                         throw new ArgumentException("Không thể xin nghỉ ca sáng trong khi đã qua ca sáng rồi.");
                 }
                 if (!isSingleDay)
                     shift = null;
                 // Kiểm tra trùng lặp yêu cầu nghỉ phép
                 var existingRequests = await _context.LeaveRequests
-                    .Where(lr => lr.UserId == userId && lr.Status != "Rejected")
+                    .Where(lr => lr.UserId == userId && lr.Status != "Từ chối")
                     .ToListAsync();
 
                 foreach (var request in existingRequests)
@@ -78,7 +78,7 @@ namespace EmployeeManagementSystem.Controller
                             {
                                 if (request.Shift == shift)
                                     throw new ArgumentException($"Đã có yêu cầu nghỉ ca {shift} trong ngày {startDate:dd/MM/yyyy}.");
-                                if (request.Shift == "FullDay" || shift == "FullDay")
+                                if (request.Shift == "Cả ngày" || shift == "Cả ngày")
                                     throw new ArgumentException($"Đã có yêu cầu nghỉ cả ngày hoặc ca {request.Shift} trong ngày {startDate:dd/MM/yyyy}.");
                             }
                         }
@@ -97,7 +97,7 @@ namespace EmployeeManagementSystem.Controller
                     EndDate = endDate,
                     Reason = reason,
                     Shift = shift,
-                    Status = "Pending",
+                    Status = "Chưa duyệt",
                     ApproverId = null // Không gán ApproverId
                 };
 
@@ -135,10 +135,10 @@ namespace EmployeeManagementSystem.Controller
                 }
 
                 // Kiểm tra trạng thái hiện tại
-                if (leaveRequest.Status != "Pending")
+                if (leaveRequest.Status != "Chưa duyệt")
                 {
-                    System.Diagnostics.Debug.WriteLine($"Yêu cầu nghỉ phép LeaveId: {leaveId} không ở trạng thái Pending.");
-                    throw new InvalidOperationException("Chỉ có thể duyệt/từ chối yêu cầu đang ở trạng thái Pending.");
+                    System.Diagnostics.Debug.WriteLine($"Yêu cầu nghỉ phép LeaveId: {leaveId} không ở trạng thái chưa duyệt.");
+                    throw new InvalidOperationException("Chỉ có thể duyệt/từ chối yêu cầu đang ở trạng thái chưa duyệt.");
                 }
 
                 // Kiểm tra quyền của người duyệt (Manager hoặc Admin)
@@ -152,7 +152,7 @@ namespace EmployeeManagementSystem.Controller
                 }
 
                 // Cập nhật trạng thái và thông tin người duyệt
-                leaveRequest.Status = isApproved ? "Approved" : "Rejected";
+                leaveRequest.Status = isApproved ? "Đã duyệt" : "Từ chối";
                 leaveRequest.ApproverId = approverId;
 
                 // Lưu thay đổi

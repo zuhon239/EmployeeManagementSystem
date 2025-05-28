@@ -28,15 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
-            clUserId = new DataGridViewTextBoxColumn();
-            clName = new DataGridViewTextBoxColumn();
-            clGender = new DataGridViewTextBoxColumn();
-            clDateofBirth = new DataGridViewTextBoxColumn();
-            clPhone = new DataGridViewTextBoxColumn();
-            clPosition = new DataGridViewTextBoxColumn();
-            clHireDate = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             lblHeader = new Label();
             txtID = new TextBox();
@@ -58,6 +51,13 @@
             txtPosition = new TextBox();
             txtEmail = new TextBox();
             lblEmail = new Label();
+            clUserId = new DataGridViewTextBoxColumn();
+            clName = new DataGridViewTextBoxColumn();
+            clGender = new DataGridViewTextBoxColumn();
+            clDateofBirth = new DataGridViewTextBoxColumn();
+            clPhone = new DataGridViewTextBoxColumn();
+            clPosition = new DataGridViewTextBoxColumn();
+            clHireDate = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -70,14 +70,14 @@
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.BackgroundColor = Color.White;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Navy;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Navy;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { clUserId, clName, clGender, clDateofBirth, clPhone, clPosition, clHireDate });
             dataGridView1.Location = new Point(9, 43);
@@ -87,60 +87,6 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(845, 229);
             dataGridView1.TabIndex = 0;
-            // 
-            // clUserId
-            // 
-            clUserId.Frozen = true;
-            clUserId.HeaderText = "Employee_ID";
-            clUserId.Name = "clUserId";
-            clUserId.ReadOnly = true;
-            clUserId.Width = 110;
-            // 
-            // clName
-            // 
-            clName.Frozen = true;
-            clName.HeaderText = "Name";
-            clName.Name = "clName";
-            clName.ReadOnly = true;
-            clName.Width = 180;
-            // 
-            // clGender
-            // 
-            clGender.Frozen = true;
-            clGender.HeaderText = "Gender";
-            clGender.Name = "clGender";
-            clGender.ReadOnly = true;
-            // 
-            // clDateofBirth
-            // 
-            clDateofBirth.Frozen = true;
-            clDateofBirth.HeaderText = "DateOfBirth";
-            clDateofBirth.Name = "clDateofBirth";
-            clDateofBirth.ReadOnly = true;
-            clDateofBirth.Width = 120;
-            // 
-            // clPhone
-            // 
-            clPhone.Frozen = true;
-            clPhone.HeaderText = "Phone";
-            clPhone.Name = "clPhone";
-            clPhone.ReadOnly = true;
-            clPhone.Width = 120;
-            // 
-            // clPosition
-            // 
-            clPosition.Frozen = true;
-            clPosition.HeaderText = "Position";
-            clPosition.Name = "clPosition";
-            clPosition.ReadOnly = true;
-            // 
-            // clHireDate
-            // 
-            clHireDate.Frozen = true;
-            clHireDate.HeaderText = "HireDate";
-            clHireDate.Name = "clHireDate";
-            clHireDate.ReadOnly = true;
-            clHireDate.Width = 120;
             // 
             // panel1
             // 
@@ -160,9 +106,9 @@
             lblHeader.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHeader.Location = new Point(12, 9);
             lblHeader.Name = "lblHeader";
-            lblHeader.Size = new Size(156, 25);
+            lblHeader.Size = new Size(194, 25);
             lblHeader.TabIndex = 1;
-            lblHeader.Text = "Employee's Data";
+            lblHeader.Text = "Danh sách nhân viên";
             // 
             // txtID
             // 
@@ -186,9 +132,9 @@
             lblFullName.AutoSize = true;
             lblFullName.Location = new Point(37, 377);
             lblFullName.Name = "lblFullName";
-            lblFullName.Size = new Size(45, 19);
+            lblFullName.Size = new Size(30, 19);
             lblFullName.TabIndex = 5;
-            lblFullName.Text = "Name";
+            lblFullName.Text = "Tên";
             // 
             // txtName
             // 
@@ -200,29 +146,29 @@
             // lblGender
             // 
             lblGender.AutoSize = true;
-            lblGender.Location = new Point(310, 380);
+            lblGender.Location = new Point(303, 381);
             lblGender.Name = "lblGender";
-            lblGender.Size = new Size(54, 19);
+            lblGender.Size = new Size(61, 19);
             lblGender.TabIndex = 7;
-            lblGender.Text = "Gender";
+            lblGender.Text = "Giới tính";
             // 
             // lblDateOfBirth
             // 
             lblDateOfBirth.AutoSize = true;
-            lblDateOfBirth.Location = new Point(277, 328);
+            lblDateOfBirth.Location = new Point(329, 329);
             lblDateOfBirth.Name = "lblDateOfBirth";
-            lblDateOfBirth.Size = new Size(87, 19);
+            lblDateOfBirth.Size = new Size(35, 19);
             lblDateOfBirth.TabIndex = 9;
-            lblDateOfBirth.Text = "Date of birth";
+            lblDateOfBirth.Text = "Sinh";
             // 
             // lblPhone
             // 
             lblPhone.AutoSize = true;
-            lblPhone.Location = new Point(316, 436);
+            lblPhone.Location = new Point(275, 436);
             lblPhone.Name = "lblPhone";
-            lblPhone.Size = new Size(48, 19);
+            lblPhone.Size = new Size(89, 19);
             lblPhone.TabIndex = 11;
-            lblPhone.Text = "Phone";
+            lblPhone.Text = "Số điện thoại";
             // 
             // txtPhone
             // 
@@ -295,11 +241,11 @@
             // lblPosition
             // 
             lblPosition.AutoSize = true;
-            lblPosition.Location = new Point(517, 328);
+            lblPosition.Location = new Point(533, 329);
             lblPosition.Name = "lblPosition";
-            lblPosition.Size = new Size(57, 19);
+            lblPosition.Size = new Size(38, 19);
             lblPosition.TabIndex = 19;
-            lblPosition.Text = "Position";
+            lblPosition.Text = "Vị trí";
             // 
             // txtPosition
             // 
@@ -323,6 +269,60 @@
             lblEmail.Size = new Size(41, 19);
             lblEmail.TabIndex = 21;
             lblEmail.Text = "Email";
+            // 
+            // clUserId
+            // 
+            clUserId.Frozen = true;
+            clUserId.HeaderText = "ID";
+            clUserId.Name = "clUserId";
+            clUserId.ReadOnly = true;
+            clUserId.Width = 110;
+            // 
+            // clName
+            // 
+            clName.Frozen = true;
+            clName.HeaderText = "Tên";
+            clName.Name = "clName";
+            clName.ReadOnly = true;
+            clName.Width = 180;
+            // 
+            // clGender
+            // 
+            clGender.Frozen = true;
+            clGender.HeaderText = "Giới tính";
+            clGender.Name = "clGender";
+            clGender.ReadOnly = true;
+            // 
+            // clDateofBirth
+            // 
+            clDateofBirth.Frozen = true;
+            clDateofBirth.HeaderText = "Sinh";
+            clDateofBirth.Name = "clDateofBirth";
+            clDateofBirth.ReadOnly = true;
+            clDateofBirth.Width = 120;
+            // 
+            // clPhone
+            // 
+            clPhone.Frozen = true;
+            clPhone.HeaderText = "Số điện thoại";
+            clPhone.Name = "clPhone";
+            clPhone.ReadOnly = true;
+            clPhone.Width = 120;
+            // 
+            // clPosition
+            // 
+            clPosition.Frozen = true;
+            clPosition.HeaderText = "Vị trí";
+            clPosition.Name = "clPosition";
+            clPosition.ReadOnly = true;
+            // 
+            // clHireDate
+            // 
+            clHireDate.Frozen = true;
+            clHireDate.HeaderText = "Ngày tuyển dụng";
+            clHireDate.Name = "clHireDate";
+            clHireDate.ReadOnly = true;
+            clHireDate.Width = 120;
             // 
             // EmployeeManagerForm
             // 
@@ -364,13 +364,6 @@
         private DataGridView dataGridView1;
         private Panel panel1;
         private Label lblHeader;
-        private DataGridViewTextBoxColumn clUserId;
-        private DataGridViewTextBoxColumn clName;
-        private DataGridViewTextBoxColumn clGender;
-        private DataGridViewTextBoxColumn clDateofBirth;
-        private DataGridViewTextBoxColumn clPhone;
-        private DataGridViewTextBoxColumn clPosition;
-        private DataGridViewTextBoxColumn clHireDate;
         private TextBox txtID;
         private Label lblID;
         private Label lblFullName;
@@ -390,5 +383,12 @@
         private TextBox txtPosition;
         private TextBox txtEmail;
         private Label lblEmail;
+        private DataGridViewTextBoxColumn clUserId;
+        private DataGridViewTextBoxColumn clName;
+        private DataGridViewTextBoxColumn clGender;
+        private DataGridViewTextBoxColumn clDateofBirth;
+        private DataGridViewTextBoxColumn clPhone;
+        private DataGridViewTextBoxColumn clPosition;
+        private DataGridViewTextBoxColumn clHireDate;
     }
 }

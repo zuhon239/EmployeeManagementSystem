@@ -33,6 +33,11 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
+            panel1 = new Panel();
+            lblReason = new Label();
+            lblHoTen = new Label();
+            btnAccept = new Button();
+            btnDeny = new Button();
             clLeaveId = new DataGridViewTextBoxColumn();
             clUserid = new DataGridViewTextBoxColumn();
             clName = new DataGridViewTextBoxColumn();
@@ -41,11 +46,6 @@
             clShift = new DataGridViewTextBoxColumn();
             clStatus = new DataGridViewTextBoxColumn();
             clDetail = new DataGridViewTextBoxColumn();
-            panel1 = new Panel();
-            lblReason = new Label();
-            lblHoTen = new Label();
-            btnAccept = new Button();
-            btnDeny = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -79,76 +79,6 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(906, 280);
             dataGridView1.TabIndex = 0;
-            // 
-            // clLeaveId
-            // 
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            clLeaveId.DefaultCellStyle = dataGridViewCellStyle2;
-            clLeaveId.FillWeight = 200F;
-            clLeaveId.Frozen = true;
-            clLeaveId.HeaderText = "Leave_id";
-            clLeaveId.Name = "clLeaveId";
-            clLeaveId.ReadOnly = true;
-            clLeaveId.Width = 110;
-            // 
-            // clUserid
-            // 
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clUserid.DefaultCellStyle = dataGridViewCellStyle3;
-            clUserid.Frozen = true;
-            clUserid.HeaderText = "User_id";
-            clUserid.Name = "clUserid";
-            clUserid.ReadOnly = true;
-            clUserid.Width = 110;
-            // 
-            // clName
-            // 
-            clName.Frozen = true;
-            clName.HeaderText = "Name";
-            clName.Name = "clName";
-            clName.ReadOnly = true;
-            clName.Width = 210;
-            // 
-            // clStartdate
-            // 
-            clStartdate.Frozen = true;
-            clStartdate.HeaderText = "Start Date";
-            clStartdate.Name = "clStartdate";
-            clStartdate.ReadOnly = true;
-            clStartdate.Width = 95;
-            // 
-            // clEnddate
-            // 
-            clEnddate.Frozen = true;
-            clEnddate.HeaderText = "End Date";
-            clEnddate.Name = "clEnddate";
-            clEnddate.ReadOnly = true;
-            clEnddate.Width = 95;
-            // 
-            // clShift
-            // 
-            clShift.Frozen = true;
-            clShift.HeaderText = "Shift";
-            clShift.Name = "clShift";
-            clShift.ReadOnly = true;
-            clShift.Width = 90;
-            // 
-            // clStatus
-            // 
-            clStatus.Frozen = true;
-            clStatus.HeaderText = "Status";
-            clStatus.Name = "clStatus";
-            clStatus.ReadOnly = true;
-            // 
-            // clDetail
-            // 
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            clDetail.DefaultCellStyle = dataGridViewCellStyle4;
-            clDetail.Frozen = true;
-            clDetail.HeaderText = "See Detail";
-            clDetail.Name = "clDetail";
-            clDetail.ReadOnly = true;
-            clDetail.Width = 120;
             // 
             // panel1
             // 
@@ -209,6 +139,76 @@
             btnDeny.Text = "X";
             btnDeny.UseVisualStyleBackColor = true;
             btnDeny.Click += btnDeny_Click_1;
+            // 
+            // clLeaveId
+            // 
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            clLeaveId.DefaultCellStyle = dataGridViewCellStyle2;
+            clLeaveId.FillWeight = 200F;
+            clLeaveId.Frozen = true;
+            clLeaveId.HeaderText = "Leave_id";
+            clLeaveId.Name = "clLeaveId";
+            clLeaveId.ReadOnly = true;
+            clLeaveId.Width = 110;
+            // 
+            // clUserid
+            // 
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clUserid.DefaultCellStyle = dataGridViewCellStyle3;
+            clUserid.Frozen = true;
+            clUserid.HeaderText = "User_id";
+            clUserid.Name = "clUserid";
+            clUserid.ReadOnly = true;
+            clUserid.Width = 110;
+            // 
+            // clName
+            // 
+            clName.Frozen = true;
+            clName.HeaderText = "Tên";
+            clName.Name = "clName";
+            clName.ReadOnly = true;
+            clName.Width = 210;
+            // 
+            // clStartdate
+            // 
+            clStartdate.Frozen = true;
+            clStartdate.HeaderText = "Ngày bắt đầu";
+            clStartdate.Name = "clStartdate";
+            clStartdate.ReadOnly = true;
+            clStartdate.Width = 95;
+            // 
+            // clEnddate
+            // 
+            clEnddate.Frozen = true;
+            clEnddate.HeaderText = "Ngày kết thúc";
+            clEnddate.Name = "clEnddate";
+            clEnddate.ReadOnly = true;
+            clEnddate.Width = 95;
+            // 
+            // clShift
+            // 
+            clShift.Frozen = true;
+            clShift.HeaderText = "Ca";
+            clShift.Name = "clShift";
+            clShift.ReadOnly = true;
+            clShift.Width = 90;
+            // 
+            // clStatus
+            // 
+            clStatus.Frozen = true;
+            clStatus.HeaderText = "Trạng thái";
+            clStatus.Name = "clStatus";
+            clStatus.ReadOnly = true;
+            // 
+            // clDetail
+            // 
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            clDetail.DefaultCellStyle = dataGridViewCellStyle4;
+            clDetail.Frozen = true;
+            clDetail.HeaderText = "Xem chi tiết";
+            clDetail.Name = "clDetail";
+            clDetail.ReadOnly = true;
+            clDetail.Width = 120;
             // 
             // LeaveRequestManager
             // 

@@ -20,12 +20,12 @@ namespace EmployeeManagementSystem.Controller
 
         public EmailService()
         {
-            // Cấu hình SMTP (có thể chuyển vào file cấu hình sau này)
+            // Cấu hình SMTP 
             _smtpHost = "smtp.gmail.com";
             _smtpPort = 587;
-            _smtpUser = "tgddkhachhang72@gmail.com"; // Thay bằng email của bạn
-            _smtpPass = "gefm npao xljb exta\r\n"; // Thay bằng App Password của Gmail
-            _fromName = "Employee Management System"; // Tên hiển thị của người gửi
+            _smtpUser = "tgddkhachhang72@gmail.com"; 
+            _smtpPass = "gefm npao xljb exta\r\n"; 
+            _fromName = "Employee Management System"; 
         }
 
         public bool SendPasswordResetEmail(string toEmail, string resetToken, string username, out string errorMessage)

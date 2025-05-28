@@ -73,9 +73,9 @@
             // 
             panel6.BorderStyle = BorderStyle.FixedSingle;
             panel6.Controls.Add(chart1);
-            panel6.Location = new Point(517, 201);
+            panel6.Location = new Point(517, 171);
             panel6.Name = "panel6";
-            panel6.Size = new Size(383, 311);
+            panel6.Size = new Size(398, 341);
             panel6.TabIndex = 31;
             // 
             // chart1

@@ -24,7 +24,7 @@ namespace EmployeeManagementSystem
             _leaveRequestController = leaveRequestController ?? throw new ArgumentNullException(nameof(leaveRequestController));
             _context = context ?? throw new ArgumentNullException(nameof(context));
             // Thiết lập ComboBox cho Shift
-            cmbShift.Items.AddRange(new[] { "Morning", "Afternoon", "FullDay" });
+            cmbShift.Items.AddRange(new[] { "Sáng", "Chiều", "Cả ngày" });
             UpdateShiftVisibility();
         }
         private void UpdateShiftVisibility()

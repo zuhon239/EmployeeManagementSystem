@@ -40,14 +40,14 @@ namespace EmployeeManagementSystem.FormManager
 
                 if (manager == null)
                 {
-                    MessageBox.Show("No manager found with the given UserId.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Không tìm thấy manager.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 var managedDepartmentId = manager.DepartmentId;
 
                 if (managedDepartmentId == null)
                 {
-                    MessageBox.Show("No department found for this manager.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Không tìm thấy phòng cho manager.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 var employeesInDepartment = _context.Employees
@@ -57,13 +57,13 @@ namespace EmployeeManagementSystem.FormManager
 
                 if (!employeesInDepartment.Any())
                 {
-                    MessageBox.Show("No employees found in this department.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Không tìm thấy nhân viên cho manager.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 var leaveRequests = _context.LeaveRequests
                     .Include(lr => lr.Employee)
-                    .Where(lr => employeesInDepartment.Contains(lr.UserId) && lr.Status == "Pending")
+                    .Where(lr => employeesInDepartment.Contains(lr.UserId) && lr.Status == "Chưa duyệt")
                     .Select(lr => new
                     {
                         lr.LeaveId,
@@ -88,7 +88,7 @@ namespace EmployeeManagementSystem.FormManager
                         request.EndDate.ToString("yyyy-MM-dd"),
                         request.Shift,
                         request.Status,
-                        "View Details"
+                        "Xem chi tiết"
                     );
                 }
 

@@ -156,7 +156,7 @@
             // 
             lblTotalAmount.AutoSize = true;
             lblTotalAmount.Font = new Font("Dubai", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalAmount.Location = new Point(15, 17);
+            lblTotalAmount.Location = new Point(15, 22);
             lblTotalAmount.Name = "lblTotalAmount";
             lblTotalAmount.Size = new Size(54, 49);
             lblTotalAmount.TabIndex = 1;
@@ -168,9 +168,9 @@
             lblTotalemployee.ForeColor = Color.Gray;
             lblTotalemployee.Location = new Point(15, 0);
             lblTotalemployee.Name = "lblTotalemployee";
-            lblTotalemployee.Size = new Size(101, 19);
+            lblTotalemployee.Size = new Size(104, 19);
             lblTotalemployee.TabIndex = 0;
-            lblTotalemployee.Text = "Total Employee";
+            lblTotalemployee.Text = "Tổng nhân viên";
             // 
             // lblDepartmentName
             // 
@@ -195,7 +195,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Dubai", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(22, 19);
+            label1.Location = new Point(22, 23);
             label1.Name = "label1";
             label1.Size = new Size(54, 49);
             label1.TabIndex = 2;
@@ -207,9 +207,9 @@
             lblActiveEmployee.ForeColor = Color.Gray;
             lblActiveEmployee.Location = new Point(13, 0);
             lblActiveEmployee.Name = "lblActiveEmployee";
-            lblActiveEmployee.Size = new Size(109, 19);
+            lblActiveEmployee.Size = new Size(102, 19);
             lblActiveEmployee.TabIndex = 1;
-            lblActiveEmployee.Text = "Active Employee";
+            lblActiveEmployee.Text = "Còn hoạt động";
             // 
             // panel3
             // 
@@ -237,9 +237,9 @@
             lblLeaveRequestPending.ForeColor = Color.Gray;
             lblLeaveRequestPending.Location = new Point(-1, 0);
             lblLeaveRequestPending.Name = "lblLeaveRequestPending";
-            lblLeaveRequestPending.Size = new Size(205, 19);
+            lblLeaveRequestPending.Size = new Size(194, 19);
             lblLeaveRequestPending.TabIndex = 1;
-            lblLeaveRequestPending.Text = "Leave request pending approval";
+            lblLeaveRequestPending.Text = "Yêu cầu nghỉ phép chưa duyệt";
             // 
             // chartSalary
             // 
@@ -305,11 +305,11 @@
             // 
             lblTotalSalary.AutoSize = true;
             lblTotalSalary.ForeColor = Color.Gray;
-            lblTotalSalary.Location = new Point(14, 0);
+            lblTotalSalary.Location = new Point(14, 1);
             lblTotalSalary.Name = "lblTotalSalary";
-            lblTotalSalary.Size = new Size(74, 19);
+            lblTotalSalary.Size = new Size(79, 19);
             lblTotalSalary.TabIndex = 1;
-            lblTotalSalary.Text = "TotalSalary";
+            lblTotalSalary.Text = "Tổng lương";
             lblTotalSalary.Click += lblTotalSalary_Click;
             // 
             // cbxDepartments

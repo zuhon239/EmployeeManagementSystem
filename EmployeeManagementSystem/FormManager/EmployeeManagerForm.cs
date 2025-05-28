@@ -24,7 +24,7 @@ namespace EmployeeManagementSystem.FormManager
             btnThem.Click += BtnThem_Click;
             button1.Click += BtnSua_Click;
             btnSaThai.Click += BtnSaThai_Click;
-            comboBox1.Items.AddRange(new[] { "Male", "Female" });
+            comboBox1.Items.AddRange(new[] { "Nam", "Nữ" });
             dateTimePicker1.Checked = false;
 
         }
