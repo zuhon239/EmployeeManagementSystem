@@ -17,17 +17,13 @@ namespace EmployeeManagementSystem.Model
         public int UserId { get; set; } // Khóa chính
 
         [Required]
-        [StringLength(50)] 
+        [StringLength(50)]
         public string Username { get; set; } // Tên đăng nhập
 
         [Required]
         [StringLength(256)] // Lưu mật khẩu đã mã hóa (bcrypt)
-        public string Password { get; set; } // Mật khẩu
-
-        [Required]
-        [StringLength(256)]
         public string HashedPassword { get; set; } // Lưu chuỗi mã hóa
- 
+
         [StringLength(256)]
         [EmailAddress(ErrorMessage = "Email không hợp lệ")]
         public string? Email { get; set; }
@@ -46,7 +42,6 @@ namespace EmployeeManagementSystem.Model
         public User()
         {
             Username = string.Empty;
-            Password = string.Empty;
             HashedPassword = string.Empty;
             Email = null;
         }
@@ -55,9 +50,8 @@ namespace EmployeeManagementSystem.Model
         public User(string username, string password, string? email, int roleId, bool status)
         {
             Username = username ?? throw new ArgumentNullException(nameof(username));
-            Password = password ?? throw new ArgumentNullException(nameof(password));
+            HashedPassword = BCrypt.Net.BCrypt.HashPassword(password ?? throw new ArgumentNullException(nameof(password)));
             Email = email;
-            HashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
             RoleId = roleId;
             Status = status;
 
@@ -66,7 +60,7 @@ namespace EmployeeManagementSystem.Model
                 throw new ArgumentException("Email không hợp lệ.", nameof(email));
         }
 
-        // Methods để cập nhật thông tin (đảm bảo tính đóng gói)
+        // Methods để cập nhật thông tin
         public void UpdateUsername(string newUsername)
         {
             Username = newUsername ?? throw new ArgumentNullException(nameof(newUsername));
@@ -74,20 +68,20 @@ namespace EmployeeManagementSystem.Model
 
         public void UpdatePassword(string newPassword)
         {
-            Password = newPassword ?? throw new ArgumentNullException(nameof(newPassword));
+            HashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword ?? throw new ArgumentNullException(nameof(newPassword)));
         }
+
         public void UpdateEmail(string newEmail)
         {
-            // Chấp nhận email rỗng (null hoặc chuỗi rỗng)
             if (!string.IsNullOrWhiteSpace(newEmail))
             {
-                // Validate định dạng email nếu email được cung cấp
                 var emailValidator = new EmailAddressAttribute();
                 if (!emailValidator.IsValid(newEmail))
                     throw new ArgumentException("Email không hợp lệ.", nameof(newEmail));
             }
             Email = newEmail;
         }
+
         // Static method for authentication
         public static User Authenticate(EmployeeManagementContext context, string username, string password)
         {
@@ -100,8 +94,8 @@ namespace EmployeeManagementSystem.Model
             try
             {
                 var user = context.Users
-                     .Include(u => u.Role)
-                     .FirstOrDefault(u => u.Username == username && u.Status);
+                    .Include(u => u.Role)
+                    .FirstOrDefault(u => u.Username == username && u.Status);
 
                 if (user != null && BCrypt.Net.BCrypt.Verify(password, user.HashedPassword))
                 {
@@ -110,7 +104,6 @@ namespace EmployeeManagementSystem.Model
             }
             catch (Exception)
             {
-                // Log exception if needed
                 return null;
             }
 
