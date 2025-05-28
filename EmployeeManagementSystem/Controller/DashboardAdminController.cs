@@ -181,5 +181,69 @@ namespace EmployeeManagementSystem.Controller
             }
             return workingDays;
         }
+        // Tính tháng chiếm ưu thế từ khoảng thời gian
+        public DateTime GetDominantMonth(DateTime fromDate, DateTime toDate)
+        {
+            var monthCounts = new Dictionary<(int Year, int Month), int>();
+            var currentDate = fromDate.Date;
+            while (currentDate <= toDate.Date)
+            {
+                var key = (currentDate.Year, currentDate.Month);
+                monthCounts[key] = monthCounts.GetValueOrDefault(key) + 1;
+                currentDate = currentDate.AddDays(1);
+            }
+
+            var dominant = monthCounts.OrderByDescending(m => m.Value).FirstOrDefault().Key;
+            return new DateTime(dominant.Year, dominant.Month, 1);
+        }
+
+        // Lấy dữ liệu phân bố lương
+        public (List<(string Name, decimal TotalSalary)> SalaryData, decimal TotalSalary) GetSalaryDistribution(DateTime fromDate, DateTime toDate, int? departmentId)
+        {
+            var dominantMonth = GetDominantMonth(fromDate, toDate);
+            var payrollsQuery = _context.Payrolls
+                .Include(p => p.Employee)
+                .ThenInclude(e => e.Department)
+                .Where(p => p.Month.Year == dominantMonth.Year && p.Month.Month == dominantMonth.Month);
+
+            List<(string Name, decimal TotalSalary)> salaryData;
+            decimal totalSalary;
+
+            if (departmentId.HasValue && departmentId.Value != 0)
+            {
+                // Lấy lương của nhân viên trong phòng ban cụ thể
+                salaryData = payrollsQuery
+                    .Where(p => p.Employee.DepartmentId == departmentId.Value)
+                    .GroupBy(p => new { p.UserId, p.Employee.Name })
+                    .Select(g => new
+                    {
+                        Name = g.Key.Name,
+                        TotalSalary = g.Sum(p => p.TotalSalary)
+                    })
+                    .ToList()
+                    .Select(x => (x.Name, x.TotalSalary))
+                    .ToList();
+
+                totalSalary = salaryData.Sum(s => s.TotalSalary);
+            }
+            else
+            {
+                // Lấy lương tổng hợp theo phòng ban
+                salaryData = payrollsQuery
+                    .GroupBy(p => p.Employee.Department.Name)
+                    .Select(g => new
+                    {
+                        Name = g.Key,
+                        TotalSalary = g.Sum(p => p.TotalSalary)
+                    })
+                    .ToList()
+                    .Select(x => (x.Name, x.TotalSalary))
+                    .ToList();
+
+                totalSalary = salaryData.Sum(s => s.TotalSalary);
+            }
+
+            return (salaryData, totalSalary);
+        }
     }
 }

@@ -187,6 +187,20 @@ namespace EmployeeManagementSystem.Controller
             }
             return workingDays;
         }
+        public DateTime GetDominantMonth(DateTime fromDate, DateTime toDate)
+        {
+            var monthCounts = new Dictionary<(int Year, int Month), int>();
+            var currentDate = fromDate.Date;
+            while (currentDate <= toDate.Date)
+            {
+                var key = (currentDate.Year, currentDate.Month);
+                monthCounts[key] = monthCounts.GetValueOrDefault(key) + 1;
+                currentDate = currentDate.AddDays(1);
+            }
+
+            var dominant = monthCounts.OrderByDescending(m => m.Value).FirstOrDefault().Key;
+            return new DateTime(dominant.Year, dominant.Month, 1);
+        }
 
 
 
