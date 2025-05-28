@@ -56,9 +56,8 @@
             pnlMenu.Controls.Add(btnDashBoard);
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
-            pnlMenu.Margin = new Padding(3, 2, 3, 2);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(175, 433);
+            pnlMenu.Size = new Size(200, 548);
             pnlMenu.TabIndex = 0;
             // 
             // panel1
@@ -68,18 +67,17 @@
             panel1.Controls.Add(lblAdminName);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(175, 59);
+            panel1.Size = new Size(200, 75);
             panel1.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(10, 7);
+            label1.Location = new Point(11, 9);
             label1.Name = "label1";
-            label1.Size = new Size(43, 15);
+            label1.Size = new Size(49, 19);
             label1.TabIndex = 1;
             label1.Text = "Admin";
             // 
@@ -88,7 +86,7 @@
             lblAdminName.AutoSize = true;
             lblAdminName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAdminName.ForeColor = Color.White;
-            lblAdminName.Location = new Point(10, 22);
+            lblAdminName.Location = new Point(11, 28);
             lblAdminName.Name = "lblAdminName";
             lblAdminName.Size = new Size(57, 21);
             lblAdminName.TabIndex = 0;
@@ -100,12 +98,11 @@
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(0, 385);
-            btnBack.Margin = new Padding(3, 2, 3, 2);
+            btnBack.Location = new Point(0, 488);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(175, 41);
+            btnBack.Size = new Size(200, 52);
             btnBack.TabIndex = 7;
-            btnBack.Text = "Back";
+            btnBack.Text = "Thoát";
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
@@ -115,12 +112,11 @@
             btnSalary.FlatStyle = FlatStyle.Flat;
             btnSalary.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalary.ForeColor = Color.White;
-            btnSalary.Location = new Point(0, 320);
-            btnSalary.Margin = new Padding(3, 2, 3, 2);
+            btnSalary.Location = new Point(0, 405);
             btnSalary.Name = "btnSalary";
-            btnSalary.Size = new Size(175, 61);
+            btnSalary.Size = new Size(200, 77);
             btnSalary.TabIndex = 6;
-            btnSalary.Text = "Salary";
+            btnSalary.Text = "Lương";
             btnSalary.UseVisualStyleBackColor = true;
             btnSalary.Click += btnSalary_Click;
             // 
@@ -130,12 +126,11 @@
             btnLeaveRequest.FlatStyle = FlatStyle.Flat;
             btnLeaveRequest.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLeaveRequest.ForeColor = Color.White;
-            btnLeaveRequest.Location = new Point(0, 254);
-            btnLeaveRequest.Margin = new Padding(3, 2, 3, 2);
+            btnLeaveRequest.Location = new Point(0, 322);
             btnLeaveRequest.Name = "btnLeaveRequest";
-            btnLeaveRequest.Size = new Size(175, 61);
+            btnLeaveRequest.Size = new Size(200, 77);
             btnLeaveRequest.TabIndex = 5;
-            btnLeaveRequest.Text = "LeaveRequest";
+            btnLeaveRequest.Text = "Nghỉ phép";
             btnLeaveRequest.UseVisualStyleBackColor = true;
             btnLeaveRequest.Click += btnLeaveRequest_Click;
             // 
@@ -145,12 +140,11 @@
             btnAttendance.FlatStyle = FlatStyle.Flat;
             btnAttendance.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAttendance.ForeColor = Color.White;
-            btnAttendance.Location = new Point(0, 189);
-            btnAttendance.Margin = new Padding(3, 2, 3, 2);
+            btnAttendance.Location = new Point(0, 239);
             btnAttendance.Name = "btnAttendance";
-            btnAttendance.Size = new Size(175, 61);
+            btnAttendance.Size = new Size(200, 77);
             btnAttendance.TabIndex = 4;
-            btnAttendance.Text = "Attendance";
+            btnAttendance.Text = "Chấm công";
             btnAttendance.UseVisualStyleBackColor = true;
             btnAttendance.Click += btnAttendance_Click;
             // 
@@ -160,12 +154,11 @@
             btnEmployee.FlatStyle = FlatStyle.Flat;
             btnEmployee.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEmployee.ForeColor = Color.White;
-            btnEmployee.Location = new Point(0, 123);
-            btnEmployee.Margin = new Padding(3, 2, 3, 2);
+            btnEmployee.Location = new Point(0, 156);
             btnEmployee.Name = "btnEmployee";
-            btnEmployee.Size = new Size(175, 61);
+            btnEmployee.Size = new Size(200, 77);
             btnEmployee.TabIndex = 3;
-            btnEmployee.Text = "Employee";
+            btnEmployee.Text = "Nhân viên";
             btnEmployee.UseVisualStyleBackColor = true;
             btnEmployee.Click += btnEmployee_Click;
             // 
@@ -175,12 +168,11 @@
             btnDashBoard.FlatStyle = FlatStyle.Flat;
             btnDashBoard.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDashBoard.ForeColor = Color.White;
-            btnDashBoard.Location = new Point(0, 58);
-            btnDashBoard.Margin = new Padding(3, 2, 3, 2);
+            btnDashBoard.Location = new Point(0, 73);
             btnDashBoard.Name = "btnDashBoard";
-            btnDashBoard.Size = new Size(175, 61);
+            btnDashBoard.Size = new Size(200, 77);
             btnDashBoard.TabIndex = 2;
-            btnDashBoard.Text = "Dashboard";
+            btnDashBoard.Text = "Thống kê";
             btnDashBoard.UseVisualStyleBackColor = true;
             btnDashBoard.Click += btnDashBoard_Click;
             // 
@@ -193,23 +185,24 @@
             // 
             // pnlDesktopPane
             // 
+            pnlDesktopPane.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             pnlDesktopPane.Dock = DockStyle.Fill;
-            pnlDesktopPane.Location = new Point(175, 0);
-            pnlDesktopPane.Margin = new Padding(3, 2, 3, 2);
+            pnlDesktopPane.Location = new Point(200, 0);
             pnlDesktopPane.Name = "pnlDesktopPane";
-            pnlDesktopPane.Size = new Size(794, 433);
+            pnlDesktopPane.Size = new Size(907, 548);
             pnlDesktopPane.TabIndex = 2;
             pnlDesktopPane.Paint += pnlDesktopPane_Paint;
             // 
             // AdminForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.White;
-            ClientSize = new Size(969, 433);
+            ClientSize = new Size(1107, 548);
             Controls.Add(pnlDesktopPane);
             Controls.Add(pnlMenu);
-            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
             Name = "AdminForm";
             Text = "AdminForm";
             pnlMenu.ResumeLayout(false);

@@ -3,12 +3,60 @@
   "WorkspaceRootPath": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\controller\\salarymanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\controller\\salarymanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formadmin\\dashboardadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\dashboardadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\forgotpasswordform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\forgotpasswordform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\controller\\salaryadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\controller\\salaryadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\controller\\salarymanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\controller\\salarymanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\dashboardadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\dashboardadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formmanager\\dashboardmanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\dashboardmanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formmanager\\dashboardmanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\dashboardmanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formmanager\\salarymanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\salarymanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\attendanceadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\attendanceadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formadmin\\employeeadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\employeeadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\leaverequestadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\leaverequestadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formmanager\\leaverequestmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\leaverequestmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\controller\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,24 +87,8 @@
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\controller\\attendanceadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\leaverequestadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formadmin\\leaverequestadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\leaverequestadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formmanager\\dashboardmanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\dashboardmanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formadmin\\dashboardadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\dashboardadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\employeeadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\employeeadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\leaverequestadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\leaverequestadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formmanager\\departmentmanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -71,16 +103,12 @@
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\employeemanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formmanager\\managerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formmanager\\managerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\managerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formmanager\\employeemanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\employeemanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formmanager\\salarymanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\salarymanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formmanager\\salarymanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -95,24 +123,12 @@
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\attendancemanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formmanager\\managerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\managerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\attendanceadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\attendanceadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formadmin\\dashboardadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formadmin\\dashboardadminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formmanager\\leaverequestmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\leaverequestmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\controller\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -137,10 +153,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\employeemanagementsystem\\formmanager\\leaverequestmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\leaverequestmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\formmanager\\dashboardmanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|solutionrelative:employeemanagementsystem\\formmanager\\dashboardmanagerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73C24AFF-6FD3-4617-A773-91647B194E4F}|EmployeeManagementSystem\\EmployeeManagementSystem.csproj|s:\\\u0111a\u0323i ho\u0323c\\ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\employeemanagementsystem\\employeemanagementsystem\\employeemanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -186,11 +198,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 20,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 8,
               "Title": "DashboardManagerForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\DashboardManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\DashboardManagerForm.cs",
@@ -204,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "DashboardManagerForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\DashboardManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\DashboardManagerForm.cs",
@@ -217,7 +229,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 6,
               "Title": "DashboardAdminForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\DashboardAdminForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\DashboardAdminForm.cs",
@@ -231,7 +243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 17,
               "Title": "DashboardAdminController.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\DashboardAdminController.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\DashboardAdminController.cs",
@@ -240,18 +252,17 @@
               "ViewState": "AQIAAFMAAAAAAAAAAAAAAF4AAABeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-27T18:41:50.837Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 1,
               "Title": "AdminForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\AdminForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\AdminForm.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\AdminForm.cs",
               "RelativeToolTip": "EmployeeManagementSystem\\FormAdmin\\AdminForm.cs",
-              "ViewState": "AQIAAJQAAAAAAAAAAAAgwKwAAAANAAAA",
+              "ViewState": "AQIAAJQAAAAAAAAAAAAiwKwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-26T19:42:12.195Z",
               "IsPinned": true,
@@ -259,7 +270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 16,
               "Title": "DashboardManagerController.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\DashboardManagerController.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\DashboardManagerController.cs",
@@ -268,8 +279,7 @@
               "ViewState": "AQIAAFwAAAAAAAAAAAAAAGkAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-27T18:42:30.372Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -281,20 +291,57 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "ForgotPassWordForm.cs",
+              "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\ForgotPassWordForm.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\ForgotPassWordForm.cs",
+              "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\ForgotPassWordForm.cs",
+              "RelativeToolTip": "EmployeeManagementSystem\\ForgotPassWordForm.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T14:08:55.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AttendanceAdminForm.cs [Design]",
+              "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\AttendanceAdminForm.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\AttendanceAdminForm.cs",
+              "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\AttendanceAdminForm.cs [Design]",
+              "RelativeToolTip": "EmployeeManagementSystem\\FormAdmin\\AttendanceAdminForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T13:14:17.08Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminForm.cs [Design]",
+              "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\AdminForm.cs",
+              "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\AdminForm.cs",
+              "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\AdminForm.cs [Design]",
+              "RelativeToolTip": "EmployeeManagementSystem\\FormAdmin\\AdminForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T13:04:20.49Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "SalaryAdminController.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\SalaryAdminController.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\SalaryAdminController.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\SalaryAdminController.cs",
               "RelativeToolTip": "EmployeeManagementSystem\\Controller\\SalaryAdminController.cs",
-              "ViewState": "AQIAANYAAAAAAAAAAAASwOMAAAARAAAA",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAAALsBAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T12:40:25.409Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 20,
               "Title": "AttendanceAdminController.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\AttendanceAdminController.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\AttendanceAdminController.cs",
@@ -302,12 +349,11 @@
               "RelativeToolTip": "EmployeeManagementSystem\\Controller\\AttendanceAdminController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T12:40:19.327Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T12:40:19.327Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 21,
               "Title": "LeaveRequestAdminForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\LeaveRequestAdminForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\LeaveRequestAdminForm.cs",
@@ -319,7 +365,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "EmployeeAdminForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\EmployeeAdminForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\EmployeeAdminForm.cs",
@@ -331,19 +377,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 25,
               "Title": "ManagerForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\ManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\ManagerForm.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\ManagerForm.cs [Design]",
               "RelativeToolTip": "EmployeeManagementSystem\\FormManager\\ManagerForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T12:34:59.448Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-28T12:34:59.448Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 29,
               "Title": "AttendanceManagerForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\AttendanceManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\AttendanceManagerForm.cs",
@@ -356,7 +401,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 31,
               "Title": "AttendanceAdminForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\AttendanceAdminForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\AttendanceAdminForm.cs",
@@ -369,19 +414,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 28,
               "Title": "AttendanceManagerForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\AttendanceManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\AttendanceManagerForm.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\AttendanceManagerForm.cs [Design]",
               "RelativeToolTip": "EmployeeManagementSystem\\FormManager\\AttendanceManagerForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T12:23:23.165Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-28T12:23:23.165Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 9,
               "Title": "SalaryManagerForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\SalaryManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\SalaryManagerForm.cs",
@@ -393,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 45,
               "Title": "20250528114217_update.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Migrations\\20250528114217_update.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Migrations\\20250528114217_update.cs",
@@ -405,7 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 34,
               "Title": "Department.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Model\\Department.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Model\\Department.cs",
@@ -417,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 46,
               "Title": "20250528111250_DeletePasswordColumn.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Migrations\\20250528111250_DeletePasswordColumn.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Migrations\\20250528111250_DeletePasswordColumn.cs",
@@ -429,20 +473,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "SalaryManagerController.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\SalaryManagerController.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\SalaryManagerController.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\SalaryManagerController.cs",
               "RelativeToolTip": "EmployeeManagementSystem\\Controller\\SalaryManagerController.cs",
-              "ViewState": "AQIAACoBAAAAAAAAAAAAAC8BAAAxAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAAFgBAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T10:14:34.39Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 35,
               "Title": "EmployeeAdminForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\EmployeeAdminForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\EmployeeAdminForm.cs",
@@ -450,12 +494,11 @@
               "RelativeToolTip": "EmployeeManagementSystem\\FormAdmin\\EmployeeAdminForm.cs",
               "ViewState": "AQIAADEAAAAAAAAAAAAAAHQAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T10:07:45.531Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T10:07:45.531Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 26,
               "Title": "EmployeeManagerForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\EmployeeManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\EmployeeManagerForm.cs",
@@ -468,7 +511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 18,
               "Title": "LeaveRequestForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\LeaveRequestForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\LeaveRequestForm.cs",
@@ -476,12 +519,11 @@
               "RelativeToolTip": "EmployeeManagementSystem\\LeaveRequestForm.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T09:57:29.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T09:57:29.765Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 27,
               "Title": "SalaryManagerForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\SalaryManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\SalaryManagerForm.cs",
@@ -489,12 +531,11 @@
               "RelativeToolTip": "EmployeeManagementSystem\\FormManager\\SalaryManagerForm.cs",
               "ViewState": "AQIAAD4AAAAAAAAAAAAwwEIAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T09:56:32.028Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T09:56:32.028Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 30,
               "Title": "ManagerForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\ManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\ManagerForm.cs",
@@ -502,35 +543,34 @@
               "RelativeToolTip": "EmployeeManagementSystem\\FormManager\\ManagerForm.cs",
               "ViewState": "AQIAAH0AAAAAAAAAAAAAAI8AAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T09:56:23.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T09:56:23.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 37,
               "Title": "LeaveRequestManager.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\LeaveRequestManager.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\LeaveRequestManager.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\LeaveRequestManager.cs [Design]",
               "RelativeToolTip": "EmployeeManagementSystem\\FormManager\\LeaveRequestManager.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T09:53:58.108Z"
+              "WhenOpened": "2025-05-28T09:53:58.108Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 24,
               "Title": "EmployeeManagerForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\EmployeeManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\EmployeeManagerForm.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\EmployeeManagerForm.cs [Design]",
               "RelativeToolTip": "EmployeeManagementSystem\\FormManager\\EmployeeManagerForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T09:51:19.448Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-28T09:51:19.448Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 2,
               "Title": "DashboardAdminForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\DashboardAdminForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\DashboardAdminForm.cs",
@@ -542,19 +582,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 22,
               "Title": "DepartmentManagerForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\DepartmentManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\DepartmentManagerForm.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\DepartmentManagerForm.cs [Design]",
               "RelativeToolTip": "EmployeeManagementSystem\\FormManager\\DepartmentManagerForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T20:36:55.262Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-27T20:36:55.262Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "DepartmentManagerForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\DepartmentManagerForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\DepartmentManagerForm.cs",
@@ -562,12 +601,11 @@
               "RelativeToolTip": "EmployeeManagementSystem\\FormManager\\DepartmentManagerForm.cs",
               "ViewState": "AQIAAJkAAAAAAAAAAAAAAJwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T20:36:52.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T20:36:52.147Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "AttendanceController.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\AttendanceController.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\AttendanceController.cs",
@@ -579,7 +617,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 40,
               "Title": "DashboardAdminForm.Designer.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\DashboardAdminForm.Designer.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\DashboardAdminForm.Designer.cs",
@@ -592,7 +630,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 19,
               "Title": "LeaveRequestController.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\LeaveRequestController.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\LeaveRequestController.cs",
@@ -600,12 +638,11 @@
               "RelativeToolTip": "EmployeeManagementSystem\\Controller\\LeaveRequestController.cs",
               "ViewState": "AQIAAFAAAAAAAAAAAAAAAGMAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T18:14:17.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T18:14:17.098Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "Program.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Program.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Program.cs",
@@ -617,20 +654,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "LeaveRequestAdminForm.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\LeaveRequestAdminForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\LeaveRequestAdminForm.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\LeaveRequestAdminForm.cs",
               "RelativeToolTip": "EmployeeManagementSystem\\FormAdmin\\LeaveRequestAdminForm.cs",
-              "ViewState": "AQIAAKwAAAAAAAAAAAAAAL8AAAAJAAAA",
+              "ViewState": "AQIAAG8AAAAAAAAAAAAAAHYAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-26T20:29:40.497Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 42,
               "Title": "20250527174924_UpdateRequireClockInClockOut.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Migrations\\20250527174924_UpdateRequireClockInClockOut.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Migrations\\20250527174924_UpdateRequireClockInClockOut.cs",
@@ -642,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 44,
               "Title": "Attendance.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Model\\Attendance.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Model\\Attendance.cs",
@@ -654,7 +691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "User.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Model\\User.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Model\\User.cs",
@@ -666,7 +703,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "EmployeeAdminForm.Designer.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormAdmin\\EmployeeAdminForm.Designer.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormAdmin\\EmployeeAdminForm.Designer.cs",
@@ -679,18 +716,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 41,
               "Title": "ForgotPassWordForm.cs [Design]",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\ForgotPassWordForm.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\ForgotPassWordForm.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\ForgotPassWordForm.cs [Design]",
               "RelativeToolTip": "EmployeeManagementSystem\\ForgotPassWordForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T18:04:20.215Z"
+              "WhenOpened": "2025-05-26T18:04:20.215Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 15,
               "Title": "EmailService.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\EmailService.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\EmailService.cs",
@@ -698,12 +736,11 @@
               "RelativeToolTip": "EmployeeManagementSystem\\Controller\\EmailService.cs",
               "ViewState": "AQIAACcAAAAAAAAAAAAAABYAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T18:02:39.688Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T18:02:39.688Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 43,
               "Title": "20250526174859_UpdateEmailRequired.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Migrations\\20250526174859_UpdateEmailRequired.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Migrations\\20250526174859_UpdateEmailRequired.cs",
@@ -715,19 +752,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 13,
               "Title": "LeaveRequestManager.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\LeaveRequestManager.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\FormManager\\LeaveRequestManager.cs",
               "ToolTip": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\FormManager\\LeaveRequestManager.cs",
               "RelativeToolTip": "EmployeeManagementSystem\\FormManager\\LeaveRequestManager.cs",
-              "ViewState": "AQIAAGgAAAAAAAAAAAAAAKIAAAAtAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAEEAAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T17:04:39.515Z"
+              "WhenOpened": "2025-05-26T17:04:39.515Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 36,
               "Title": "AttendanceManagerController.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\AttendanceManagerController.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\AttendanceManagerController.cs",
@@ -739,7 +777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 14,
               "Title": "EmployeeController.cs",
               "DocumentMoniker": "S:\\\u0111a\u0323i ho\u0323c\\Ph\u00E1t tri\u1EC3n desktop\\\u0111\u00F4\u0300 a\u0301n cu\u00F4\u0301i ki\u0300\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem\\Controller\\EmployeeController.cs",
               "RelativeDocumentMoniker": "EmployeeManagementSystem\\Controller\\EmployeeController.cs",
@@ -747,8 +785,7 @@
               "RelativeToolTip": "EmployeeManagementSystem\\Controller\\EmployeeController.cs",
               "ViewState": "AQIAAF4AAAAAAAAAAAAAALAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T15:57:27.968Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T15:57:27.968Z"
             }
           ]
         }

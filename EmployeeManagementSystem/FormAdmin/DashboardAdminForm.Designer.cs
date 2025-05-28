@@ -74,7 +74,7 @@
             panel6.Anchor = AnchorStyles.None;
             panel6.BorderStyle = BorderStyle.FixedSingle;
             panel6.Controls.Add(chart1);
-            panel6.Location = new Point(517, 171);
+            panel6.Location = new Point(545, 171);
             panel6.Name = "panel6";
             panel6.Size = new Size(398, 341);
             panel6.TabIndex = 31;
@@ -102,7 +102,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(chartSalary);
-            panel5.Location = new Point(12, 171);
+            panel5.Location = new Point(40, 171);
             panel5.Name = "panel5";
             panel5.Size = new Size(499, 341);
             panel5.TabIndex = 30;
@@ -134,7 +134,7 @@
             // 
             cbxDepartments.Anchor = AnchorStyles.None;
             cbxDepartments.FormattingEnabled = true;
-            cbxDepartments.Location = new Point(12, 57);
+            cbxDepartments.Location = new Point(40, 57);
             cbxDepartments.Name = "cbxDepartments";
             cbxDepartments.Size = new Size(179, 27);
             cbxDepartments.TabIndex = 29;
@@ -145,7 +145,7 @@
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label2);
             panel4.Controls.Add(lblTotalSalary);
-            panel4.Location = new Point(655, 90);
+            panel4.Location = new Point(683, 90);
             panel4.Name = "panel4";
             panel4.Size = new Size(275, 70);
             panel4.TabIndex = 28;
@@ -175,7 +175,7 @@
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(lblPendingAmount);
             panel3.Controls.Add(lblLeaveRequestPending);
-            panel3.Location = new Point(428, 91);
+            panel3.Location = new Point(456, 91);
             panel3.Name = "panel3";
             panel3.Size = new Size(211, 68);
             panel3.TabIndex = 27;
@@ -206,7 +206,7 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(label1);
             panel1.Controls.Add(lblActiveEmployee);
-            panel1.Location = new Point(224, 90);
+            panel1.Location = new Point(252, 90);
             panel1.Name = "panel1";
             panel1.Size = new Size(186, 68);
             panel1.TabIndex = 24;
@@ -237,7 +237,7 @@
             pnlTotalEmployee.BorderStyle = BorderStyle.FixedSingle;
             pnlTotalEmployee.Controls.Add(lblTotalAmount);
             pnlTotalEmployee.Controls.Add(lblTotalemployee);
-            pnlTotalEmployee.Location = new Point(12, 90);
+            pnlTotalEmployee.Location = new Point(40, 90);
             pnlTotalEmployee.Name = "pnlTotalEmployee";
             pnlTotalEmployee.Size = new Size(187, 68);
             pnlTotalEmployee.TabIndex = 23;
@@ -267,7 +267,7 @@
             btnLast7days.Anchor = AnchorStyles.None;
             btnLast7days.FlatAppearance.BorderColor = Color.Gainsboro;
             btnLast7days.FlatStyle = FlatStyle.Flat;
-            btnLast7days.Location = new Point(608, 16);
+            btnLast7days.Location = new Point(636, 16);
             btnLast7days.Name = "btnLast7days";
             btnLast7days.Size = new Size(103, 32);
             btnLast7days.TabIndex = 22;
@@ -279,7 +279,7 @@
             btnThisMonth.Anchor = AnchorStyles.None;
             btnThisMonth.FlatAppearance.BorderColor = Color.Gainsboro;
             btnThisMonth.FlatStyle = FlatStyle.Flat;
-            btnThisMonth.Location = new Point(812, 16);
+            btnThisMonth.Location = new Point(840, 16);
             btnThisMonth.Name = "btnThisMonth";
             btnThisMonth.Size = new Size(103, 32);
             btnThisMonth.TabIndex = 21;
@@ -291,7 +291,7 @@
             btnLast30days.Anchor = AnchorStyles.None;
             btnLast30days.FlatAppearance.BorderColor = Color.Gainsboro;
             btnLast30days.FlatStyle = FlatStyle.Flat;
-            btnLast30days.Location = new Point(710, 16);
+            btnLast30days.Location = new Point(738, 16);
             btnLast30days.Name = "btnLast30days";
             btnLast30days.Size = new Size(103, 32);
             btnLast30days.TabIndex = 20;
@@ -303,7 +303,7 @@
             btnToday.Anchor = AnchorStyles.None;
             btnToday.FlatAppearance.BorderColor = Color.Gainsboro;
             btnToday.FlatStyle = FlatStyle.Flat;
-            btnToday.Location = new Point(506, 16);
+            btnToday.Location = new Point(534, 16);
             btnToday.Name = "btnToday";
             btnToday.Size = new Size(103, 32);
             btnToday.TabIndex = 19;
@@ -315,7 +315,7 @@
             dtpTo.Anchor = AnchorStyles.None;
             dtpTo.CustomFormat = "MMM dd, yyyy";
             dtpTo.Format = DateTimePickerFormat.Custom;
-            dtpTo.Location = new Point(321, 19);
+            dtpTo.Location = new Point(349, 19);
             dtpTo.Name = "dtpTo";
             dtpTo.Size = new Size(129, 26);
             dtpTo.TabIndex = 18;
@@ -325,7 +325,7 @@
             dtpFrom.Anchor = AnchorStyles.None;
             dtpFrom.CustomFormat = "MMM dd, yyyy";
             dtpFrom.Format = DateTimePickerFormat.Custom;
-            dtpFrom.Location = new Point(166, 19);
+            dtpFrom.Location = new Point(194, 19);
             dtpFrom.Name = "dtpFrom";
             dtpFrom.Size = new Size(135, 26);
             dtpFrom.TabIndex = 17;
@@ -335,7 +335,7 @@
             lblHeader.Anchor = AnchorStyles.None;
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Segoe UI Historic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHeader.Location = new Point(9, 12);
+            lblHeader.Location = new Point(37, 12);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(138, 32);
             lblHeader.TabIndex = 16;
@@ -346,7 +346,7 @@
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(942, 546);
+            ClientSize = new Size(979, 546);
             Controls.Add(panel6);
             Controls.Add(panel5);
             Controls.Add(cbxDepartments);

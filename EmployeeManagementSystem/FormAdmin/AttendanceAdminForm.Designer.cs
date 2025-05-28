@@ -51,7 +51,7 @@
             lblAdminInfo.ForeColor = Color.FromArgb(220, 53, 69);
             lblAdminInfo.Location = new Point(12, 12);
             lblAdminInfo.Name = "lblAdminInfo";
-            lblAdminInfo.Size = new Size(358, 25);
+            lblAdminInfo.Size = new Size(117, 25);
             lblAdminInfo.TabIndex = 0;
             lblAdminInfo.Text = "Admin - Quản lý chấm công toàn hệ thống";
             lblAdminInfo.TextAlign = ContentAlignment.MiddleLeft;
@@ -182,14 +182,14 @@
             dgvAttendanceReport.DefaultCellStyle = dataGridViewCellStyle2;
             dgvAttendanceReport.EnableHeadersVisualStyles = false;
             dgvAttendanceReport.GridColor = Color.LightGray;
-            dgvAttendanceReport.Location = new Point(12, 145);
+            dgvAttendanceReport.Location = new Point(12, 106);
             dgvAttendanceReport.MultiSelect = false;
             dgvAttendanceReport.Name = "dgvAttendanceReport";
             dgvAttendanceReport.ReadOnly = true;
             dgvAttendanceReport.RowHeadersVisible = false;
             dgvAttendanceReport.RowTemplate.Height = 20;
             dgvAttendanceReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAttendanceReport.Size = new Size(1176, 612);
+            dgvAttendanceReport.Size = new Size(935, 379);
             dgvAttendanceReport.TabIndex = 12;
             dgvAttendanceReport.CellContentClick += dgvAttendanceReport_CellContentClick;
             // 
@@ -199,7 +199,7 @@
             lblLegend.Font = new Font("Microsoft Sans Serif", 8F);
             lblLegend.Location = new Point(12, 88);
             lblLegend.Name = "lblLegend";
-            lblLegend.Size = new Size(284, 15);
+            lblLegend.Size = new Size(680, 15);
             lblLegend.TabIndex = 11;
             lblLegend.Text = "Ký hiệu màu: Xanh=Đúng giờ, Xanh dương=Chưa check out, Cam=Đi trễ, Vàng=Về sớm, Xám=Vắng mặt | Manager in đậm";
             lblLegend.Click += lblLegend_Click;
@@ -209,7 +209,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1200, 700);
+            ClientSize = new Size(959, 536);
             Controls.Add(lblAdminInfo);
             Controls.Add(lblDate);
             Controls.Add(dtpDate);

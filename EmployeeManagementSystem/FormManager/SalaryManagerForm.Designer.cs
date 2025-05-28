@@ -66,7 +66,7 @@
             lblManagerInfo.Anchor = AnchorStyles.None;
             lblManagerInfo.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
             lblManagerInfo.ForeColor = Color.FromArgb(0, 123, 255);
-            lblManagerInfo.Location = new Point(20, 20);
+            lblManagerInfo.Location = new Point(20, 31);
             lblManagerInfo.Name = "lblManagerInfo";
             lblManagerInfo.Size = new Size(800, 30);
             lblManagerInfo.TabIndex = 0;
@@ -77,7 +77,7 @@
             // 
             lblEmployeeLabel.Anchor = AnchorStyles.None;
             lblEmployeeLabel.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            lblEmployeeLabel.Location = new Point(21, 53);
+            lblEmployeeLabel.Location = new Point(21, 64);
             lblEmployeeLabel.Name = "lblEmployeeLabel";
             lblEmployeeLabel.Size = new Size(100, 25);
             lblEmployeeLabel.TabIndex = 1;
@@ -90,7 +90,7 @@
             cmbEmployee.BackColor = Color.White;
             cmbEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbEmployee.Font = new Font("Microsoft Sans Serif", 9F);
-            cmbEmployee.Location = new Point(131, 53);
+            cmbEmployee.Location = new Point(131, 64);
             cmbEmployee.Name = "cmbEmployee";
             cmbEmployee.Size = new Size(250, 23);
             cmbEmployee.TabIndex = 2;
@@ -99,7 +99,7 @@
             // 
             lblBonusLabel.Anchor = AnchorStyles.None;
             lblBonusLabel.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            lblBonusLabel.Location = new Point(401, 53);
+            lblBonusLabel.Location = new Point(401, 64);
             lblBonusLabel.Name = "lblBonusLabel";
             lblBonusLabel.Size = new Size(60, 25);
             lblBonusLabel.TabIndex = 3;
@@ -112,7 +112,7 @@
             txtBonus.BackColor = Color.White;
             txtBonus.BorderStyle = BorderStyle.FixedSingle;
             txtBonus.Font = new Font("Microsoft Sans Serif", 9F);
-            txtBonus.Location = new Point(471, 53);
+            txtBonus.Location = new Point(471, 64);
             txtBonus.Name = "txtBonus";
             txtBonus.Size = new Size(120, 21);
             txtBonus.TabIndex = 4;
@@ -123,7 +123,7 @@
             // 
             lblMonthLabel.Anchor = AnchorStyles.None;
             lblMonthLabel.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            lblMonthLabel.Location = new Point(597, 52);
+            lblMonthLabel.Location = new Point(597, 63);
             lblMonthLabel.Name = "lblMonthLabel";
             lblMonthLabel.Size = new Size(68, 25);
             lblMonthLabel.TabIndex = 5;
@@ -136,7 +136,7 @@
             dtpMonth.CustomFormat = "MM/yyyy";
             dtpMonth.Font = new Font("Microsoft Sans Serif", 9F);
             dtpMonth.Format = DateTimePickerFormat.Custom;
-            dtpMonth.Location = new Point(671, 53);
+            dtpMonth.Location = new Point(671, 64);
             dtpMonth.Name = "dtpMonth";
             dtpMonth.Size = new Size(100, 21);
             dtpMonth.TabIndex = 6;
@@ -150,7 +150,7 @@
             btnCalculate.FlatStyle = FlatStyle.Flat;
             btnCalculate.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnCalculate.ForeColor = Color.White;
-            btnCalculate.Location = new Point(440, 89);
+            btnCalculate.Location = new Point(440, 100);
             btnCalculate.Name = "btnCalculate";
             btnCalculate.Size = new Size(100, 30);
             btnCalculate.TabIndex = 7;
@@ -166,7 +166,7 @@
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(560, 89);
+            btnSave.Location = new Point(560, 100);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(100, 30);
             btnSave.TabIndex = 8;
@@ -182,7 +182,7 @@
             btnReset.FlatStyle = FlatStyle.Flat;
             btnReset.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             btnReset.ForeColor = Color.White;
-            btnReset.Location = new Point(680, 89);
+            btnReset.Location = new Point(680, 100);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(100, 30);
             btnReset.TabIndex = 9;
@@ -203,7 +203,7 @@
             gbResult.Controls.Add(lblTotalSalary);
             gbResult.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             gbResult.ForeColor = Color.FromArgb(0, 123, 255);
-            gbResult.Location = new Point(21, 122);
+            gbResult.Location = new Point(21, 133);
             gbResult.Name = "gbResult";
             gbResult.Size = new Size(759, 134);
             gbResult.TabIndex = 11;
@@ -309,7 +309,7 @@
             dgvDetails.DefaultCellStyle = dataGridViewCellStyle2;
             dgvDetails.EnableHeadersVisualStyles = false;
             dgvDetails.GridColor = Color.LightGray;
-            dgvDetails.Location = new Point(21, 262);
+            dgvDetails.Location = new Point(21, 273);
             dgvDetails.MultiSelect = false;
             dgvDetails.Name = "dgvDetails";
             dgvDetails.ReadOnly = true;
@@ -323,7 +323,7 @@
             lblWarning.Anchor = AnchorStyles.None;
             lblWarning.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic);
             lblWarning.ForeColor = Color.Red;
-            lblWarning.Location = new Point(20, 79);
+            lblWarning.Location = new Point(20, 90);
             lblWarning.Name = "lblWarning";
             lblWarning.Size = new Size(414, 40);
             lblWarning.TabIndex = 10;
@@ -335,7 +335,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(812, 554);
+            ClientSize = new Size(892, 540);
             Controls.Add(lblManagerInfo);
             Controls.Add(lblEmployeeLabel);
             Controls.Add(cmbEmployee);
