@@ -49,9 +49,6 @@
             panel1 = new Panel();
             label1 = new Label();
             lblActiveEmployee = new Label();
-            panel2 = new Panel();
-            lblAmountAttendance = new Label();
-            lblAttendance = new Label();
             panel3 = new Panel();
             lblPendingAmount = new Label();
             lblLeaveRequestPending = new Label();
@@ -65,7 +62,6 @@
             panel6 = new Panel();
             pnlTotalEmployee.SuspendLayout();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartSalary).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
@@ -215,44 +211,14 @@
             lblActiveEmployee.TabIndex = 1;
             lblActiveEmployee.Text = "Active Employee";
             // 
-            // panel2
-            // 
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(lblAmountAttendance);
-            panel2.Controls.Add(lblAttendance);
-            panel2.Location = new Point(437, 72);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(186, 68);
-            panel2.TabIndex = 9;
-            // 
-            // lblAmountAttendance
-            // 
-            lblAmountAttendance.AutoSize = true;
-            lblAmountAttendance.Font = new Font("Dubai", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAmountAttendance.Location = new Point(22, 19);
-            lblAmountAttendance.Name = "lblAmountAttendance";
-            lblAmountAttendance.Size = new Size(54, 49);
-            lblAmountAttendance.TabIndex = 2;
-            lblAmountAttendance.Text = "60";
-            // 
-            // lblAttendance
-            // 
-            lblAttendance.AutoSize = true;
-            lblAttendance.ForeColor = Color.Gray;
-            lblAttendance.Location = new Point(13, 0);
-            lblAttendance.Name = "lblAttendance";
-            lblAttendance.Size = new Size(79, 19);
-            lblAttendance.TabIndex = 1;
-            lblAttendance.Text = "Attendance";
-            // 
             // panel3
             // 
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(lblPendingAmount);
             panel3.Controls.Add(lblLeaveRequestPending);
-            panel3.Location = new Point(650, 72);
+            panel3.Location = new Point(431, 72);
             panel3.Name = "panel3";
-            panel3.Size = new Size(268, 68);
+            panel3.Size = new Size(210, 68);
             panel3.TabIndex = 10;
             // 
             // lblPendingAmount
@@ -290,7 +256,7 @@
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             chartSalary.Series.Add(series3);
-            chartSalary.Size = new Size(515, 257);
+            chartSalary.Size = new Size(507, 332);
             chartSalary.TabIndex = 11;
             chartSalary.Text = "Salary";
             title2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -320,9 +286,9 @@
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label2);
             panel4.Controls.Add(lblTotalSalary);
-            panel4.Location = new Point(15, 421);
+            panel4.Location = new Point(647, 72);
             panel4.Name = "panel4";
-            panel4.Size = new Size(421, 59);
+            panel4.Size = new Size(276, 68);
             panel4.TabIndex = 11;
             // 
             // label2
@@ -359,7 +325,7 @@
             panel5.Controls.Add(chartSalary);
             panel5.Location = new Point(15, 149);
             panel5.Name = "panel5";
-            panel5.Size = new Size(515, 264);
+            panel5.Size = new Size(515, 341);
             panel5.TabIndex = 14;
             // 
             // panel6
@@ -378,11 +344,10 @@
             BackColor = Color.White;
             ClientSize = new Size(935, 518);
             Controls.Add(panel6);
+            Controls.Add(panel4);
             Controls.Add(panel5);
             Controls.Add(cbxDepartments);
-            Controls.Add(panel4);
             Controls.Add(panel3);
-            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(lblDepartmentName);
             Controls.Add(pnlTotalEmployee);
@@ -399,8 +364,6 @@
             pnlTotalEmployee.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)chartSalary).EndInit();
@@ -430,9 +393,6 @@
         private Label lblActiveEmployee;
         private Label lblTotalAmount;
         private Label label1;
-        private Panel panel2;
-        private Label lblAmountAttendance;
-        private Label lblAttendance;
         private Panel panel3;
         private Label lblPendingAmount;
         private Label lblLeaveRequestPending;

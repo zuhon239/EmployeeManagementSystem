@@ -18,7 +18,6 @@ namespace EmployeeManagementSystem.FormManager
     public partial class DashboardManagerForm : Form
     {
         private readonly EmployeeManagementContext _context;
-
         private readonly int _currentManagerId;
         private readonly DashboardManagerController _controller; 
         private int _selectedEmployeeId;
@@ -167,11 +166,7 @@ namespace EmployeeManagementSystem.FormManager
             var activeEmployees = employeesQuery.Count(e => e.Status);
             label1.Text = activeEmployees.ToString();
 
-            // Số lượt chấm công
-            var attendanceCount = _context.Attendances
-                .Where(a => a.Date >= fromDate.Date && a.Date <= toDate.Date)
-                .Count(a => employeesQuery.Select(e => e.UserId).Contains(a.UserId));
-            lblAmountAttendance.Text = attendanceCount.ToString();
+        
 
             // Yêu cầu nghỉ phép đang chờ phê duyệt
             var pendingLeaveRequests = _context.LeaveRequests
@@ -187,7 +182,7 @@ namespace EmployeeManagementSystem.FormManager
             label2.Text = totalSalary.ToString("C");
 
             // Cập nhật biểu đồ lương
-            UpdateSalaryChart(fromDate, toDate, employeesQuery);
+            UpdateSalaryChart(fromDate, toDate);
 
             if (_selectedEmployeeId > 0)
             {
@@ -200,57 +195,197 @@ namespace EmployeeManagementSystem.FormManager
             }
         }
 
-        private void UpdateSalaryChart(DateTime fromDate, DateTime toDate, IQueryable<Employee> employeesQuery)
+        private void UpdateSalaryChart(DateTime fromDate, DateTime toDate)
         {
-            chartSalary.Series.Clear(); 
-            chartSalary.Titles.Clear();
-            var series = new Series("TotalSalary")
+            try
             {
-                ChartType = SeriesChartType.Column,
-                IsVisibleInLegend = false // Tắt legend vì mỗi cột đã có nhãn nhân viên
-            };
+                chartSalary.Series.Clear();
 
-            // Lấy dữ liệu lương của từng nhân viên
-            var payrolls = _context.Payrolls
-                .Where(p => p.Month >= fromDate && p.Month <= toDate)
-                .Where(p => employeesQuery.Select(e => e.UserId).Contains(p.UserId))
-                .GroupBy(p => p.UserId)
-                .Select(g => new
+                // Cấu hình ChartArea
+                if (chartSalary.ChartAreas.Count == 0)
                 {
-                    UserId = g.Key,
-                    Total = g.Sum(p => p.TotalSalary)
-                })
-                .ToList();
+                    chartSalary.ChartAreas.Add(new ChartArea());
+                }
 
-            // Lấy danh sách nhân viên để lấy tên
-            var employeeNames = _context.Employees
-                .Where(e => employeesQuery.Select(e => e.UserId).Contains(e.UserId))
-                .Select(e => new { e.UserId, e.Name })
-                .ToDictionary(e => e.UserId, e => e.Name);
+                var chartArea = chartSalary.ChartAreas[0];
+                chartArea.AxisX.Title = "Nhân viên";
+                chartArea.AxisY.Title = "Lương (VNĐ)";
+                chartArea.AxisX.LabelStyle.Angle = -45;
+                chartArea.AxisY.LabelStyle.Format = "C0";
+                chartArea.AxisY.LabelStyle.Font = new System.Drawing.Font("Arial", 8);
 
-            // Thêm dữ liệu vào series
-            foreach (var payroll in payrolls)
-            {
-                string employeeName = employeeNames.ContainsKey(payroll.UserId) ? employeeNames[payroll.UserId] : $"ID {payroll.UserId}";
-                series.Points.AddXY(employeeName, payroll.Total);
+                chartSalary.Titles.Clear();
+
+                var series = new Series("EmployeeSalary");
+                series.ChartType = SeriesChartType.Column;
+                series.IsVisibleInLegend = false;
+                series.Color = System.Drawing.Color.SteelBlue;
+
+                // Lấy thông tin phòng ban của manager hiện tại
+                var department = _context.Users
+                   .OfType<Employee>()
+                   .AsNoTracking()
+                   .Include(e => e.Department)
+                   .Select(e => new
+                   {
+                       e.UserId,
+                       e.DepartmentId,
+                       e.Department.Name
+                   })
+                   .FirstOrDefault(e => e.UserId == _currentManagerId);
+
+                if (department == null)
+                {
+                    var emptyPoint = series.Points.AddXY("Không có dữ liệu", 0);
+                    series.Points[emptyPoint].ToolTip = "Không tìm thấy phòng ban";
+                    series.Points[emptyPoint].Color = System.Drawing.Color.Gray;
+                    chartSalary.Series.Add(series);
+                    chartSalary.Titles.Add("Biểu đồ lương nhân viên - Không có dữ liệu");
+                    return;
+                }
+
+                // *** TRUY VẤN 1: Tính tổng quan (tất cả nhân viên trong phòng ban) ***
+                var allEmployeesInDepartment = _context.Employees
+                    .Where(e => e.DepartmentId == department.DepartmentId)
+                    .Select(e => e.UserId)
+                    .ToList();
+
+                var totalEmployeesInDepartment = allEmployeesInDepartment.Count;
+
+                var employeesWithSalaryUserIds = _context.Payrolls
+                    .Where(p => p.Month >= fromDate.Date && p.Month <= toDate.Date)
+                    .Where(p => allEmployeesInDepartment.Contains(p.UserId))
+                    .Select(p => p.UserId)
+                    .Distinct()
+                    .ToList();
+
+                var employeesWithSalaryCount = employeesWithSalaryUserIds.Count;
+                var employeesWithoutSalary = totalEmployeesInDepartment - employeesWithSalaryCount;
+
+                var totalSalaryAmount = _context.Payrolls
+                    .Where(p => p.Month >= fromDate.Date && p.Month <= toDate.Date)
+                    .Where(p => allEmployeesInDepartment.Contains(p.UserId))
+                    .Sum(p => p.TotalSalary);
+
+                // *** TRUY VẤN 2: Lấy dữ liệu từ Payroll và JOIN với Employee để hiển thị ***
+                var payrollChartData = _context.Payrolls
+                                    .Include(p => p.Employee)
+                                    .Where(p => p.Month >= fromDate.Date && p.Month <= toDate.Date)
+                                    .Where(p => allEmployeesInDepartment.Contains(p.UserId))
+                                    .GroupBy(p => new { p.UserId, p.Employee.Name, p.Employee.Status })
+                                    .Select(g => new
+                                    {
+                                        UserId = g.Key.UserId,
+                                        EmployeeName = g.Key.Name,
+                                        EmployeeStatus = g.Key.Status,
+                                        TotalSalary = g.Sum(p => p.TotalSalary),
+                                        MonthCount = g.Count(),
+                                        LatestMonth = g.Max(p => p.Month),
+                                        AverageSalary = g.Average(p => p.TotalSalary)
+                                    })
+                                    .OrderBy(x => x.EmployeeName)
+                                    .ToList();
+
+                if (!payrollChartData.Any())
+                {
+                    var emptyPoint = series.Points.AddXY("Chưa có dữ liệu lương", 0);
+                    series.Points[emptyPoint].ToolTip = $"Không có nhân viên nào có lương trong khoảng {fromDate:MM/yyyy} - {toDate:MM/yyyy}";
+                    series.Points[emptyPoint].Color = System.Drawing.Color.LightGray;
+                    chartSalary.Series.Add(series);
+                    chartSalary.Titles.Add($"Biểu đồ lương nhân viên - {department.Name}");
+                }
+                else
+                {
+                    // Hiển thị dữ liệu lương từ Payroll
+                    foreach (var data in payrollChartData)
+                    {
+                        string tooltipText = $"Nhân viên: {data.EmployeeName}\n" +
+                                           $"User ID: {data.UserId}\n" +
+                                           $"Tổng lương: {data.TotalSalary:C0}\n" +
+                                           $"Lương trung bình: {data.AverageSalary:C0}\n" +
+                                           $"Số tháng có lương: {data.MonthCount}\n" +
+                                           $"Tháng gần nhất: {data.LatestMonth:MM/yyyy}\n" +
+                                           $"Trạng thái: {(data.EmployeeStatus ? "Đang hoạt động" : "Không hoạt động")}";
+
+                        System.Drawing.Color pointColor = data.EmployeeStatus ?
+                            System.Drawing.Color.Green : System.Drawing.Color.DarkGreen;
+
+                        var pointIndex = series.Points.AddXY(data.EmployeeName, (double)data.TotalSalary);
+                        var point = series.Points[pointIndex];
+                        point.ToolTip = tooltipText;
+                        point.Color = pointColor;
+                    }
+
+                    chartSalary.Series.Add(series);
+                    chartArea.AxisX.Interval = 1;
+                    chartArea.AxisX.IntervalType = DateTimeIntervalType.Number;
+                    chartArea.AxisX.LabelStyle.IsStaggered = false;
+                }
+
+                // Tiêu đề biểu đồ
+                string dateRange = $"{fromDate:MM/yyyy} - {toDate:MM/yyyy}";
+                string chartTitle = $"Biểu đồ lương nhân viên - {department.Name} ({dateRange})";
+                chartSalary.Titles.Add(chartTitle);
+
+                // Cấu hình biểu đồ
+                chartSalary.BackColor = System.Drawing.Color.WhiteSmoke;
+                chartArea.BackColor = System.Drawing.Color.White;
+
+                // Legend
+                if (chartSalary.Legends.Count == 0)
+                {
+                    chartSalary.Legends.Add(new Legend());
+                }
+
+                var legend = chartSalary.Legends[0];
+                legend.Title = "Chú thích";
+                legend.Enabled = true;
+                legend.Docking = Docking.Bottom;
+                legend.Alignment = StringAlignment.Center;
+
+                legend.CustomItems.Clear();
+                legend.CustomItems.Add(new LegendItem("Đang hoạt động", System.Drawing.Color.Green, ""));
+                legend.CustomItems.Add(new LegendItem("Không hoạt động", System.Drawing.Color.DarkGreen, ""));
+
+                // *** HIỂN THỊ TỔNG QUAN TỪ TRUY VẤN 1 ***
+                var summaryTitle = $"Tổng quan: {totalEmployeesInDepartment} nhân viên | Có lương: {employeesWithSalaryCount} | Chưa có lương: {employeesWithoutSalary} | Tổng lương: {totalSalaryAmount:C0}";
+                chartSalary.Titles.Add(summaryTitle);
+
+                // Cấu hình trục Y
+                chartArea.AxisY.Minimum = 0;
+                if (payrollChartData.Any())
+                {
+                    var maxSalary = payrollChartData.Max(s => s.TotalSalary);
+                    if (maxSalary > 0)
+                    {
+                        chartArea.AxisY.Maximum = (double)(maxSalary * 1.1m);
+                    }
+                }
+
             }
-
-            // Nếu không có dữ liệu, hiển thị thông báo trên biểu đồ
-            if (payrolls.Count == 0)
+            catch (Exception ex)
             {
-                series.Points.AddXY("Không có dữ liệu", 0);
-                series.Points[0].Color = System.Drawing.Color.Gray;
-                series.Points[0].ToolTip = "Không có bản ghi lương trong khoảng thời gian này";
+                MessageBox.Show($"Lỗi khi cập nhật biểu đồ lương: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                chartSalary.Series.Clear();
+                chartSalary.Titles.Clear();
+
+                if (chartSalary.ChartAreas.Count == 0)
+                {
+                    chartSalary.ChartAreas.Add(new ChartArea());
+                }
+
+                var errorSeries = new Series("Error");
+                errorSeries.ChartType = SeriesChartType.Column;
+
+                var errorPointIndex = errorSeries.Points.AddXY("Lỗi", 0);
+                var errorPoint = errorSeries.Points[errorPointIndex];
+                errorPoint.Color = System.Drawing.Color.Red;
+                errorPoint.ToolTip = $"Lỗi: {ex.Message}";
+
+                chartSalary.Series.Add(errorSeries);
+                chartSalary.Titles.Add("Biểu đồ lương - Có lỗi xảy ra");
             }
-
-            chartSalary.Series.Add(series);
-            chartSalary.Titles.Add($"Tổng lương nhân viên từ {fromDate:dd/MM/yyyy} đến {toDate:dd/MM/yyyy}");
-
-            // Cấu hình trục X để hiển thị tên nhân viên rõ ràng
-            chartSalary.ChartAreas[0].AxisX.Interval = 1; // Đảm bảo mỗi cột đều hiển thị nhãn
-            chartSalary.ChartAreas[0].AxisX.LabelStyle.Angle = -45; // Xoay nhãn 45 độ để tránh chồng lấn
-            chartSalary.ChartAreas[0].AxisX.IsLabelAutoFit = true;
-            chartSalary.ChartAreas[0].AxisY.Title = "Tổng lương (VND)";
         }
 
         private void UpdatePerformanceDistributionChart(DateTime fromDate, DateTime toDate, string employeeName)
@@ -373,7 +508,6 @@ namespace EmployeeManagementSystem.FormManager
         {
             lblTotalAmount.Text = "0";
             label1.Text = "0";
-            lblAmountAttendance.Text = "0";
             lblPendingAmount.Text = "0";
             label2.Text = "0";
             chartSalary.Series.Clear();
