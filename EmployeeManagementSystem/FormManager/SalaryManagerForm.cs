@@ -71,6 +71,7 @@ namespace EmployeeManagementSystem.FormManager
             }
         }
 
+        // ✅ Cập nhật btnCalculate_Click với Bonus
         private async void btnCalculate_Click(object sender, EventArgs e)
         {
             try
@@ -82,16 +83,22 @@ namespace EmployeeManagementSystem.FormManager
                     return;
                 }
 
-                // Lấy UserId từ ComboBox
+                // ✅ Lấy Bonus từ TextBox (thay vì lương cơ bản)
+                if (!decimal.TryParse(txtBonus.Text, out decimal bonus) || bonus < 0)
+                {
+                    MessageBox.Show("Vui lòng nhập bonus hợp lệ (>= 0)!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 string selectedText = cmbEmployee.SelectedItem.ToString();
                 int userId = int.Parse(selectedText.Split('(')[1].Split(':')[1].Split(')')[0].Trim());
 
                 DateTime selectedMonth = dtpMonth.Value;
 
-                // ✅ Không cần input lương cơ bản - tự động tính theo phòng ban và chức vụ
-                var result = await _controller.CalculatePayrollAsync(userId, selectedMonth);
+                // ✅ Truyền bonus vào method tính lương
+                var result = await _controller.CalculatePayrollAsync(userId, selectedMonth, bonus);
 
-                // Hiển thị kết quả
                 DisplayPayrollResult(result);
             }
             catch (Exception ex)
@@ -101,17 +108,18 @@ namespace EmployeeManagementSystem.FormManager
             }
         }
 
+        // ✅ Cập nhật DisplayPayrollResult với Bonus
+        // ✅ Cập nhật DisplayPayrollResult với logic mới
         private void DisplayPayrollResult(PayrollCalculationResult result)
         {
-            // Hiển thị thông tin tổng quan
             lblEmployeeName.Text = $"Nhân viên: {result.EmployeeName}";
             lblMonth.Text = $"Tháng: {result.Month:MM/yyyy}";
             lblBaseSalary.Text = $"Lương cơ bản: {result.BaseSalary:N0} VNĐ";
             lblDailySalary.Text = $"Lương ngày: {result.DailySalary:N0} VNĐ";
             lblTotalDeduction.Text = $"Tổng khấu trừ: {result.TotalDeduction:N0} VNĐ";
+            lblBonus.Text = $"Bonus: {result.Bonus:N0} VNĐ";
             lblTotalSalary.Text = $"Lương thực nhận: {result.TotalSalary:N0} VNĐ";
 
-            // Hiển thị chi tiết trong DataGridView
             dgvDetails.DataSource = result.AttendanceDetails.Select(d => new
             {
                 Ngày = d.Date.ToString("dd/MM/yyyy"),
@@ -125,15 +133,21 @@ namespace EmployeeManagementSystem.FormManager
 
             dgvDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Color coding
+            // ✅ Color coding với logic mới
             foreach (DataGridViewRow row in dgvDetails.Rows)
             {
                 var leaveStatus = row.Cells["Leave_Request"].Value.ToString();
                 var deduction = row.Cells["Khấu_Trừ"].Value.ToString();
+                var reason = row.Cells["Lý_Do"].Value.ToString();
 
                 if (leaveStatus == "Approved")
                 {
                     row.DefaultCellStyle.BackColor = Color.LightBlue; // Nghỉ phép approved
+                }
+                else if (reason.Contains("Vắng mặt nguyên ngày"))
+                {
+                    row.DefaultCellStyle.BackColor = Color.DarkRed; // ✅ Đỏ đậm - Vắng mặt nguyên ngày
+                    row.DefaultCellStyle.ForeColor = Color.White;
                 }
                 else if (deduction.Contains("0 VNĐ"))
                 {
@@ -141,7 +155,7 @@ namespace EmployeeManagementSystem.FormManager
                 }
                 else
                 {
-                    row.DefaultCellStyle.BackColor = Color.LightPink; // Bị trừ lương
+                    row.DefaultCellStyle.BackColor = Color.LightPink; // Bị trừ 5%
                 }
             }
         }
@@ -158,13 +172,12 @@ namespace EmployeeManagementSystem.FormManager
                     return;
                 }
 
-                // Lấy thông tin từ form
                 string selectedText = cmbEmployee.SelectedItem.ToString();
                 int userId = int.Parse(selectedText.Split('(')[1].Split(':')[1].Split(')')[0].Trim());
-                decimal baseSalary = decimal.Parse(txtBaseSalary.Text);
+                decimal bonus = decimal.Parse(txtBonus.Text);
                 DateTime selectedMonth = dtpMonth.Value;
 
-                var result = await _controller.CalculatePayrollAsync(userId, selectedMonth);
+                var result = await _controller.CalculatePayrollAsync(userId, selectedMonth, bonus);
                 bool saved = await _controller.SavePayrollAsync(result);
 
                 if (saved)
@@ -188,7 +201,7 @@ namespace EmployeeManagementSystem.FormManager
         private void btnReset_Click(object sender, EventArgs e)
         {
             cmbEmployee.SelectedIndex = 0;
-            txtBaseSalary.Text = "3000000";
+            txtBonus.Text = "0"; // ✅ Reset về 0 thay vì 3000000
             dtpMonth.Value = DateTime.Now;
             dgvDetails.DataSource = null;
 
@@ -197,12 +210,28 @@ namespace EmployeeManagementSystem.FormManager
             lblBaseSalary.Text = "Lương cơ bản: ";
             lblDailySalary.Text = "Lương ngày: ";
             lblTotalDeduction.Text = "Tổng khấu trừ: ";
+            lblBonus.Text = "Bonus: "; // ✅ Reset Bonus
             lblTotalSalary.Text = "Lương thực nhận: ";
         }
 
         private void SalaryManagerForm_Load(object sender, EventArgs e)
         {
             // Form load
+        }
+
+        private void gbResult_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbResult_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblWarning_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

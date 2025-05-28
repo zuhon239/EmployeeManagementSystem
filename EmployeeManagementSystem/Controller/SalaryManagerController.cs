@@ -11,13 +11,12 @@ namespace EmployeeManagementSystem.Controller
     {
         private readonly EmployeeManagementContext _context;
         private const decimal STANDARD_WORKING_DAYS = 26m;
-
+        
         public SalaryManagerController(EmployeeManagementContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        // ✅ Lấy thông tin Manager (không dùng ManagerId)
         public async Task<Employee> GetManagerInfoAsync(int managerId)
         {
             return await _context.Employees
@@ -27,7 +26,6 @@ namespace EmployeeManagementSystem.Controller
                                        e.Status == true);
         }
 
-        // ✅ Lấy lương cơ bản theo phòng ban và chức vụ
         public async Task<decimal> GetBaseSalaryAsync(int userId)
         {
             try
@@ -38,10 +36,8 @@ namespace EmployeeManagementSystem.Controller
 
                 if (employee == null) return 0m;
 
-                // ✅ Lương cơ bản theo phòng ban (có thể lưu trong bảng Department hoặc config)
                 decimal departmentBaseSalary = GetDepartmentBaseSalary(employee.DepartmentId);
 
-                // ✅ Manager lương cao hơn 30%
                 if (employee.RoleId == 2) // Manager
                 {
                     return departmentBaseSalary * 1.30m; // +30%
@@ -58,10 +54,8 @@ namespace EmployeeManagementSystem.Controller
             }
         }
 
-        // ✅ Lương cơ bản theo phòng ban (có thể config trong database sau)
         private decimal GetDepartmentBaseSalary(int departmentId)
         {
-            // Tạm thời hardcode, sau này có thể lưu trong bảng DepartmentSalaryConfig
             return departmentId switch
             {
                 1 => 3000000m, // IT Department
@@ -72,7 +66,6 @@ namespace EmployeeManagementSystem.Controller
             };
         }
 
-        // ✅ Lấy danh sách nhân viên trong phòng ban
         public async Task<List<Employee>> GetDepartmentEmployeesAsync(int managerId)
         {
             try
@@ -83,7 +76,7 @@ namespace EmployeeManagementSystem.Controller
                 return await _context.Employees
                     .Where(e => e.DepartmentId == manager.DepartmentId &&
                                e.Status == true &&
-                               e.RoleId == 1) // Chỉ Employee, không lấy Manager
+                               e.RoleId == 1)
                     .OrderBy(e => e.Name)
                     .ToListAsync();
             }
@@ -94,8 +87,8 @@ namespace EmployeeManagementSystem.Controller
             }
         }
 
-        // ✅ Tính lương cho nhân viên theo tháng (Logic mới)
-        public async Task<PayrollCalculationResult> CalculatePayrollAsync(int userId, DateTime month)
+        // ✅ Tính lương với Bonus (Logic mới)
+        public async Task<PayrollCalculationResult> CalculatePayrollAsync(int userId, DateTime month, decimal bonus = 0m)
         {
             try
             {
@@ -111,17 +104,15 @@ namespace EmployeeManagementSystem.Controller
                     throw new ArgumentException("Không tìm thấy nhân viên");
                 }
 
-                // ✅ Lấy lương cơ bản theo phòng ban và chức vụ
                 decimal baseSalary = await GetBaseSalaryAsync(userId);
                 decimal dailySalary = baseSalary / STANDARD_WORKING_DAYS;
 
                 var attendances = await _context.Attendances
-                    .Where(a => a.UserId == userId &&
-                               a.Date >= startDate &&
+                    .Where(a => a.UserId == userId && 
+                               a.Date >= startDate && 
                                a.Date <= endDate)
                     .ToListAsync();
 
-                // ✅ Lấy leave requests theo trạng thái
                 var leaveRequests = await _context.LeaveRequests
                     .Where(lr => lr.UserId == userId &&
                                 lr.StartDate <= endDate &&
@@ -138,6 +129,7 @@ namespace EmployeeManagementSystem.Controller
                     StandardWorkingDays = (int)STANDARD_WORKING_DAYS,
                     AttendanceDetails = new List<AttendanceDetail>(),
                     TotalDeduction = 0m,
+                    Bonus = bonus, // ✅ Thêm Bonus
                     TotalSalary = baseSalary
                 };
 
@@ -149,13 +141,12 @@ namespace EmployeeManagementSystem.Controller
 
                 foreach (var workingDay in workingDays)
                 {
-                    var dayAttendances = attendancesByDate.ContainsKey(workingDay)
-                        ? attendancesByDate[workingDay]
+                    var dayAttendances = attendancesByDate.ContainsKey(workingDay) 
+                        ? attendancesByDate[workingDay] 
                         : new List<Attendance>();
 
-                    // ✅ Kiểm tra leave request cho ngày này
-                    var dayLeaveRequest = leaveRequests.FirstOrDefault(lr =>
-                        workingDay >= lr.StartDate.Date &&
+                    var dayLeaveRequest = leaveRequests.FirstOrDefault(lr => 
+                        workingDay >= lr.StartDate.Date && 
                         workingDay <= lr.EndDate.Date);
 
                     var dayDetail = CalculateDayDeduction(workingDay, dayAttendances, dailySalary, dayLeaveRequest);
@@ -163,7 +154,8 @@ namespace EmployeeManagementSystem.Controller
                     result.TotalDeduction += dayDetail.DeductionAmount;
                 }
 
-                result.TotalSalary = baseSalary - result.TotalDeduction;
+                // ✅ Tính lương thực nhận: (Lương cơ bản - Khấu trừ) + Bonus
+                result.TotalSalary = (baseSalary - result.TotalDeduction) + bonus;
                 return result;
             }
             catch (Exception ex)
@@ -172,7 +164,7 @@ namespace EmployeeManagementSystem.Controller
             }
         }
 
-        // ✅ Tính khấu trừ cho một ngày cụ thể (Logic mới)
+        // ✅ Tính khấu trừ cho một ngày cụ thể (Logic mới - vắng mặt nguyên ngày)
         private AttendanceDetail CalculateDayDeduction(DateTime date, List<Attendance> dayAttendances, decimal dailySalary, LeaveRequest dayLeaveRequest)
         {
             var detail = new AttendanceDetail
@@ -192,23 +184,32 @@ namespace EmployeeManagementSystem.Controller
             detail.MorningShift = morningAttendance;
             detail.AfternoonShift = afternoonAttendance;
 
-            // ✅ Logic mới: Kiểm tra leave request
             if (dayLeaveRequest != null)
             {
                 if (dayLeaveRequest.Status == "Approved")
                 {
-                    // TH1: Ngày được duyệt nghỉ phép - KHÔNG BỊ TRỪ LƯƠNG dù có vi phạm
                     detail.DeductionReason = $"Nghỉ phép đã duyệt - Không trừ lương (Leave ID: {dayLeaveRequest.LeaveId})";
-                    return detail; // Deduction = 0
+                    return detail;
                 }
                 else if (dayLeaveRequest.Status == "Rejected" || dayLeaveRequest.Status == "Pending")
                 {
-                    // TH2, TH3: Bị từ chối hoặc chưa reply - ÁP DỤNG BÌNH THƯỜNG
                     detail.DeductionReason += $"Leave request {dayLeaveRequest.Status} - ";
                 }
             }
 
-            // ✅ Kiểm tra vi phạm chấm công (áp dụng bình thường)
+            // ✅ KIỂM TRA VẮNG MẶT NGUYÊN NGÀY
+            bool morningAbsent = (morningAttendance == null);
+            bool afternoonAbsent = (afternoonAttendance == null);
+
+            if (morningAbsent && afternoonAbsent)
+            {
+                // ✅ VẮNG MẶT NGUYÊN NGÀY - KHÔNG TÍNH LƯƠNG NGÀY ĐÓ
+                detail.DeductionAmount = dailySalary; // Trừ 100% lương ngày
+                detail.DeductionReason += "Vắng mặt nguyên ngày - Không tính lương";
+                return detail;
+            }
+
+            // ✅ CHỈ ĐI 1 CA - TÍNH LƯƠNG NHƯ HIỆN TẠI (TRỪ 5%)
             bool hasViolation = false;
             string violationDetails = "";
 
@@ -246,7 +247,7 @@ namespace EmployeeManagementSystem.Controller
                 violationDetails += "Chiều: Vắng mặt; ";
             }
 
-            // ✅ Tính khấu trừ: MỖI NGÀY CHỈ TRỪ TỐI ĐA 5%
+            // ✅ Tính khấu trừ: CHỈ ĐI 1 CA VẪN TRỪ 5%
             if (hasViolation)
             {
                 detail.DeductionAmount = dailySalary * 0.05m; // 5% lương ngày
@@ -259,6 +260,7 @@ namespace EmployeeManagementSystem.Controller
 
             return detail;
         }
+
 
         private List<DateTime> GetWorkingDaysInMonth(DateTime month)
         {
@@ -277,19 +279,24 @@ namespace EmployeeManagementSystem.Controller
             return workingDays;
         }
 
+        // ✅ Lưu payroll với Bonus và chỉ lưu tháng
         public async Task<bool> SavePayrollAsync(PayrollCalculationResult result)
         {
             try
             {
+                // ✅ Tạo DateTime chỉ với tháng (ngày 1 của tháng)
+                var monthOnly = new DateTime(result.Month.Year, result.Month.Month, 1);
+
                 var existingPayroll = await _context.Payrolls
-                    .FirstOrDefaultAsync(p => p.UserId == result.UserId &&
-                                           p.Month.Year == result.Month.Year &&
+                    .FirstOrDefaultAsync(p => p.UserId == result.UserId && 
+                                           p.Month.Year == result.Month.Year && 
                                            p.Month.Month == result.Month.Month);
 
                 if (existingPayroll != null)
                 {
                     existingPayroll.BaseSalary = result.BaseSalary;
                     existingPayroll.DaysWorked = result.StandardWorkingDays;
+                    existingPayroll.Bonus = result.Bonus; // ✅ Cập nhật Bonus
                     existingPayroll.Deduction = result.TotalDeduction;
                     existingPayroll.TotalSalary = result.TotalSalary;
                 }
@@ -297,10 +304,10 @@ namespace EmployeeManagementSystem.Controller
                 {
                     var newPayroll = new Payroll(
                         result.UserId,
-                        result.Month,
+                        monthOnly, // ✅ Chỉ lưu tháng (ngày 1)
                         result.BaseSalary,
                         result.StandardWorkingDays,
-                        0m,
+                        result.Bonus, // ✅ Lưu Bonus
                         result.TotalDeduction,
                         result.TotalSalary
                     );
@@ -318,6 +325,7 @@ namespace EmployeeManagementSystem.Controller
         }
     }
 
+    // ✅ Cập nhật PayrollCalculationResult - thêm Bonus
     public class PayrollCalculationResult
     {
         public int UserId { get; set; }
@@ -328,15 +336,15 @@ namespace EmployeeManagementSystem.Controller
         public int StandardWorkingDays { get; set; }
         public List<AttendanceDetail> AttendanceDetails { get; set; }
         public decimal TotalDeduction { get; set; }
-        public decimal TotalSalary { get; set; }
+        public decimal Bonus { get; set; } // ✅ Thêm Bonus
+        public decimal TotalSalary { get; set; } // (BaseSalary - TotalDeduction) + Bonus
     }
 
-    // ✅ Cập nhật AttendanceDetail
     public class AttendanceDetail
     {
         public DateTime Date { get; set; }
         public decimal DailySalary { get; set; }
-        public LeaveRequest LeaveRequest { get; set; } // ✅ Thay đổi từ bool sang LeaveRequest
+        public LeaveRequest LeaveRequest { get; set; }
         public Attendance MorningShift { get; set; }
         public Attendance AfternoonShift { get; set; }
         public decimal DeductionAmount { get; set; }
